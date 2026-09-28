@@ -210,6 +210,16 @@
             left: 50%;
             transform: translate(-50%, -50%) translateY(-100%);
         }
+        #intro {
+            height: 100%;
+            background-color: black;
+            z-index: 100000000000000000000;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -226,21 +236,33 @@
       <button id="materiasbutton" class="menubuttons" onmouseenter="soundhover.play()" onclick="soundclick.play()">MATÉRIAS</button>
       <p class="textmenu">joaolucas do naascikmento silva</p>
       <button id="pulo" onmouseenter="soundhover.play()" onclick="soundclick.play(); openpulo()">PULO RÁPIDO</button>
-       <div class="pulomenu" id="pulomenu">
+       
+      <!-- o menu do pulo -->
+      <div class="pulomenu" id="pulomenu">
         <p class="textmenu">aqui voce vai pra qualquer lugar do portfolio</p>
         <button class="closebutton" onmouseenter="soundhover.play()" onclick="closepulo()">X</button>
         <button class="pulochoices" onmouseenter="soundhover.play()" onclick="error.play()">matematica malvada</button>
        </div>
     
+       <!-- intro -->
+       <div id="intro">
+        <p class="textmenu" id="duration">vai ter uma intro aqui. faltam 9 segundos</p>
+        <button class="buttonbase" onclick="skip()" onmouseenter="soundhover.play()"style="
+        position: absolute; top:90%; left: 50%; transform: translate(-50%, -50%);">PULAR</button>
+       </div>
     
     </div>
 
     <script>
+        const intro = document.getElementById("intro");
+        const duration = document.getElementById("duration");
         const firstbackground = document.getElementById("firstbackground");
         const secondbackground = document.getElementById("secondbackground");
         const pulo = document.getElementById("pulo");
         const pulogradient = document.getElementById("pulogradient");
         const pulomenu = document.getElementById("pulomenu");
+        let d = 9;
+
         let soundhover = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/undertale-move-selection-sound-effect%20(1).mp3');
         soundhover.volume = 0.5;
         soundhover.loop = false;
@@ -254,7 +276,17 @@
         let closesfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/0922.MP3');
         closesfx.volume = 1;
         closesfx.loop = false;
+
+        setTimeout(() => {
+            intro.style.display = "none";
+        }, 9000);
  
+        if (d != -1) {
+        setInterval(() => {
+            d--;
+            duration.innerHTML = `vai ter uma intro aqui. faltam ${d} segundos`;
+        }, 1000);
+    }
         function openpulo() {
          pulomenu.style.display = "grid"
          setTimeout(() => {
@@ -286,6 +318,11 @@
             firstbackground.style.transition = "all 1s ease";
             secondbackground.style.transition = "all 1s ease";
             }, 200);
+        }
+        function skip() {
+            d = 1;
+            soundclick.play();
+            intro.style.display = "none";
         }
 
     </script>
