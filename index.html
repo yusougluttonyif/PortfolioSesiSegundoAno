@@ -234,7 +234,7 @@
     <!-- primeira parte, o menu -->
     <div class="firstbackground" id="firstbackground">
       <button id="sobremimbutton" class="menubuttons" onmouseenter="soundhover.play()" onclick="soundclick.play(); sobremimactive()">SOBRE MIM</button>
-      <button id="materiasbutton" class="menubuttons" onmouseenter="soundhover.play()" onclick="soundclick.play()">MATÉRIAS</button>
+      <button id="materiasbutton" class="menubuttons" onmouseenter="soundhover.play()" onclick="unfinished()">MATÉRIAS</button>
       <p class="textmenu">joaolucas do naascikmento silva</p>
       <p class="textmenu" style="top: 90%; opacity: 0.7; font-size: 8px;">Aperte a tecla P para ir ao Pulo Rapido.<br>Aperte a tecla F quando terminar o Portfólio.</p>
        
@@ -249,12 +249,13 @@
        <div id="intro">
         <p class="textmenu" id="duration">vai ter uma intro aqui. faltam 9 segundos</p>
         <button class="buttonbase" onclick="skip()" onmouseenter="soundhover.play()"style="
-        position: absolute; top:90%; left: 50%; transform: translate(-50%, -50%);">PULAR</button>
+        position: absolute; top:90%; left: 50%; transform: translate(-50%, -50%);" id="pular">PULAR</button>
        </div>
     
     </div>
 
     <script>
+        const pular = document.getElementById('pular');
         const intro = document.getElementById("intro");
         const duration = document.getElementById("duration");
         const firstbackground = document.getElementById("firstbackground");
@@ -279,15 +280,17 @@
         closesfx.loop = false;
 
         setTimeout(() => {
-            intro.style.display = "none";
+            if (d != 0) {
+            intro.style.display = "none";}
         }, 9000);
  
-        if (d != -1) {
-        setInterval(() => {
+        const interrr = setInterval(() => {
+            if (d > 1) {
             d--;
             duration.innerHTML = `vai ter uma intro aqui. faltam ${d} segundos`;
+            } else if (d === 1) {duration.innerHTML = 'vai ter uma intro aqui. falta 1 segundo';} else {clearInterval(interrr)}
         }, 1000);
-    }
+
         function openpulo() {
          pulomenu.style.display = "grid"
          setTimeout(() => {
@@ -308,9 +311,26 @@
             } else if (e.key === 'F' || e.key === 'f') {
                 e.preventDefault();
                 error.play();
+                unfinished();
             }
         });
-
+        
+        function unfinished() {
+            error.play();
+            intro.style.display = 'block'
+                intro.style.background = 'rgb(255, 0, 0, 0.90)';
+                duration.innerText = 'nao esta pronto ainda';
+                setTimeout(() => {
+                duration.style.transform = 'translate(-50%, -50%) scale(1.25)';
+                duration.style.color = 'red';
+                },200);
+                duration.style.top = '50%';
+                pular.innerText = 'OK';
+                setTimeout(() => {
+                 duration.style.transform = 'translate(-50%, -50%)';
+                 duration.style.color = 'white';
+                },600);
+        }
 
         function sobremimactive() {
             setTimeout(() => {
@@ -330,9 +350,11 @@
             }, 200);
         }
         function skip() {
-            d = 1;
+            d = 0;
             soundclick.play();
             intro.style.display = "none";
+            intro.style.background = 'black';
+            duration.style.top = '5%';
         }
 
     </script>
