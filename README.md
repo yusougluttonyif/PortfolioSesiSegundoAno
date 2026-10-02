@@ -10,4 +10,6 @@ por ora, eu não fiz muita coisa. o botão do sobre mim funciona, mas não tem c
 eu so coloquei um placeholder da intro. to com preguiça de fazer isso sinceramente, to meio drenado ultimamente. materias ainda nao ta pronto.
 
 # 02/10/2026
-novo mes, mesmo eu - continuo com preguiça pra trabalhar nisso. escrevo isso enquanto ainda estou na escola, e a unica mudança foi a remoção do botão de pulo rapido substituido por uma tecla. hoje foi um dia inutil na escola, então so fiquei programando e fznd um bagulho pra fernando. dito isso, hasta la vista baby
+novo mes, mesmo eu - continuo com preguiça pra trabalhar nisso. escrevo isso enquanto ainda estou na escola, e a unica mudança foi a remoção do botão de pulo rapido substituido por uma tecla. hoje foi um dia inutil na escola, então so fiquei programando e fznd um bagulho pra fernando. dito isso, hasta la vista baby.
+
+pequeno update de uma hora depois: fiz uma tela pra quando algo não estiver pronto, e concertei um erro que causava o contador da intro continuar contando mesmo apos a intro ja ter passado.
