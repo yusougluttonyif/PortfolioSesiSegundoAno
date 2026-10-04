@@ -282,13 +282,14 @@
         setTimeout(() => {
             if (d != 0) {
             intro.style.display = "none";}
+            clearInterval(interrr);
         }, 9000);
  
         const interrr = setInterval(() => {
-            if (d > 1) {
+            if (d > 1 && d != 1) {
             d--;
             duration.innerHTML = `vai ter uma intro aqui. faltam ${d} segundos`;
-            } else if (d === 1) {duration.innerHTML = 'vai ter uma intro aqui. falta 1 segundo';} else {clearInterval(interrr)}
+             if (d === 1) {duration.innerHTML = 'vai ter uma intro aqui. falta 1 segundo';} }
         }, 1000);
 
         function openpulo() {
