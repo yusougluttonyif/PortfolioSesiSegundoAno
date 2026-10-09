@@ -22,6 +22,7 @@ to me sentindo mais motivado pra trabalhar
 hoje, eu:
  - fiz um eventlistener que espera toda as paginas carregarem antes de te deixar acessar o portfolio;
  - materias finalmente funciona, mas voce nao consegue entrar em alguma materia ainda;
+ - sfx da abertura de materias;
  - ganhei a batalha contra z-indexes e consegui deixar tudo organizado;
  - correções de erros pequenos
 nao foi muita coisa, mas agora tenho menos com o que me preocupar.
