@@ -199,16 +199,19 @@
             width: 100%;
         }
         #matematicaBotao {
-            padding: 0px 0px;
+            padding: 10px 10px;
             font-size: 0px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             position: absolute;
+            border-radius: 50px;
+            animation: fakestar 1.5s cubic-bezier(0.5, 0.5, 0.5, 1.5) infinite;
         }
         .materiaqualquerWrapper {
             padding: 70px 100px;
-            background: rgb(255, 255, 255, 0.300);
+            cursor: pointer;
+            background: rgb(255, 255, 255, 0);
             position: absolute;
             top: 30%;
             left: 70%;
@@ -217,7 +220,16 @@
         #matWrapper:hover #matematicaBotao {
             font-size: 15px;
             padding: 10px 30px;
-            opacity: 1!important;
+            opacity: 1;
+            border-radius: 10px;
+            animation-play-state: paused;
+            animation: none;
+            transition: all 0.6s ease;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        @keyframes fakestar {
+            from, to {transform: translate(-50%, -50%) scale(0.15) rotate(-90deg)}
+            50% {transform: translate(-50%, -50%) scale(1.75) rotate(-270deg)}
         }
 
     </style>
@@ -253,9 +265,11 @@
 
        <!-- menu das escolhas de matérias -->
         <div class="espaco" id="espaco">
+            <button class="buttonbase" onclick="
+                document.getElementById('matWrapper').style.background = 'rgb(255,0,0,0.300)';
+                ">mostrar hitbox</button>
             <button class="closebutton" onmouseenter="hoversfx.play()" onclick="materiasclose()">X</button>
-          <div class="materiaqualquerWrapper" id="matWrapper">hitbox
-            <br>matematica
+          <div class="materiaqualquerWrapper" id="matWrapper">
         <button id="matematicaBotao" onclick="unfinished()" onmouseover="hoversfx.play()" class="buttonbase">entrar</button>
         </div>
         </div>
@@ -339,11 +353,11 @@
         function unfinished() {
             error.play();
             intro.style.display = 'block'
-                intro.style.background = 'rgb(255, 0, 0, 0.90)';
+                intro.style.background = 'rgb(175, 0, 0, 0.90)';
                 duration.innerText = 'nao esta pronto ainda';
                 setTimeout(() => {
                 duration.style.transform = 'translate(-50%, -50%) scale(1.25)';
-                duration.style.color = 'red';
+                duration.style.color = 'rgb(175, 0, 0)';
                 },200);
                 duration.style.top = '50%';
                 pular.innerText = 'OK';
@@ -383,8 +397,10 @@
         function materiasopen() {
             clicksfx.play();
             opensfx.play();
+            espaco.style.pointerEvents = 'none';
             setTimeout(() => {
             espaco.style.opacity = '1';
+            espaco.style.pointerEvents = 'auto';
         }, 850);
             espaco.style.display = 'block';
             espaco.style.zIndex = '2';
@@ -397,6 +413,8 @@
     function materiasclose() {
             clicksfx.play();
             closesfx.play();
+            espaco.style.pointerEvents = 'none';
+            firstbackground.style.pointerEvents = 'none';
             espaco.style.opacity = '0';
             setTimeout(() => {
             espaco.style.display = 'none';
@@ -406,6 +424,7 @@
             firstbackground.style.display = 'block';
             setTimeout(() => {
                 firstbackground.style.opacity = '1';
+                firstbackground.style.pointerEvents = 'auto';
             }, 400);
     }
     </script>
