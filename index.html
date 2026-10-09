@@ -96,6 +96,10 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.807);
             z-index: 3;
+            display: none;
+            gap: 30px;
+            flex-direction: column;
+            justify-content: center;
             opacity: 0;
             display: none;
             transition: opacity 0.3s ease;
@@ -103,13 +107,8 @@
         .pulochoices, .buttonbase {
             outline: 3px solid black;
             cursor: pointer;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
             align-self: center;
             justify-self: center;
-            width: fit-content;
-            height: fit-content;
             padding: 10px 30px;
             background-color: black;
             border: 3px solid white;
@@ -264,6 +263,11 @@
         <p class="textmenu">aqui voce vai pra qualquer lugar do portfolio</p>
         <button class="closebutton" onmouseenter="hoversfx.play()" onclick="closepulo()">X</button>
         <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="error.play()">matematica malvada</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="error.play()">linguagens louca</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="error.play()">humanas humericas</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="error.play()">natureza neandertal</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="error.play()">senai slave owner</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="error.play()">projeto de vida pirado</button>
        </div>
     
        <!-- intro -->
@@ -348,7 +352,7 @@
         }, 1000);
 
         function openpulo() {
-         pulomenu.style.display = "grid"
+         pulomenu.style.display = "flex"
          setTimeout(() => {
             pulomenu.style.opacity = "1";
          }, 300);
