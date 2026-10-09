@@ -16,3 +16,12 @@ pequeno update de uma hora depois: fiz uma tela pra quando algo não estiver pro
 
 # 04/10/2026
 corrigi bugs relacionados ao contador. so isso.
+
+# 09/10/2026
+to me sentindo mais motivado pra trabalhar
+hoje, eu:
+ - fiz um eventlistener que espera toda as paginas carregarem antes de te deixar acessar o portfolio;
+ - materias finalmente funciona, mas voce nao consegue entrar em alguma materia ainda;
+ - ganhei a batalha contra z-indexes e consegui deixar tudo organizado;
+ - correções de erros pequenos
+nao foi muita coisa, mas agora tenho menos com o que me preocupar.
