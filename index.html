@@ -225,36 +225,37 @@
 
     <!-- segunda parte, sobre mim -->
     <div class="secondbackground" id="secondbackground">
-        <button class="buttonbase" onmouseenter="soundhover.play()" onclick="sobremimdeactive()">voltar</button>
+        <button class="buttonbase" onmouseenter="hoversfx.play()" onclick="sobremimdeactive()">voltar</button>
     </div>
 
 
     <!-- primeira parte, o menu -->
     <div class="firstbackground" id="firstbackground">
-      <button id="sobremimbutton" class="menubuttons" onmouseenter="soundhover.play()" onclick="soundclick.play(); sobremimactive()">SOBRE MIM</button>
-      <button id="materiasbutton" class="menubuttons" onmouseenter="soundhover.play()" onclick="materiasopen()">MATÉRIAS</button>
+      <button id="sobremimbutton" class="menubuttons" onmouseenter="hoversfx.play()" onclick="clicksfx.play(); sobremimactive()">SOBRE MIM</button>
+      <button id="materiasbutton" class="menubuttons" onmouseenter="hoversfx.play()" onclick="materiasopen()">MATÉRIAS</button>
       <p class="textmenu">joaolucas do naascikmento silva</p>
       <p class="textmenu" style="top: 90%; opacity: 0.7; font-size: 8px;">Aperte a tecla T para ir ao Pulo Rapido.<br><br>Aperte a tecla F quando terminar o Portfólio.</p>
          </div>
       <!-- o menu do pulo -->
       <div class="pulomenu" id="pulomenu">
         <p class="textmenu">aqui voce vai pra qualquer lugar do portfolio</p>
-        <button class="closebutton" onmouseenter="soundhover.play()" onclick="closepulo()">X</button>
-        <button class="pulochoices" onmouseenter="soundhover.play()" onclick="error.play()">matematica malvada</button>
+        <button class="closebutton" onmouseenter="hoversfx.play()" onclick="closepulo()">X</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="error.play()">matematica malvada</button>
        </div>
     
        <!-- intro -->
        <div id="intro">
         <p class="textmenu" id="duration">vai ter uma intro aqui. faltam 9 segundos</p>
-        <button class="buttonbase" onclick="skip()" onmouseenter="soundhover.play()"style="
+        <button class="buttonbase" onclick="skip()" onmouseenter="hoversfx.play()"style="
         position: absolute; top:90%; left: 50%; transform: translate(-50%, -50%);" id="pular">PULAR</button>
        </div>
 
        <!-- menu das escolhas de matérias -->
         <div class="espaco" id="espaco">
+            <button class="closebutton" onmouseenter="hoversfx.play()" onclick="materiasclose()">X</button>
           <div class="materiaqualquerWrapper" id="matWrapper">hitbox
             <br>matematica
-        <button id="matematicaBotao" onclick="unfinished()" onmouseover="soundhover.play()" class="buttonbase">entrar</button>
+        <button id="matematicaBotao" onclick="unfinished()" onmouseover="hoversfx.play()" class="buttonbase">entrar</button>
         </div>
         </div>
     
@@ -273,19 +274,21 @@
         let d = 9;
         let loaded = false;
 
-        let soundhover = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/undertale-move-selection-sound-effect%20(1).mp3');
-        soundhover.volume = 0.5;
-        soundhover.loop = false;
-        let soundclick = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/undertale-select.mp3');
-        soundclick.volume = 0.6;
-        soundclick.loop = false;
+        let hoversfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/undertale-move-selection-sound-effect%20(1).mp3');
+        hoversfx.volume = 0.5;
+        hoversfx.loop = false;
+        let clicksfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/undertale-select.mp3');
+        clicksfx.volume = 0.6;
+        clicksfx.loop = false;
         let error = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/error-notification%20(1).mp3');
         error.volume = 0.6;
         error.loop = false;
-        /* tlvz use isso, sla */
-        let closesfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/0922.MP3');
-        closesfx.volume = 1;
+        let closesfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/1009(1).MP3');
+        closesfx.volume = 0.5;
         closesfx.loop = false;
+        let opensfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/1009.MP3');
+        opensfx.loop = false;
+        opensfx.volume = 0.5;
 
 
         window.addEventListener('load', () => {
@@ -315,7 +318,7 @@
          }, 300);
         }
         function closepulo() {
-            soundclick.play();
+            clicksfx.play();
             pulomenu.style.opacity = "0";
             setTimeout(() => {
                 pulomenu.style.display = "none";
@@ -358,7 +361,7 @@
             }, 100);
         }
         function sobremimdeactive() {
-            soundclick.play();
+            clicksfx.play();
             setTimeout(() => {
             firstbackground.style.transform = "translate(-50%, -50%) translateY(0%)";
             secondbackground.style.transform = "translate(-50%, -50%) translateY(-100%)";
@@ -369,7 +372,7 @@
         function skip() {
             if (loaded == true) {
             d = 0;
-            soundclick.play();
+            clicksfx.play();
             intro.style.display = "none";
             intro.style.background = 'black';
             duration.style.top = '5%';
@@ -377,7 +380,8 @@
     }
  
         function materiasopen() {
-            soundclick.play();
+            clicksfx.play();
+            opensfx.play();
             setTimeout(() => {
             espaco.style.opacity = '1';
         }, 850);
@@ -388,6 +392,20 @@
             setTimeout(() => {
                 firstbackground.style.display = 'none';
             }, 900);
+    }
+    function materiasclose() {
+            clicksfx.play();
+            closesfx.play();
+            espaco.style.opacity = '0';
+            setTimeout(() => {
+            espaco.style.display = 'none';
+            espaco.style.zIndex = '-1';
+            }, 300);
+            firstbackground.style.transition = 'all 0.3s ease';
+            firstbackground.style.display = 'block';
+            setTimeout(() => {
+                firstbackground.style.opacity = '1';
+            }, 400);
     }
     </script>
 </body>
