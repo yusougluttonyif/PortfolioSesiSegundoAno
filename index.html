@@ -198,7 +198,7 @@
             transform: translate(-50%, -50%);
             width: 100%;
         }
-        #matematicaBotao {
+        #matematicaBotao, #portuguesBotao {
             padding: 10px 10px;
             font-size: 0px;
             top: 50%;
@@ -207,7 +207,7 @@
             position: absolute;
             border-radius: 50px;
             animation: fakestar 1.5s cubic-bezier(0.5, 0.5, 0.5, 1.5) infinite;
-        }
+        }#portuguesBotao{animation-delay: 0.4s;}
         .materiaqualquerWrapper {
             padding: 70px 100px;
             cursor: pointer;
@@ -218,6 +218,16 @@
             transform: translate(-50%, -50%);
         }
         #matWrapper:hover #matematicaBotao {
+            font-size: 15px;
+            padding: 10px 30px;
+            opacity: 1;
+            border-radius: 10px;
+            animation-play-state: paused;
+            animation: none;
+            transition: all 0.6s ease;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        #porWrapper:hover #portuguesBotao {
             font-size: 15px;
             padding: 10px 30px;
             opacity: 1;
@@ -268,11 +278,20 @@
             <button class="buttonbase" onmouseover="hoversfx.play()" onclick="
             clicksfx.play();
                 document.getElementById('matWrapper').style.background = 'rgb(255,0,0,0.300)';
-                setTimeout(() => {document.getElementById('matWrapper').style.background = 'rgb(0,0,0,0)'}, 3000);
+                document.getElementById('porWrapper').style.background = 'rgb(255,0,0,0.300)';
+                setTimeout(() => {document.getElementById('matWrapper').style.background = 'rgb(0,0,0,0)'
+                    document.getElementById('porWrapper').style.background = 'rgb(0,0,0,0)'
+                }, 3000);
                 ">mostrar hitbox</button>
+
+
             <button class="closebutton" onmouseenter="hoversfx.play()" onclick="materiasclose()">X</button>
           <div class="materiaqualquerWrapper" id="matWrapper">
-        <button id="matematicaBotao" onclick="unfinished()" onmouseover="hoversfx.play()" class="buttonbase">entrar</button>
+        <button id="matematicaBotao" onclick="unfinished()" onmouseover="hoversfx.play()" class="buttonbase">mat</button>
+        </div>
+
+        <div class="materiaqualquerWrapper" id="porWrapper" style="top: 70%; left: 40%;">
+            <button class="buttonbase" id="portuguesBotao" onmouseover="hoversfx.play()" onclick="unfinished()">portu</button>
         </div>
         </div>
     
