@@ -265,8 +265,10 @@
 
        <!-- menu das escolhas de matérias -->
         <div class="espaco" id="espaco">
-            <button class="buttonbase" onclick="
+            <button class="buttonbase" onmouseover="hoversfx.play()" onclick="
+            clicksfx.play();
                 document.getElementById('matWrapper').style.background = 'rgb(255,0,0,0.300)';
+                setTimeout(() => {document.getElementById('matWrapper').style.background = 'rgb(0,0,0,0)'}, 3000);
                 ">mostrar hitbox</button>
             <button class="closebutton" onmouseenter="hoversfx.play()" onclick="materiasclose()">X</button>
           <div class="materiaqualquerWrapper" id="matWrapper">
@@ -299,11 +301,11 @@
         error.volume = 0.6;
         error.loop = false;
         let closesfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/1009(1).MP3');
-        closesfx.volume = 0.5;
+        closesfx.volume = 1;
         closesfx.loop = false;
         let opensfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/1009.MP3');
         opensfx.loop = false;
-        opensfx.volume = 0.5;
+        opensfx.volume = 1;
 
 
         window.addEventListener('load', () => {
