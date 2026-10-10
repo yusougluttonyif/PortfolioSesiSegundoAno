@@ -240,14 +240,109 @@
             from, to {transform: translate(-50%, -50%) scale(0.15) rotate(-90deg)}
             50% {transform: translate(-50%, -50%) scale(1.75) rotate(-270deg)}
         }
-
+        .textsectionbase {
+            overflow: scroll!important;
+            scrollbar-width: none;
+            outline: 3px solid rgb(0,0,0,0.89);
+            cursor: crosshair;
+            position: absolute;
+            text-align: center;
+            line-height: 1.5;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 80%;
+            height: 360px;
+            background-color: rgb(0,0,0,0.89);
+            border: 3px solid white;
+            border-radius: 10px;
+            corner-shape: scoop;
+            font-family: 'Press Start 2P', sans-serif;
+            color: white;
+            font-size: 15px;
+            padding: 10px 10px;
+            opacity: 0;
+        }
+        img {
+            place-self: center;
+            align-self: center;
+            display: grid;
+            user-select: none;
+            border: 3px solid white;
+            outline: 3px solid black;
+            border-radius: 10px;
+            corner-shape: scoop;
+            margin-top: 10px;
+        }
+        span {
+            color: #ffde59;
+        }
+        #seila {
+            opacity: 0;
+            position: absolute;
+            top: 92%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgb(0,0,0,0.89);
+        }
     </style>
 </head>
 <body>
 
     <!-- segunda parte, sobre mim -->
     <div class="secondbackground" id="secondbackground">
-        <button class="buttonbase" onmouseenter="hoversfx.play()" onclick="sobremimdeactive()">voltar</button>
+        <button class="buttonbase" id="seila" onclick="next()" onmouseover="hoversfx.play()">Passar</button>
+        <button class="closebutton" style="background: rgb(0,0,0,0.89)" onmouseenter="hoversfx.play()" onclick="sobremimdeactive()">X</button>
+        <section class="textsectionbase" id="sbtexthold">
+            <div id="texto1">
+         <p>Meu nome é João Lucas, e tenho 16 anos, nasci em 02/01/2010. 
+            Meu curso no SESI é automação industrial, e comecei a estudar na unidade do Cabo ano passado.
+             Eu amo meus amigos, a minha família, gosto de jogar, desenhar e, acima de tudo, amo a 
+             <span>Deus</span>.</p>
+             <img width="243px" height="180px" src="https://file.garden/aq_0Fg8cibtOL7XF/13%20(6).png">
+        </div>
+        <div id="texto2" style="display:none;">
+         <h1>CONQUISTAS</h1><hr><br>
+         <p>Passar na Gratuidade SESI</p>
+         <small>(ensino médio)</small><br>
+          <p>Falar Inglês</p>
+         <small>(Nivel B1 em 2021)</small><br><br>
+          <p>Ganhar em uma Olímpiada do Passaporte Idiomas</p>
+          <small>(é mais algo em andamento)</small><br><br>
+          <span>Participar do SESI no Mundo</span>
+         <span><small>(intercámbio para o canadá!)</small></span>
+        </div>
+        <div id="texto3" style="display:none;">
+         <h1>QUALIDADES</h1><hr><br><h3>BOAS</h3><br>
+         <ul>
+            <li>Sou calmo;</li><br>
+            <li>Gosto de ajudar;</li><br>
+            <li>Me adapto bem;</li><br>
+            <li>Busco sempre melhorar;</li><br>
+            <li>Sirvo a <span>Deus</span>.</li>
+         </ul>
+        </div>
+        <div id="texto4" style="display:none;">
+         <h1>QUALIDADES</h1><hr><br><h3>MÁS</h3><br>
+         <ul>
+            <li>Sou introvertido;</li><br>
+            <li>Procrastino;</li><br>
+            <li>Posso ser duro com as palavras;</li><br>
+            <li>Sou ruim de conversa;</li>
+         </ul>
+        </div>
+        <div id="texto5" style="display:none;">
+         <h1>OBJETIVOS</h1><hr><br>
+         <p>Passar no ENEM</p>
+         <small>(esqueci de pagar o ssa 1)</small><br><br>
+          <p>Aprender Programação</p>
+         <small>(já comecei a aprender de forma autônoma)</small><br><br>
+          <span>Ir para outro País</span>
+          <span><small>(parcialmente completo, quero ir para morar)</small></span><br><br>
+          <p>Saber que minha vida valeu a pena</p>
+        </section>
+    
     </div>
 
 
@@ -258,6 +353,7 @@
       <p class="textmenu">joaolucas do naascikmento silva</p>
       <p class="textmenu" style="top: 90%; opacity: 0.7; font-size: 8px;">Aperte a tecla T para ir ao Pulo Rapido.<br><br>Aperte a tecla F quando terminar o Portfólio.</p>
          </div>
+
       <!-- o menu do pulo -->
       <div class="pulomenu" id="pulomenu">
         <p class="textmenu">aqui voce vai pra qualquer lugar do portfolio</p>
@@ -302,6 +398,7 @@
   
 
     <script>
+        const sbtexthold = document.getElementById("sbtexthold");
         const espaco = document.getElementById("espaco")
         const pular = document.getElementById('pular');
         const intro = document.getElementById("intro");
@@ -311,6 +408,16 @@
         const pulo = document.getElementById("pulo");
         const pulogradient = document.getElementById("pulogradient");
         const pulomenu = document.getElementById("pulomenu");
+
+        const texto1 = document.getElementById("texto1");
+        const texto2 = document.getElementById("texto2");
+        const texto3 = document.getElementById("texto3");
+        const texto4 = document.getElementById("texto4");
+        const texto5 = document.getElementById("texto5");
+        const seila = document.getElementById("seila");
+
+
+        let page = 1;
         let d = 9;
         let loaded = false;
 
@@ -394,6 +501,10 @@
 
         function sobremimactive() {
             setTimeout(() => {
+                setTimeout(() => {
+                    seila.style.opacity = '1';
+                sbtexthold.style.opacity = '1';
+                }, 400);
             firstbackground.style.transform = "translate(-50%, -50%) translateY(100%)";
             secondbackground.style.transform = "translate(-50%, -50%) translateY(0%)";
             firstbackground.style.transition = "all 1s ease";
@@ -403,6 +514,8 @@
         function sobremimdeactive() {
             clicksfx.play();
             setTimeout(() => {
+                seila.style.opacity = '0';
+                sbtexthold.style.opacity = '0';
             firstbackground.style.transform = "translate(-50%, -50%) translateY(0%)";
             secondbackground.style.transform = "translate(-50%, -50%) translateY(-100%)";
             firstbackground.style.transition = "all 1s ease";
@@ -452,6 +565,43 @@
                 firstbackground.style.pointerEvents = 'auto';
             }, 400);
     }
+    function next() {
+        clicksfx.play();
+        if (page === 5) {page = 1;
+            texto5.style.transform = "translateX(-30px)";
+         texto5.style.opacity = 0;
+         setTimeout(() => {
+         texto5.style.display = "none";
+         }, 100);
+            setTimeout(() => {
+         texto1.style.display = "grid";
+         }, 100);
+         texto1.style.transform = "translateX(30px)";
+         texto1.style.opacity = 0;
+         setTimeout(() => {
+         texto1.style.transform = ''
+         texto1.style.opacity = 1;
+      }, 200);
+         } else {
+        let oldpage = document.getElementById(`texto${page}`);
+         oldpage.style.transform = "translateX(-30px)";
+         oldpage.style.opacity = 0;
+         setTimeout(() => {
+         oldpage.style.display = "none";
+         }, 100);
+         page++;
+         let nextpage = document.getElementById(`texto${page}`);
+         setTimeout(() => {
+         nextpage.style.display = "grid";
+         }, 100);
+         nextpage.style.transform = "translateX(30px)";
+         nextpage.style.opacity = 0;
+         setTimeout(() => {
+         nextpage.style.transform = ''
+         nextpage.style.opacity = 1;
+      }, 200);
+    }
+}
     </script>
 </body>
 </html>
