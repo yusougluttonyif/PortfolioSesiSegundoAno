@@ -203,6 +203,7 @@
         #matematicaBotao, #linguagensBotao, #naturezaBotao {
             padding: 10px 10px;
             font-size: 0px;
+            transform: scale(0);
             pointer-events: none;
             animation-delay: 0.6s;
             display: grid;
@@ -388,7 +389,7 @@
 
     <!-- primeira parte, o menu -->
     <div class="firstbackground" id="firstbackground">
-      <button id="sobremimbutton" class="menubuttons" onmouseenter="hoversfx.play()" onclick="clicksfx.play(); sobremimactive()">SOBRE MIM</button>
+      <button id="sobremimbutton" class="menubuttons" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(clicksfx); sobremimactive()">SOBRE MIM</button>
       <button id="materiasbutton" class="menubuttons" onmouseenter="hoversfx.play()" onclick="materiasopen()">MATÉRIAS</button>
       <p class="textmenu">joaolucas do naascikmento silva</p>
       <p class="textmenu" style="top: 90%; opacity: 0.7; font-size: 8px;">Aperte a tecla T para ir ao Pulo Rapido.<br><br>Aperte a tecla F quando terminar o Portfólio.</p>
@@ -398,12 +399,12 @@
       <div class="pulomenu" id="pulomenu">
         <p class="textmenu">aqui voce vai pra qualquer lugar do portfolio</p>
         <button class="closebutton" onmouseenter="hoversfx.play()" onclick="closepulo()">X</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="error.play()">matematica malvada</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="error.play()">linguagens louca</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="error.play()">humanas humericas</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="error.play()">natureza neandertal</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="error.play()">senai slave owner</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="error.play()">projeto de vida pirado</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(error);">matematica malvada</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(error);">linguagens louca</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(error);">humanas humericas</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(error);">natureza neandertal</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(error);">senai slave owner</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(error);">projeto de vida pirado</button>
        </div>
     
        <!-- intro -->
@@ -419,21 +420,21 @@
 
             <button class="closebutton" onmouseenter="hoversfx.play()" onclick="materiasclose()">X</button>
           
-            <div class="materiaqualquerWrapper" id="matWrapper" onclick="unfinished()">
+            <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="matWrapper" onclick="unfinished()">
         <button id="matematicaBotao" class="buttonbase">
             <img src="https://file.garden/aq_0Fg8cibtOL7XF/portal.gif">
             <span style="transform: scale(1.1);">DUSTTALE</span><br>Matemática
         </button>
         </div>
 
-        <div class="materiaqualquerWrapper" id="linWrapper" style="top: 70%; left: 40%;" onclick="unfinished()">
+        <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="linWrapper" style="top: 70%; left: 40%;" onclick="unfinished()">
             <button id="linguagensBotao" class="buttonbase">
             <img src="https://file.garden/aq_0Fg8cibtOL7XF/portal%20red.gif" >
             <span style="color: red; transform: scale(1.1);">UNDERFELL</span><br>Linguagens
         </button>
         </div>
 
-        <div class="materiaqualquerWrapper" id="natWrapper" style="top: 40%; left: 10%;" onclick="unfinished()">
+        <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="natWrapper" style="top: 40%; left: 10%;" onclick="unfinished()">
             <button id="naturezaBotao" class="buttonbase">
             <img src="https://file.garden/aq_0Fg8cibtOL7XF/portal%20blue.gif">
             <span style="color: #3a48ff; transform: scale(1.1);">OUTERTALE</span><br>Natureza
@@ -485,7 +486,20 @@
         let opensfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/1009.MP3');
         opensfx.loop = false;
         opensfx.volume = 1;
+        let findsfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/find.MP3');
+        findsfx.loop = false;
+        findsfx.volume = 0.3;
 
+        function buttonsoundhandle(v) {
+           v.currentTime = 0;
+           v.play();
+        }
+        function othersoundhandle(v) {
+            const v2 = v.cloneNode();
+            v2.volume = 0.3;
+            v2.loop = false;
+            v2.play();
+        }
 
         window.addEventListener('load', () => {
             loaded = true;
@@ -514,7 +528,7 @@
          }, 300);
         }
         function closepulo() {
-            clicksfx.play();
+            buttonsoundhandle(clicksfx);
             pulomenu.style.opacity = "0";
             setTimeout(() => {
                 pulomenu.style.display = "none";
@@ -526,13 +540,13 @@
                 openpulo();
             } else if (e.key === 'F' || e.key === 'f') {
                 e.preventDefault();
-                error.play();
+                buttonsoundhandle(error);;
                 unfinished();
             }
         });
         
         function unfinished() {
-            error.play();
+            buttonsoundhandle(error);;
             intro.style.display = 'block'
                 intro.style.background = 'rgb(175, 0, 0, 0.90)';
                 duration.innerText = 'nao esta pronto ainda';
@@ -548,7 +562,7 @@
                 },600);
         }
         function hitbox() {
-            clicksfx.play();
+            buttonsoundhandle(clicksfx);
                 Array.from(wrappers).forEach(wrapper => {
                     wrapper.style.background = 'rgb(255, 0, 0, 0.3)'
                 })
@@ -572,7 +586,7 @@
             }, 100);
         }
         function sobremimdeactive() {
-            clicksfx.play();
+            buttonsoundhandle(clicksfx);
             setTimeout(() => {
                 seila.style.opacity = '0';
                 sbtexthold.style.opacity = '0';
@@ -585,7 +599,7 @@
         function skip() {
             if (loaded == true) {
             d = 0;
-            clicksfx.play();
+            buttonsoundhandle(clicksfx);
             intro.style.display = "none";
             intro.style.background = 'black';
             duration.style.top = '5%';
@@ -593,7 +607,7 @@
     }
  
         function materiasopen() {
-            clicksfx.play();
+            buttonsoundhandle(clicksfx);
             opensfx.play();
             espaco.style.pointerEvents = 'none';
             setTimeout(() => {
@@ -611,7 +625,7 @@
             }, 900);
     }
     function materiasclose() {
-            clicksfx.play();
+            buttonsoundhandle(clicksfx);
             closesfx.play();
             espaco.style.pointerEvents = 'none';
             firstbackground.style.pointerEvents = 'none';
@@ -628,7 +642,7 @@
             }, 400);
     }
     function next() {
-        clicksfx.play();
+        buttonsoundhandle(clicksfx);
         if (page === 5) {page = 1;
             pagecounter.innerText = `${page}/5`
             texto5.style.transform = "translateX(-30px)";
