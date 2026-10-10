@@ -26,3 +26,12 @@ hoje, eu:
  - ganhei a batalha contra z-indexes e consegui deixar tudo organizado;
  - correções de erros pequenos
 nao foi muita coisa, mas agora tenho menos com o que me preocupar.
+
+# 10/10/2026
+ainda me sinto motivado
+hoje, eu:
+ - detalhei os botoes da seção materias;
+ - fiz novos handlers de sons (agora varios cliques = varios barulhos);
+ - terminei o sobre mim (menos a background, claro);
+ - diminui a hitbox das materias, mas esta mais facil acha-las em geral;
+ - me preocupei com as 686 linhas que escrevi, mesmo que ainda nao tenha começado a escrever pra os conteudos ainda 😭
