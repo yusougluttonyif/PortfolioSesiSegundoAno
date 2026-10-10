@@ -35,6 +35,7 @@
             height: 100%;
         }
         .menubuttons {
+            user-select: none;
             outline: 2px solid black;
             corner-shape: scoop;
             cursor: pointer;
@@ -107,6 +108,7 @@
         .pulochoices, .buttonbase {
             outline: 3px solid black;
             cursor: pointer;
+            user-select: none;
             align-self: center;
             justify-self: center;
             padding: 10px 30px;
@@ -149,6 +151,7 @@
             border-radius: 100px;
         }
         .closebutton {
+            user-select: none;
             outline: 3px solid black;
             cursor: pointer;
             justify-content: center;
@@ -197,18 +200,19 @@
             transform: translate(-50%, -50%);
             width: 100%;
         }
-        #matematicaBotao, #portuguesBotao {
+        #matematicaBotao, #linguagensBotao, #naturezaBotao {
             padding: 10px 10px;
             font-size: 0px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            position: absolute;
+            pointer-events: none;
+            animation-delay: 0.6s;
+            display: grid;
             border-radius: 50px;
             animation: fakestar 1.5s cubic-bezier(0.5, 0.5, 0.5, 1.5) infinite;
-        }#portuguesBotao{animation-delay: 0.4s;}
+        }#linguagensBotao{animation-delay: 0.4s;} #matematicaBotao{animation-delay: 0.5s;}
+        #naturezaBotao{animation-delay: 0.6s;}
+
         .materiaqualquerWrapper {
-            padding: 70px 100px;
+            padding: 50px 70px;
             cursor: pointer;
             background: rgb(255, 255, 255, 0);
             position: absolute;
@@ -216,29 +220,57 @@
             left: 70%;
             transform: translate(-50%, -50%);
         }
-        #matWrapper:hover #matematicaBotao {
-            font-size: 15px;
-            padding: 10px 30px;
-            opacity: 1;
-            border-radius: 10px;
-            animation-play-state: paused;
-            animation: none;
-            transition: all 0.6s ease;
-            transform: translate(-50%, -50%) scale(1);
+        .materiaqualquerWrapper img {
+            transition: all 0.4s ease;
+            opacity: 0;
+            width: 0;
+            margin: 0;
+            padding: 0;
+            height: 0;
+            border: none;
+            outline: none;
         }
-        #porWrapper:hover #portuguesBotao {
-            font-size: 15px;
+        .materiaqualquerWrapper:hover img {
+            opacity: 1;
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+        }
+        #matWrapper:hover #matematicaBotao {
+            font-size: 10px;
             padding: 10px 30px;
             opacity: 1;
             border-radius: 10px;
             animation-play-state: paused;
             animation: none;
             transition: all 0.6s ease;
-            transform: translate(-50%, -50%) scale(1);
+            transform: scale(1);
+        }
+        #linWrapper:hover #linguagensBotao{
+            font-size: 10px;
+            padding: 10px 30px;
+            opacity: 1;
+            border-color: red;
+            border-radius: 10px;
+            animation-play-state: paused;
+            animation: none;
+            transition: all 0.6s ease;
+            transform: scale(1);
+        }
+        #natWrapper:hover #naturezaBotao {
+            font-size: 10px;
+            padding: 10px 30px;
+            opacity: 1;
+            border-color: #3a48ff;
+            border-radius: 10px;
+            animation-play-state: paused;
+            animation: none;
+            transition: all 0.6s ease;
+            transform: scale(1);
         }
         @keyframes fakestar {
-            from, to {transform: translate(-50%, -50%) scale(0.15) rotate(-90deg)}
-            50% {transform: translate(-50%, -50%) scale(1.75) rotate(-270deg)}
+            from, to {transform: scale(0.15) rotate(-90deg)}
+            50% {transform: scale(1.75) rotate(-270deg)}
         }
         .textsectionbase {
             overflow: scroll!important;
@@ -275,7 +307,7 @@
             corner-shape: scoop;
             margin-top: 10px;
         }
-        span {
+        .textsectionbase span {
             color: #ffde59;
         }
         #seila {
@@ -297,9 +329,12 @@
 
     <!-- segunda parte, sobre mim -->
     <div class="secondbackground" id="secondbackground">
-        <button class="buttonbase" id="seila" onclick="next()" onmouseover="hoversfx.play()">Passar</button>
+        <button class="buttonbase" id="seila" onclick="next()" onmouseenter="hoversfx.play()">Passar</button>
         <button class="closebutton" style="background: rgb(0,0,0,0.89)" id="seila2" onmouseenter="hoversfx.play()" onclick="sobremimdeactive()">X</button>
+        <p class="textmenu" id="pagecounter">1/5</p>
+        
         <section class="textsectionbase" id="sbtexthold">
+            
             <div id="texto1">
          <p>Meu nome é João Lucas, e tenho 16 anos, nasci em 02/01/2010. 
             Meu curso no SESI é automação industrial, e comecei a estudar na unidade do Cabo ano passado.
@@ -314,27 +349,27 @@
           <p>Falar Inglês</p>
          <small>(Nivel B1 em 2021)</small><br><br>
           <p>Ganhar em uma Olímpiada do Passaporte Idiomas</p>
-          <small>(é mais algo em andamento)</small><br><br>
+          <small>(e ganhei uma medalha)</small><br><br>
           <span>Participar do SESI no Mundo</span>
          <span><small>(intercámbio para o canadá!)</small></span>
         </div>
         <div id="texto3" style="display:none;">
          <h1>QUALIDADES</h1><hr><br><h3>BOAS</h3><br>
          <ul>
-            <li>Sou calmo;</li><br>
-            <li>Gosto de ajudar;</li><br>
-            <li>Me adapto bem;</li><br>
-            <li>Busco sempre melhorar;</li><br>
-            <li>Sirvo a <span>Deus</span>.</li>
+            <li>&#9733; Sou calmo;</li><br>
+            <li>&#9733; Gosto de ajudar;</li><br>
+            <li>&#9733; Me adapto bem;</li><br>
+            <li>&#9733; Busco sempre melhorar;</li><br>
+            <li>&#9733; Sirvo a <span>Deus</span>.</li>
          </ul>
         </div>
         <div id="texto4" style="display:none;">
          <h1>QUALIDADES</h1><hr><br><h3>MÁS</h3><br>
          <ul>
-            <li>Sou introvertido;</li><br>
-            <li>Procrastino;</li><br>
-            <li>Posso ser duro com as palavras;</li><br>
-            <li>Sou ruim de conversa;</li>
+            <li>&#9734; Sou introvertido;</li><br>
+            <li>&#9734; Procrastino;</li><br>
+            <li>&#9734; Posso ser duro com as palavras;</li><br>
+            <li>&#9734; Sou ruim de conversa.</li>
          </ul>
         </div>
         <div id="texto5" style="display:none;">
@@ -380,29 +415,37 @@
 
        <!-- menu das escolhas de matérias -->
         <div class="espaco" id="espaco">
-            <button class="buttonbase" onmouseover="hoversfx.play()" onclick="
-            clicksfx.play();
-                document.getElementById('matWrapper').style.background = 'rgb(255,0,0,0.300)';
-                document.getElementById('porWrapper').style.background = 'rgb(255,0,0,0.300)';
-                setTimeout(() => {document.getElementById('matWrapper').style.background = 'rgb(0,0,0,0)'
-                    document.getElementById('porWrapper').style.background = 'rgb(0,0,0,0)'
-                }, 3000);
-                ">mostrar hitbox</button>
-
+            <button class="buttonbase" onmouseenter="hoversfx.play()" onclick="hitbox()">mostrar hitbox</button>
 
             <button class="closebutton" onmouseenter="hoversfx.play()" onclick="materiasclose()">X</button>
-          <div class="materiaqualquerWrapper" id="matWrapper">
-        <button id="matematicaBotao" onclick="unfinished()" onmouseover="hoversfx.play()" class="buttonbase">mat</button>
+          
+            <div class="materiaqualquerWrapper" id="matWrapper" onclick="unfinished()">
+        <button id="matematicaBotao" class="buttonbase">
+            <img src="https://file.garden/aq_0Fg8cibtOL7XF/portal.gif">
+            <span style="transform: scale(1.1);">DUSTTALE</span><br>Matemática
+        </button>
         </div>
 
-        <div class="materiaqualquerWrapper" id="porWrapper" style="top: 70%; left: 40%;">
-            <button class="buttonbase" id="portuguesBotao" onmouseover="hoversfx.play()" onclick="unfinished()">portu</button>
+        <div class="materiaqualquerWrapper" id="linWrapper" style="top: 70%; left: 40%;" onclick="unfinished()">
+            <button id="linguagensBotao" class="buttonbase">
+            <img src="https://file.garden/aq_0Fg8cibtOL7XF/portal%20red.gif" >
+            <span style="color: red; transform: scale(1.1);">UNDERFELL</span><br>Linguagens
+        </button>
         </div>
+
+        <div class="materiaqualquerWrapper" id="natWrapper" style="top: 40%; left: 10%;" onclick="unfinished()">
+            <button id="naturezaBotao" class="buttonbase">
+            <img src="https://file.garden/aq_0Fg8cibtOL7XF/portal%20blue.gif">
+            <span style="color: #3a48ff; transform: scale(1.1);">OUTERTALE</span><br>Natureza
+        </button>
+        </div>
+
         </div>
     
   
 
     <script>
+        const wrappers = document.getElementsByClassName("materiaqualquerWrapper");
         const sbtexthold = document.getElementById("sbtexthold");
         const espaco = document.getElementById("espaco")
         const pular = document.getElementById('pular');
@@ -413,6 +456,7 @@
         const pulo = document.getElementById("pulo");
         const pulogradient = document.getElementById("pulogradient");
         const pulomenu = document.getElementById("pulomenu");
+        const pagecounter = document.getElementById("pagecounter");
 
         const texto1 = document.getElementById("texto1");
         const texto2 = document.getElementById("texto2");
@@ -503,6 +547,17 @@
                  duration.style.color = 'white';
                 },600);
         }
+        function hitbox() {
+            clicksfx.play();
+                Array.from(wrappers).forEach(wrapper => {
+                    wrapper.style.background = 'rgb(255, 0, 0, 0.3)'
+                })
+                setTimeout(() => {
+                    Array.from(wrappers).forEach(wrapper => {
+                        wrapper.style.background = 'rgb(255, 0, 0, 0)'
+                    });
+                }, 5000);
+            }
 
         function sobremimactive() {
             setTimeout(() => {
@@ -543,8 +598,10 @@
             espaco.style.pointerEvents = 'none';
             setTimeout(() => {
             espaco.style.opacity = '1';
-            espaco.style.pointerEvents = 'auto';
         }, 850);
+        setTimeout(() => {
+            espaco.style.pointerEvents = 'auto';
+        }, 1700);
             espaco.style.display = 'block';
             espaco.style.zIndex = '2';
             firstbackground.style.transition = 'all 0.8s ease';
@@ -573,6 +630,7 @@
     function next() {
         clicksfx.play();
         if (page === 5) {page = 1;
+            pagecounter.innerText = `${page}/5`
             texto5.style.transform = "translateX(-30px)";
          texto5.style.opacity = 0;
          setTimeout(() => {
@@ -596,6 +654,7 @@
          }, 100);
          page++;
          let nextpage = document.getElementById(`texto${page}`);
+         pagecounter.innerText = `${page}/5`
          setTimeout(() => {
          nextpage.style.display = "grid";
          }, 100);
