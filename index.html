@@ -286,6 +286,11 @@
             transform: translate(-50%, -50%);
             background: rgb(0,0,0,0.89);
         }
+        #seila:hover, #seila2:hover {
+            color: #ffde59;
+            border-color: #ffde59;
+        }
+        
     </style>
 </head>
 <body>
@@ -293,7 +298,7 @@
     <!-- segunda parte, sobre mim -->
     <div class="secondbackground" id="secondbackground">
         <button class="buttonbase" id="seila" onclick="next()" onmouseover="hoversfx.play()">Passar</button>
-        <button class="closebutton" style="background: rgb(0,0,0,0.89)" onmouseenter="hoversfx.play()" onclick="sobremimdeactive()">X</button>
+        <button class="closebutton" style="background: rgb(0,0,0,0.89)" id="seila2" onmouseenter="hoversfx.play()" onclick="sobremimdeactive()">X</button>
         <section class="textsectionbase" id="sbtexthold">
             <div id="texto1">
          <p>Meu nome é João Lucas, e tenho 16 anos, nasci em 02/01/2010. 
