@@ -207,6 +207,7 @@
             pointer-events: none;
             animation-delay: 0.6s;
             display: grid;
+            border: 2px solid white;
             border-radius: 50px;
             animation: fakestar 1.5s cubic-bezier(0.5, 0.5, 0.5, 1.5) infinite;
         }#linguagensBotao{animation-delay: 0.4s;} #matematicaBotao{animation-delay: 0.5s;}
@@ -241,6 +242,7 @@
             font-size: 10px;
             padding: 10px 30px;
             opacity: 1;
+            border: 3px solid white;
             border-radius: 10px;
             animation-play-state: paused;
             animation: none;
@@ -251,6 +253,7 @@
             font-size: 10px;
             padding: 10px 30px;
             opacity: 1;
+            border: 3px solid white;
             border-color: red;
             border-radius: 10px;
             animation-play-state: paused;
@@ -262,6 +265,7 @@
             font-size: 10px;
             padding: 10px 30px;
             opacity: 1;
+            border: 3px solid white;
             border-color: #3a48ff;
             border-radius: 10px;
             animation-play-state: paused;
@@ -488,7 +492,7 @@
         opensfx.volume = 1;
         let findsfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/find.MP3');
         findsfx.loop = false;
-        findsfx.volume = 0.3;
+        findsfx.volume = 0.5;
 
         function buttonsoundhandle(v) {
            v.currentTime = 0;
@@ -496,7 +500,7 @@
         }
         function othersoundhandle(v) {
             const v2 = v.cloneNode();
-            v2.volume = 0.3;
+            v2.volume = 0.5;
             v2.loop = false;
             v2.play();
         }
@@ -547,7 +551,8 @@
         
         function unfinished() {
             buttonsoundhandle(error);;
-            intro.style.display = 'block'
+            intro.style.display = 'block';
+            intro.style.cursor = 'not-allowed';
                 intro.style.background = 'rgb(175, 0, 0, 0.90)';
                 duration.innerText = 'nao esta pronto ainda';
                 setTimeout(() => {
@@ -610,6 +615,7 @@
             buttonsoundhandle(clicksfx);
             opensfx.play();
             espaco.style.pointerEvents = 'none';
+            firstbackground.style.pointerEvents = 'none';
             setTimeout(() => {
             espaco.style.opacity = '1';
         }, 850);
