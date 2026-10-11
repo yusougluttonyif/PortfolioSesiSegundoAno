@@ -35,3 +35,11 @@ hoje, eu:
  - terminei o sobre mim (menos a background, claro);
  - diminui a hitbox das materias, mas esta mais facil acha-las em geral;
  - me preocupei com as 686 linhas que escrevi, mesmo que ainda nao tenha começado a escrever pra os conteudos ainda 😭
+
+# 11/10/2026
+aprendi bastante hj, to aprendendo mt coisa no javascript
+hoje, eu:
+- fiz a logica por tras dos dialogos;
+- corrigi um bug que podia fazer as paginas do sobre mim se interromperem;
+- deixei a escrita do codigo melhor (ainda tem 800 linhas);
+- tirei duas declaracoes antigas inuteis
