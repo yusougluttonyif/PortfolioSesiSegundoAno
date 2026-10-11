@@ -327,10 +327,56 @@
             color: #ffde59;
             border-color: #ffde59;
         }
-        
+
+        #dialoguebox {
+            transition: all 0.4s ease;
+            background: black;
+            border: 3px solid white;
+            outline: 3px solid black;
+            font-family: 'Press Start 2P', sans-serif;
+            width: 90%;
+            height: 30%;
+            top: 80%;
+            left: 50%;
+            font-size: 16px;
+            display: grid;
+            text-align: left;
+            position: fixed;
+            text-align: left;
+            justify-content: center;
+            align-items:first baseline;
+            transform: translate(-50%, -50%) translateY(500px);
+            z-index: 100;
+            color: white;
+            corner-shape: scoop;
+            border-radius: 20px;
+            overflow: scroll!important;
+            scrollbar-width: none;
+        }
+        #dialoguetext {
+            margin-left: 30px;
+            line-height: 1.6;
+            margin-top: 40px;
+        }
+        #dialoguewarn {
+            align-self: last baseline;
+            color: black;
+            font-size: 9px;
+            position: absolute;
+            justify-self: center;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
+
+    <!-- a caixa de dialogo -->
+      <section id="dialoguebox">
+        <p id="dialoguetext">
+        </p>
+        <p id="dialoguewarn">Aperte Z para pular, ou terminar diálogos</p>
+      </section>
+
 
     <!-- segunda parte, sobre mim -->
     <div class="secondbackground" id="secondbackground">
@@ -392,6 +438,7 @@
 
 
     <!-- primeira parte, o menu -->
+     
     <div class="firstbackground" id="firstbackground">
       <button id="sobremimbutton" class="menubuttons" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(clicksfx); sobremimactive()">SOBRE MIM</button>
       <button id="materiasbutton" class="menubuttons" onmouseenter="hoversfx.play()" onclick="materiasopen()">MATÉRIAS</button>
@@ -450,6 +497,10 @@
   
 
     <script>
+        const dialoguebox = document.getElementById("dialoguebox");
+        const dialoguetext = document.getElementById("dialoguetext");
+        const dialoguewarn = document.getElementById("dialoguewarn");
+
         const wrappers = document.getElementsByClassName("materiaqualquerWrapper");
         const sbtexthold = document.getElementById("sbtexthold");
         const espaco = document.getElementById("espaco")
@@ -458,10 +509,11 @@
         const duration = document.getElementById("duration");
         const firstbackground = document.getElementById("firstbackground");
         const secondbackground = document.getElementById("secondbackground");
-        const pulo = document.getElementById("pulo");
-        const pulogradient = document.getElementById("pulogradient");
         const pulomenu = document.getElementById("pulomenu");
         const pagecounter = document.getElementById("pagecounter");
+
+        
+        
 
         const texto1 = document.getElementById("texto1");
         const texto2 = document.getElementById("texto2");
@@ -493,6 +545,85 @@
         let findsfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/find.MP3');
         findsfx.loop = false;
         findsfx.volume = 0.5;
+
+        let defaultsfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/1011%20(3).MP3');
+        defaultsfx.volume = 0.5;
+        defaultsfx.loop = false;
+
+        let isRunning = false;
+        let dialogueOnScreen = false;
+        let firstTimeInMaterias = true;
+        let firstDialogue = true;
+        let dialogueIsFinished = false;
+        let messageNum = 0;
+        let currentmessage = '* oops kkkkk esqueci o que ia falar';
+
+        function dialoguesummon() {
+            setTimeout(() => {
+            intro.style.display = 'flex'
+            intro.style.cursor = 'not-allowed';
+            duration.innerText = '';
+            pular.style.display = 'none';
+            setTimeout(() => {
+            intro.style.background = '#00000090';}, 200);
+            document.body.style.pointerEvents = 'none';
+            dialoguebox.style.opacity = '1';
+            dialoguebox.style.transform = 'translate(-50%, -50%)'
+        },100);
+        setTimeout(() => {
+        dialoguewrite();
+        dialogueOnScreen = true;
+        }, 600);
+            }
+            function dialoguedesummon() {
+                if (dialogueIsFinished == false) {
+                    dialoguetext.innerText = currentmessage;
+                    messageNum = currentmessage.length;
+                } else {
+                setTimeout(() => {
+                dialoguebox.style.transform = 'translate(-50%, -50%) translateY(500px)'}, 200);
+                setTimeout(() => {
+                    setTimeout(() => {
+                        intro.style.display = 'none';
+                        document.body.style.pointerEvents = 'auto';
+                    }, 500);
+                    intro.style.background = 'rgb(0,0,0,0)';
+                    document.body.style.pointerEvents = 'auto';
+                    dialoguebox.style.opacity = '0';
+                    dialogueIsFinished = false;
+                    currentchar = 0;
+                    messageNum = 0;
+                    currentmessage = '* oops kkkkk esqueci minha fala'
+                    dialoguetext.innerText = '';
+                }, 400);
+                if (firstDialogue == true) {
+                    dialoguewarn.style.color = 'black';
+                    firstDialogue = false;
+                    dialogueOnScreen = false;
+                }
+            }
+            }
+
+        function dialoguewrite() {
+           if (messageNum < currentmessage.length) {
+            othersoundhandle(defaultsfx);
+            const currentchar = currentmessage.charAt(messageNum);
+            dialoguetext.innerText = currentmessage.substring(0, messageNum + 1);
+            messageNum++;
+            let wait = 40;
+            if (currentchar === '.' || currentchar === '!' || currentchar === '?') {
+                wait = 400;
+            } else if (currentchar === ',' || currentchar === ';') {wait = 200;}
+            setTimeout(dialoguewrite, wait)
+           } else if (messageNum == currentmessage.length) {
+            dialogueIsFinished = true;
+            if (firstDialogue == true) {
+                setTimeout(() => {
+                 dialoguewarn.style.color = '#ffffff80'
+                }, 100);
+            }
+           }
+        }
 
         function buttonsoundhandle(v) {
            v.currentTime = 0;
@@ -544,14 +675,18 @@
                 openpulo();
             } else if (e.key === 'F' || e.key === 'f') {
                 e.preventDefault();
-                buttonsoundhandle(error);;
+                buttonsoundhandle(error);
                 unfinished();
-            }
+            } else if (e.key === 'z' || e.key === 'Z') {
+                if (dialogueOnScreen == true) {
+                dialoguedesummon(); } else {}
+        }
         });
         
         function unfinished() {
-            buttonsoundhandle(error);;
+            buttonsoundhandle(error);
             intro.style.display = 'block';
+            pular.style.display = 'grid';
             intro.style.cursor = 'not-allowed';
                 intro.style.background = 'rgb(175, 0, 0, 0.90)';
                 duration.innerText = 'nao esta pronto ainda';
@@ -614,14 +749,11 @@
         function materiasopen() {
             buttonsoundhandle(clicksfx);
             opensfx.play();
-            espaco.style.pointerEvents = 'none';
-            firstbackground.style.pointerEvents = 'none';
+            document.body.style.pointerEvents = 'none';
             setTimeout(() => {
             espaco.style.opacity = '1';
+            
         }, 850);
-        setTimeout(() => {
-            espaco.style.pointerEvents = 'auto';
-        }, 1700);
             espaco.style.display = 'block';
             espaco.style.zIndex = '2';
             firstbackground.style.transition = 'all 0.8s ease';
@@ -629,12 +761,18 @@
             setTimeout(() => {
                 firstbackground.style.display = 'none';
             }, 900);
+            setTimeout(() => {
+                if (firstTimeInMaterias == true) {
+                dialoguesummon();
+                firstTimeInMaterias = false;
+                currentmessage = '* Encontre estrelas diferentes; elas te levarão até a matéria.'
+            } else {document.body.style.pointerEvents = 'auto'}
+        }, 1200);
     }
     function materiasclose() {
             buttonsoundhandle(clicksfx);
             closesfx.play();
-            espaco.style.pointerEvents = 'none';
-            firstbackground.style.pointerEvents = 'none';
+            document.body.style.pointerEvents = 'none';
             espaco.style.opacity = '0';
             setTimeout(() => {
             espaco.style.display = 'none';
@@ -644,10 +782,12 @@
             firstbackground.style.display = 'block';
             setTimeout(() => {
                 firstbackground.style.opacity = '1';
-                firstbackground.style.pointerEvents = 'auto';
+                document.body.style.pointerEvents = 'auto';
             }, 400);
     }
     function next() {
+        if(isRunning){return;}
+        isRunning = true;
         buttonsoundhandle(clicksfx);
         if (page === 5) {page = 1;
             pagecounter.innerText = `${page}/5`
@@ -665,6 +805,9 @@
          texto1.style.transform = ''
          texto1.style.opacity = 1;
       }, 200);
+      setTimeout(() => {
+         isRunning = false;
+      }, 300);
          } else {
         let oldpage = document.getElementById(`texto${page}`);
          oldpage.style.transform = "translateX(-30px)";
@@ -684,6 +827,9 @@
          nextpage.style.transform = ''
          nextpage.style.opacity = 1;
       }, 200);
+      setTimeout(() => {
+         isRunning = false;
+      }, 300);
     }
 }
     </script>
