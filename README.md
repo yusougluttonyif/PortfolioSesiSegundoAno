@@ -52,4 +52,5 @@ hoje, eu:
  - botao na caixa de dialogo caso nao queiram apertar Z;
  - adicionei uma musica temporaria ao site;
  - aumentei o tempo da intro (9 --> 15);
+ - fui forçado a mudar a intro pra poder tocar a musica;
  - corrigi bugs relacionados aos wrappers da pagina materias.
