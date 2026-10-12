@@ -52,5 +52,7 @@ hoje, eu:
  - botao na caixa de dialogo caso nao queiram apertar Z;
  - adicionei uma musica temporaria ao site;
  - aumentei o tempo da intro (9 --> 15);
+ - creditos de musicas(voce pode ativa-lo espotaneamente ao clicar F e depois no OK, mas isso nao e intencional e vai ser removido dps);
+ - mudei o texto que incluia meu nome para ser o nome do lugar;
  - fui forçado a mudar a intro pra poder tocar a musica;
  - corrigi bugs relacionados aos wrappers da pagina materias.
