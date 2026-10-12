@@ -200,7 +200,7 @@
             transform: translate(-50%, -50%);
             width: 100%;
         }
-        #matematicaBotao, #linguagensBotao, #naturezaBotao {
+        #matematicaBotao, #linguagensBotao, #naturezaBotao, #senaiBotao, #projetodvidaBotao, #humanasBotao{
             padding: 10px 10px;
             font-size: 0px;
             transform: scale(0);
@@ -211,11 +211,15 @@
             border-radius: 50px;
             animation: fakestar 1.5s cubic-bezier(0.5, 0.5, 0.5, 1.5) infinite;
         }#linguagensBotao{animation-delay: 0.4s;} #matematicaBotao{animation-delay: 0.5s;}
-        #naturezaBotao{animation-delay: 0.6s;}
+        #naturezaBotao{animation-delay: 0.6s;}#senaiBotao{animation-delay: 0.3s;}#projetodvidaBotao{animation-delay: 0.7s;}
+        #humanasBotao{animation-delay: 0.55s;}
 
         .materiaqualquerWrapper {
             padding: 50px 70px;
             cursor: pointer;
+            white-space:nowrap;
+            max-width: 100%!important;
+            overflow: visible!important;
             background: rgb(255, 255, 255, 0);
             position: absolute;
             top: 30%;
@@ -273,6 +277,42 @@
             transition: all 0.6s ease;
             transform: scale(1);
         }
+        #pdvWrapper:hover #projetodvidaBotao {
+            font-size: 10px;
+            padding: 10px 30px;
+            opacity: 1;
+            border: 3px solid white;
+            border-color: #ffa33a;
+            border-radius: 10px;
+            animation-play-state: paused;
+            animation: none;
+            transition: all 0.6s ease;
+            transform: scale(1);
+        }
+        #senWrapper:hover #senaiBotao {
+            font-size: 10px;
+            padding: 10px 30px;
+            opacity: 1;
+            border: 3px solid white;
+            border-color: #fffe89;
+            border-radius: 10px;
+            animation-play-state: paused;
+            animation: none;
+            transition: all 0.6s ease;
+            transform: scale(1);
+        }
+        #humWrapper:hover #humanasBotao {
+            font-size: 10px;
+            padding: 10px 30px;
+            opacity: 1;
+            border: 3px solid white;
+            border-color: #b557ff;
+            border-radius: 10px;
+            animation-play-state: paused;
+            animation: none;
+            transition: all 0.6s ease;
+            transform: scale(1);
+        }
         @keyframes fakestar {
             from, to {transform: scale(0.15) rotate(-90deg)}
             50% {transform: scale(1.75) rotate(-270deg)}
@@ -281,7 +321,7 @@
             overflow: scroll!important;
             scrollbar-width: none;
             outline: 3px solid rgb(0,0,0,0.89);
-            cursor: crosshair;
+            cursor: cell;
             position: absolute;
             text-align: center;
             line-height: 1.5;
@@ -374,7 +414,9 @@
       <section id="dialoguebox">
         <p id="dialoguetext">
         </p>
-        <p id="dialoguewarn">Aperte Z para pular, ou terminar diálogos</p>
+        <p id="dialoguewarn">Aperte a tecla Z para pular, ou terminar diálogos</p>
+        <button class="closebutton" onclick="dialoguedesummon(); buttonsoundhandle(clicksfx)" 
+        style="top: 80%;">Z</button>
       </section>
 
 
@@ -433,7 +475,6 @@
           <span><small>(parcialmente completo, quero ir para morar)</small></span><br><br>
           <p>Saber que minha vida valeu a pena</p>
         </section>
-    
     </div>
 
 
@@ -460,16 +501,17 @@
     
        <!-- intro -->
        <div id="intro">
-        <p class="textmenu" id="duration">vai ter uma intro aqui. faltam 9 segundos</p>
+        <p class="textmenu" id="duration">vai ter uma intro aqui. faltam 15 segundos</p>
         <button class="buttonbase" onclick="skip()" onmouseenter="hoversfx.play()"style="
         position: absolute; top:90%; left: 50%; transform: translate(-50%, -50%);" id="pular">PULAR</button>
        </div>
 
        <!-- menu das escolhas de matérias -->
         <div class="espaco" id="espaco">
-            <button class="buttonbase" onmouseenter="hoversfx.play()" onclick="hitbox()">mostrar hitbox</button>
+            <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" onclick="hitbox()">mostrar hitbox</button>
+            <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" onclick="dialoguesummon(); buttonsoundhandle(clicksfx)">testar dialogo</button>
 
-            <button class="closebutton" onmouseenter="hoversfx.play()" onclick="materiasclose()">X</button>
+            
           
             <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="matWrapper" onclick="unfinished()">
         <button id="matematicaBotao" class="buttonbase">
@@ -485,13 +527,34 @@
         </button>
         </div>
 
-        <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="natWrapper" style="top: 40%; left: 10%;" onclick="unfinished()">
+        <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="natWrapper" style="top: 30%; left: 12%;" onclick="unfinished()">
             <button id="naturezaBotao" class="buttonbase">
             <img src="https://file.garden/aq_0Fg8cibtOL7XF/portal%20blue.gif">
             <span style="color: #3a48ff; transform: scale(1.1);">OUTERTALE</span><br>Natureza
         </button>
         </div>
 
+        <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="pdvWrapper" style="top: 80%; left: 80%;" onclick="unfinished()">
+            <button id="projetodvidaBotao" class="buttonbase">
+            <img src="https://file.garden/aq_0Fg8cibtOL7XF/portal%20orange.gif">
+            <span style="color: #ffa33a; transform: scale(1.1);">UNDERSWAP</span><br>P. de Vida
+        </button>
+        </div>
+
+        <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="humWrapper" style="top: 40%; left: 45%;" onclick="unfinished()">
+            <button id="humanasBotao" class="buttonbase">
+            <img src="https://file.garden/aq_0Fg8cibtOL7XF/portal%20purple.gif">
+            <span style="color: #b557ff; transform: scale(1.1);">HORRORTALE</span><br>Humanas
+        </button>
+        </div>
+
+        <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="senWrapper" style="top: 80%; left: 15%;" onclick="unfinished()">
+            <button id="senaiBotao" class="buttonbase">
+            <img src="https://file.garden/aq_0Fg8cibtOL7XF/portal%20yellow.gif">
+            <span style="color: #fffe89; transform: scale(1.1);">DISBELIEF</span><br>SENAI
+        </button>
+        </div>
+<button class="closebutton" onmouseenter="hoversfx.play()" onclick="materiasclose()">X</button>
         </div>
     
   
@@ -524,8 +587,13 @@
 
 
         let page = 1;
-        let d = 9;
+        let d = 15;
         let loaded = false;
+
+        let doodlesong = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/Tears%20in%20the%20Rain.mp3')
+        doodlesong.volume = 1;
+        doodlesong.loop = true;
+        /* a musica de agora e temporaria */
 
         let hoversfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/undertale-move-selection-sound-effect%20(1).mp3');
         hoversfx.volume = 0.5;
@@ -547,7 +615,7 @@
         findsfx.volume = 0.5;
 
         let defaultsfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/1011%20(3).MP3');
-        defaultsfx.volume = 0.5;
+        defaultsfx.volume = 1;
         defaultsfx.loop = false;
 
         let isRunning = false;
@@ -558,6 +626,10 @@
         let messageNum = 0;
         let currentmessage = '* oops kkkkk esqueci o que ia falar';
 
+        window.addEventListener('load', () => {
+            loaded = true;
+            buttonsoundhandle(doodlesong);
+        });
         function dialoguesummon() {
             setTimeout(() => {
             intro.style.display = 'flex'
@@ -567,6 +639,7 @@
             setTimeout(() => {
             intro.style.background = '#00000090';}, 200);
             document.body.style.pointerEvents = 'none';
+            dialoguebox.style.pointerEvents = 'auto';
             dialoguebox.style.opacity = '1';
             dialoguebox.style.transform = 'translate(-50%, -50%)'
         },100);
@@ -636,15 +709,13 @@
             v2.play();
         }
 
-        window.addEventListener('load', () => {
-            loaded = true;
-        });
+        
 
         setTimeout(() => {
             if (d != 0 && loaded == true) {
             intro.style.display = "none";}
             clearInterval(introtime);
-        }, 9000);
+        }, 15000);
  
         const introtime = setInterval(() => {
             if (d > 1 && d != 1 && loaded == true) {
