@@ -43,3 +43,12 @@ hoje, eu:
 - corrigi um bug que podia fazer as paginas do sobre mim se interromperem;
 - deixei a escrita do codigo melhor (ainda tem 800 linhas);
 - tirei duas declaracoes antigas inuteis
+
+# 12/10/2026
+feliz dia das crianças!
+hoje, eu:
+ - terminei a pagina de materias (os botoes no topo sao temporarios);
+ - adicionei mais um botao na pagina de materias para testar dialogos;
+ - botao na caixa de dialogo caso nao queiram apertar Z;
+ - adicionei uma musica temporaria ao site;
+ - corrigi bugs relacionados aos wrappers da pagina materias.
