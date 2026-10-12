@@ -626,11 +626,9 @@
         let messageNum = 0;
         let currentmessage = '* oops kkkkk esqueci o que ia falar';
 
+        doodlesong.play();
         window.addEventListener('load', () => {
             loaded = true;
-            setTimeout(() => {
-            buttonsoundhandle(doodlesong);
-            }, 100);
         });
         function dialoguesummon() {
             setTimeout(() => {
