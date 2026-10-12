@@ -795,22 +795,14 @@
             v2.loop = false;
             v2.play();
         }
-            if (d != 0 && loaded == true && songOn == true) {
-                setTimeout(() => {
-            intro.style.display = "none";
-            clearInterval(introtime);
-            songdisplayShow();}, 15000);}
-        
         const introtime = setInterval(() => {
-            if (d > 1 && d != 1 && loaded == true && songOn == true) {
+            if (!loaded) {duration.innerHTML = 'carregando o portfolio'; return;};
+            if(!songOn) return;
+            if (d > 0) {
             d--;
             duration.innerHTML = `vai ter uma intro aqui. faltam ${d} segundos`;
              if (d === 1) {duration.innerHTML = 'vai ter uma intro aqui. falta 1 segundo';} }
-             else if (loaded == false) {
-                setTimeout(() => {
-                duration.innerHTML = 'carregando o portfolio'
-             }, 100);
-            }
+             if (d <= 0) {intro.style.display = 'none'; clearInterval(introtime); songdisplayShow();}
         }, 1000);
 
 
