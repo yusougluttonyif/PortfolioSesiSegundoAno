@@ -382,7 +382,6 @@
             display: grid;
             text-align: left;
             position: fixed;
-            text-align: left;
             justify-content: center;
             align-items:first baseline;
             transform: translate(-50%, -50%) translateY(500px);
@@ -415,6 +414,54 @@
             margin: 10px;
             transform: translate(0,0);
         }
+        #musicCredits {
+            padding: 0;
+            margin: 10px;
+            transition: all 0.4s ease;
+            font-family: 'Press Start 2P', sans-serif;
+            width: 10%;
+            cursor: pointer;
+            height: 40%;
+            top: 20%;
+            left: 10%;
+            font-size: 8px;
+            display: none;
+            text-align: center;
+            position: fixed;
+            justify-content: center;
+            align-items:first baseline;
+            transform: translate(-50%, -50%) translateX(-200px);
+            z-index: 100;
+            color: white;
+            border-radius: 20px;
+            overflow: visible!important;
+            scrollbar-width: none;
+        }
+        #musicCredits img {
+            width: 100px;
+            height: 100px;
+            padding: 0;
+            margin: 0;
+            position: relative;
+            display: grid;
+            border-radius: 50%;
+            corner-shape: initial;
+        }
+        #musicCredits p {
+            background: black;
+            border: 3px solid white;
+            outline: 3px solid black;
+            corner-shape: scoop;
+            border-radius: 10px;
+            padding: 10px 10px;
+            position: relative;
+            display: inline-flex;
+            flex-direction: column;
+        
+        }
+        #musicCredits span {
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
@@ -427,6 +474,12 @@
         <button class="closebutton" onclick="dialoguedesummon(); buttonsoundhandle(clicksfx)" 
         style="top: 80%;">Z</button>
       </section>
+
+      <!-- creditos de musica + discozinho -->
+       <section id="musicCredits" onclick="songdisplayHide()">
+        <img id="vinyl" src="https://file.garden/aq_0Fg8cibtOL7XF/discoFinal.gif">
+        <p id="musicname"><span>&#x266A;</span> Tears in the rain<br><br><span>&#x1F58A;</span> Med
+       </section>
 
 
     <!-- segunda parte, sobre mim -->
@@ -492,7 +545,7 @@
     <div class="firstbackground" id="firstbackground">
       <button id="sobremimbutton" class="menubuttons" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(clicksfx); sobremimactive()">SOBRE MIM</button>
       <button id="materiasbutton" class="menubuttons" onmouseenter="hoversfx.play()" onclick="materiasopen()">MATÉRIAS</button>
-      <p class="textmenu">joaolucas do naascikmento silva</p>
+      <p class="textmenu">Esfera dos Rabiscos</p>
       <p class="textmenu" style="top: 90%; opacity: 0.7; font-size: 8px;">Aperte a tecla T para ir ao Pulo Rapido.<br><br>Aperte a tecla F quando terminar o Portfólio.</p>
          </div>
 
@@ -573,6 +626,8 @@
         const dialoguetext = document.getElementById("dialoguetext");
         const dialoguewarn = document.getElementById("dialoguewarn");
 
+        const musicCredits = document.getElementById("musicCredits");
+
         const wrappers = document.getElementsByClassName("materiaqualquerWrapper");
         const sbtexthold = document.getElementById("sbtexthold");
         const espaco = document.getElementById("espaco")
@@ -637,9 +692,11 @@
         let messageNum = 0;
         let currentmessage = '* oops kkkkk esqueci o que ia falar';
 
+
         window.addEventListener('load', () => {
             loaded = true;
         });
+
         function dialoguesummon() {
             setTimeout(() => {
             intro.style.display = 'flex'
@@ -707,6 +764,26 @@
             }
            }
         }
+        let waiting;
+
+        function songdisplayHide() {
+           clearTimeout(waiting);
+           musicCredits.style.transform = 'translate(-50%, -50%) translateX(-200px)';
+           setTimeout(() => {
+           musicCredits.style.display = 'none';
+        }, 300);
+    }
+
+        function songdisplayShow() {
+           musicCredits.style.display = 'grid';
+           setTimeout(() => {
+            musicCredits.style.transform = 'translate(-50%, -50%)';
+           }, 100);
+           
+            waiting = setTimeout(() => {
+            songdisplayHide();
+           }, 5000);
+}
 
         function buttonsoundhandle(v) {
            v.currentTime = 0;
@@ -725,6 +802,7 @@
             if (d != 0 && loaded == true && songOn == true) {
             intro.style.display = "none";}
             clearInterval(introtime);
+            songdisplayShow();
         }, 15000);
  
         const introtime = setInterval(() => {
@@ -787,6 +865,7 @@
                  duration.style.color = 'white';
                 },600);
         }
+
         function hitbox() {
             buttonsoundhandle(clicksfx);
                 Array.from(wrappers).forEach(wrapper => {
@@ -836,7 +915,7 @@
             d = 0;
             buttonsoundhandle(clicksfx);
             intro.style.display = 'none';
-            
+            songdisplayShow();
         }
     }
  
