@@ -55,4 +55,5 @@ hoje, eu:
  - creditos de musicas(voce pode ativa-lo espotaneamente ao clicar F e depois no OK, mas isso nao e intencional e vai ser removido dps);
  - mudei o texto que incluia meu nome para ser o nome do lugar;
  - fui forçado a mudar a intro pra poder tocar a musica;
+ - ajeitei um erro CRITICO que causava o tempo da intro iniciar mesmo sem ter carregado ou iniciado o portfolio;
  - corrigi bugs relacionados aos wrappers da pagina materias.
