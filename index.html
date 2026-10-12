@@ -754,6 +754,7 @@
             }, 300);
         }
         addEventListener('keydown', (e) => {
+            if (songOn == true) {
             if (e.key === 'T' || e.key === 't') {
                 e.preventDefault();
                 openpulo();
@@ -764,7 +765,7 @@
             } else if (e.key === 'z' || e.key === 'Z') {
                 if (dialogueOnScreen == true) {
                 dialoguedesummon(); } else {}
-        }
+        }} else {buttonsoundhandle(error)}
         });
         
         function unfinished() {
