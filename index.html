@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -795,16 +795,12 @@
             v2.loop = false;
             v2.play();
         }
-
-        
-
-        setTimeout(() => {
             if (d != 0 && loaded == true && songOn == true) {
-            intro.style.display = "none";}
+                setTimeout(() => {
+            intro.style.display = "none";
             clearInterval(introtime);
-            songdisplayShow();
-        }, 15000);
- 
+            songdisplayShow();}, 15000);}
+        
         const introtime = setInterval(() => {
             if (d > 1 && d != 1 && loaded == true && songOn == true) {
             d--;
