@@ -51,4 +51,5 @@ hoje, eu:
  - adicionei mais um botao na pagina de materias para testar dialogos;
  - botao na caixa de dialogo caso nao queiram apertar Z;
  - adicionei uma musica temporaria ao site;
+ - aumentei o tempo da intro (9 --> 15);
  - corrigi bugs relacionados aos wrappers da pagina materias.
