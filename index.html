@@ -406,6 +406,15 @@
             justify-self: center;
             margin-bottom: 10px;
         }
+        #duration {
+            position: relative;
+            top: auto;
+            left: auto;
+            place-self: center;
+            justify-content: center;
+            margin: 10px;
+            transform: translate(0,0);
+        }
     </style>
 </head>
 <body>
@@ -501,9 +510,9 @@
     
        <!-- intro -->
        <div id="intro">
-        <p class="textmenu" id="duration">vai ter uma intro aqui. faltam 15 segundos</p>
+        <p class="textmenu" id="duration"></p>
         <button class="buttonbase" onclick="skip()" onmouseenter="hoversfx.play()"style="
-        position: absolute; top:90%; left: 50%; transform: translate(-50%, -50%);" id="pular">PULAR</button>
+        position: absolute; top:50%; left: 50%; transform: translate(-50%, -50%);" id="pular">COMEÇAR</button>
        </div>
 
        <!-- menu das escolhas de matérias -->
@@ -589,6 +598,7 @@
         let page = 1;
         let d = 15;
         let loaded = false;
+        let songOn = false;
 
         let doodlesong = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/Tears%20in%20the%20Rain.mp3')
         doodlesong.volume = 1;
@@ -618,6 +628,7 @@
         defaultsfx.volume = 1;
         defaultsfx.loop = false;
 
+        let firstTimeSkipping = true;
         let isRunning = false;
         let dialogueOnScreen = false;
         let firstTimeInMaterias = true;
@@ -626,7 +637,6 @@
         let messageNum = 0;
         let currentmessage = '* oops kkkkk esqueci o que ia falar';
 
-        doodlesong.play();
         window.addEventListener('load', () => {
             loaded = true;
         });
@@ -712,20 +722,23 @@
         
 
         setTimeout(() => {
-            if (d != 0 && loaded == true) {
+            if (d != 0 && loaded == true && songOn == true) {
             intro.style.display = "none";}
             clearInterval(introtime);
         }, 15000);
  
         const introtime = setInterval(() => {
-            if (d > 1 && d != 1 && loaded == true) {
+            if (d > 1 && d != 1 && loaded == true && songOn == true) {
             d--;
             duration.innerHTML = `vai ter uma intro aqui. faltam ${d} segundos`;
              if (d === 1) {duration.innerHTML = 'vai ter uma intro aqui. falta 1 segundo';} }
              else if (loaded == false) {
+                setTimeout(() => {
                 duration.innerHTML = 'carregando o portfolio'
-             }
+             }, 100);
+            }
         }, 1000);
+
 
         function openpulo() {
          pulomenu.style.display = "flex"
@@ -758,17 +771,18 @@
             buttonsoundhandle(error);
             intro.style.display = 'block';
             pular.style.display = 'grid';
+            duration.style.position = 'absolute';
             intro.style.cursor = 'not-allowed';
                 intro.style.background = 'rgb(175, 0, 0, 0.90)';
                 duration.innerText = 'nao esta pronto ainda';
                 setTimeout(() => {
-                duration.style.transform = 'translate(-50%, -50%) scale(1.25)';
+                duration.style.transform = 'scale(1.25)';
                 duration.style.color = 'rgb(175, 0, 0)';
                 },200);
                 duration.style.top = '50%';
                 pular.innerText = 'OK';
                 setTimeout(() => {
-                 duration.style.transform = 'translate(-50%, -50%)';
+                 duration.style.transform = '';
                  duration.style.color = 'white';
                 },600);
         }
@@ -808,12 +822,20 @@
             }, 200);
         }
         function skip() {
-            if (loaded == true) {
+            if (loaded == true && firstTimeSkipping == true) {
+            pular.style.top = '90%';
+            songOn = true;
+            firstTimeSkipping = false;
+            duration.innerHTML = `vai ter uma intro aqui. faltam ${d} segundos`;
+            pular.innerHTML = 'PULAR';
+            buttonsoundhandle(doodlesong);
+            d = 15;
+            buttonsoundhandle(clicksfx);
+        } else {
             d = 0;
             buttonsoundhandle(clicksfx);
-            intro.style.display = "none";
-            intro.style.background = 'black';
-            duration.style.top = '5%';
+            intro.style.display = 'none';
+            
         }
     }
  
