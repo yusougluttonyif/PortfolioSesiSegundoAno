@@ -449,6 +449,7 @@
             corner-shape: scoop;
             width: max-content;
             height: max-content;
+            max-height: 90%;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -458,8 +459,9 @@
             flex-direction: column;
             gap: 20px;
         }
-        #Settings h1 {
-            margin-top: 20px;
+        #Settings h1, p {
+            margin: 10px;
+            overflow: visible;
         }
         #Settings button:hover {
             transform: scale(1.5);
@@ -468,6 +470,7 @@
             padding: 10px 10px;
             border: 3px solid white;
             display: inline-flex;
+            margin: 10px;
         }
         #musicCredits img {
             width: 100px;
@@ -498,6 +501,9 @@
             border-color: white;
             color: white;
         }
+        #exitsettings {
+            margin: 20px;
+        }
         #gear {
             position: fixed;
             top: 20px;
@@ -524,11 +530,33 @@
             transition: all 0.1s ease;
             transform: rotate(360deg) scale(1.4);
         }
-        #Settings input {
+        #Settings input[type=range] {
             cursor: grab;
         }
-        #Settings input:active {
+        #Settings input[type=range]:active {
             cursor: grabbing;
+        }
+        #Settings input::placeholder {
+            text-align: center;
+            font-family: 'Press Start 2P', sans-serif;
+            color: black;
+        }
+        #Settings input {
+            text-align: center;
+            font-family: 'Press Start 2P', sans-serif;
+            color: black;
+        }
+        ::selection {
+            color: yellow;
+            background-color: transparent;
+        }
+        #Settings #tocar {
+            cursor: pointer;
+            font-size: 16px;
+            background-color: black;
+            border: 2px solid white;
+            color: white;
+            transform: translate(0,0);
         }
     </style>
 </head>
@@ -558,7 +586,9 @@
         <p style="font-size: 16px;">Volume</p>
         <section class="smallsection">
         <p>Musica:</p>
-        <input type="range" id="volumeslider" min="0" max="1" step="0.1"></section>
+        <input type="range" id="volumeslider" min="0" max="100" step="1"><p id="volumeread">50%</p>
+        <button id="tocar" onclick="playmute()">⯈</button></section>
+
        </section>
 
 
@@ -582,9 +612,9 @@
          <p>Passar na Gratuidade SESI</p>
          <small>(ensino médio)</small><br>
           <p>Falar Inglês</p>
-         <small>(Nivel B1 em 2021)</small><br><br>
+         <small>(Nivel B1 em 2021)</small><br>
           <p>Ganhar em uma Olímpiada do Passaporte Idiomas</p>
-          <small>(e ganhei uma medalha)</small><br><br>
+          <small>(e ganhei uma medalha)</small><br>
           <span>Participar do SESI no Mundo</span>
          <span><small>(intercámbio para o canadá!)</small></span>
         </div>
@@ -610,11 +640,11 @@
         <div id="texto5" style="display:none;">
          <h1>OBJETIVOS</h1><hr><br>
          <p>Passar no ENEM</p>
-         <small>(esqueci de pagar o ssa 1)</small><br><br>
+         <small>(esqueci de pagar o ssa 1)</small><br>
           <p>Aprender Programação</p>
-         <small>(já comecei a aprender de forma autônoma)</small><br><br>
+         <small>(já comecei a aprender de forma autônoma)</small><br>
           <span>Ir para outro País</span>
-          <span><small>(parcialmente completo, quero ir para morar)</small></span><br><br>
+          <span><small>(parcialmente completo, quero ir para morar)</small></span><br>
           <p>Saber que minha vida valeu a pena</p>
         </section>
     </div>
@@ -711,7 +741,9 @@
 
         const musicCredits = document.getElementById("musicCredits");
         const Settings = document.getElementById("Settings");
-        const volumeslider = document.getElementById("volumeslider")
+        const volumeslider = document.getElementById("volumeslider");
+        const volumeread = document.getElementById("volumeread");
+        const tocar = document.getElementById("tocar");
 
         const wrappers = document.getElementsByClassName("materiaqualquerWrapper");
         const sbtexthold = document.getElementById("sbtexthold");
@@ -738,14 +770,24 @@
         let page = 1;
         let d = 15;
         let loaded = false;
-        let songOn = false;
+        let PortfolioInitiated = false;
 
+        
         let doodlesong = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/Tears%20in%20the%20Rain.mp3')
+        doodlesong.volume = 0.5;
         volumeslider.addEventListener('input', () => {
-        doodlesong.volume = parseFloat(volumeslider.value);});
-
+        doodlesong.volume = parseFloat(volumeslider.value) / 100;
+        volumeread.innerText = parseFloat(volumeslider.value) + '%';
+    });
         doodlesong.loop = true;
         /* a musica de agora e temporaria */
+        let tocando = true;
+
+        tocar.addEventListener('click', () => {
+            if (!PortfolioInitiated) return;
+            if (tocando) {tocando = false; tocar.innerHTML = '⏸'; doodlesong.pause()}
+            else if (!tocando) {tocando = true; tocar.innerHTML = '⯈'; doodlesong.play()}
+        });
 
         let hoversfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/undertale-move-selection-sound-effect%20(1).mp3');
         hoversfx.volume = 0.5;
@@ -885,10 +927,13 @@
             v2.volume = 0.5;
             v2.loop = false;
             v2.play();
+
+            let needsload = false;
         }
         const introtime = setInterval(() => {
-            if (!loaded) {duration.innerHTML = 'carregando o portfolio'; return;}
-            if(!songOn) return;
+            if (!loaded) {duration.innerHTML = 'carregando o portfolio'; needsload = true; return;}
+            if (loaded && needsload) {duration.innerHTML = 'carregado!'; needsload = false; setTimeout(() => {duration.innerHTML = ''}, 500);}
+            if(!PortfolioInitiated) return;
             if (d > 0) {
             d--;
             duration.innerHTML = `vai ter uma intro aqui. faltam ${d} segundos`;
@@ -911,7 +956,7 @@
             }, 300);
         }
         addEventListener('keydown', (e) => {
-            if (songOn && d <= 0) {
+            if (PortfolioInitiated && d <= 0) {
             if (e.key === 'T' || e.key === 't') {
                 e.preventDefault();
                 openpulo();
@@ -983,7 +1028,7 @@
         function skip() {
             if (loaded == true && firstTimeSkipping == true) {
             pular.style.top = '90%';
-            songOn = true;
+            PortfolioInitiated = true;
             firstTimeSkipping = false;
             duration.innerHTML = `vai ter uma intro aqui. faltam ${d} segundos`;
             pular.innerHTML = 'PULAR';
