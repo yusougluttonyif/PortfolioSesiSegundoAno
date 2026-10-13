@@ -533,10 +533,7 @@
     </style>
 </head>
 <body>
-    <button class="closebutton" style="z-index: 101; font-size: 20px;" id="gear"
-    onmouseenter="buttonsoundhandle(hoversfx)" 
-    onclick="Settings.style.display = 'grid'; buttonsoundhandle(clicksfx)">
-        <img src="https://file.garden/aq_0Fg8cibtOL7XF/gear.png"></button>
+    
 
     <!-- a caixa de dialogo -->
       <section id="dialoguebox">
@@ -702,7 +699,10 @@
 <button class="closebutton" onmouseenter="hoversfx.play()" onclick="materiasclose()">X</button>
         </div>
     
-  
+  <button class="closebutton" style="z-index: 101; font-size: 20px;" id="gear"
+    onmouseenter="buttonsoundhandle(hoversfx)" 
+    onclick="Settings.style.display = 'grid'; buttonsoundhandle(clicksfx)">
+        <img src="https://file.garden/aq_0Fg8cibtOL7XF/gear.png"></button>
 
     <script>
         const dialoguebox = document.getElementById("dialoguebox");
@@ -887,7 +887,7 @@
             v2.play();
         }
         const introtime = setInterval(() => {
-            if (!loaded) {duration.innerHTML = 'carregando o portfolio'; return;};
+            if (!loaded) {duration.innerHTML = 'carregando o portfolio'; return;}
             if(!songOn) return;
             if (d > 0) {
             d--;
