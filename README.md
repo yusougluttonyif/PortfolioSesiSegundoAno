@@ -62,3 +62,5 @@ hoje, eu:
 # 13/10/2026
 primeira atualização do dia
 hoje, eu so fiz um menu de configurações (por ora, só tem ajustes do volume). depois faço mais coisa
+
+atualizacao de algumas horas depois: eu so fiz uma função de pausar. eu gastei um bom tempo fazendo uma configuração pra mudar a tecla de pulo rapido e outras funções, mas acabei deletando o codigo todo por ser inutil.
