@@ -58,3 +58,7 @@ hoje, eu:
  - fui forçado a mudar a intro pra poder tocar a musica;
  - ajeitei um erro CRITICO que causava o tempo da intro iniciar mesmo sem ter carregado ou iniciado o portfolio;
  - corrigi bugs relacionados aos wrappers da pagina materias.
+
+# 13/10/2026
+primeira atualização do dia
+hoje, eu so fiz um menu de configurações (por ora, só tem ajustes do volume). depois faço mais coisa
