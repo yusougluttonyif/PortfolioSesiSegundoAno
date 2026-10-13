@@ -231,6 +231,8 @@
             opacity: 0;
             width: 0;
             margin: 0;
+            place-self:center;
+            justify-self: center;
             padding: 0;
             height: 0;
             border: none;
@@ -341,7 +343,7 @@
             padding: 10px 10px;
             opacity: 0;
         }
-        img {
+        .textsectionbase img {
             place-self: center;
             align-self: center;
             display: grid;
@@ -414,7 +416,7 @@
             margin: 10px;
             transform: translate(0,0);
         }
-        #musicCredits {
+        #musicCredits, #Settings{
             padding: 0;
             margin: 10px;
             transition: all 0.4s ease;
@@ -436,6 +438,36 @@
             border-radius: 20px;
             overflow: visible!important;
             scrollbar-width: none;
+        }
+        #Settings {
+            white-space: wrap;
+            overflow: scroll!important;
+            cursor: auto;
+            background:black;
+            border: 3px solid white;
+            outline: black 3px solid;
+            corner-shape: scoop;
+            width: max-content;
+            height: max-content;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            place-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        #Settings h1 {
+            margin-top: 20px;
+        }
+        #Settings button:hover {
+            transform: scale(1.5);
+        }
+        .smallsection {
+            padding: 10px 10px;
+            border: 3px solid white;
+            display: inline-flex;
         }
         #musicCredits img {
             width: 100px;
@@ -462,9 +494,49 @@
         #musicCredits span {
             font-size: 20px;
         }
+        #gear:hover, #exitsettings {
+            border-color: white;
+            color: white;
+        }
+        #gear {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            left: auto;
+            transform: none;
+            width: 42px;
+            height: 42px;
+            padding: 0;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 110;
+        }
+        #gear img {
+            width: 20px;
+            height: 20px;
+        }
+        #gear:hover img{
+            transform: rotate(180deg) scale(1.3);
+        }
+        #gear:active img{
+            transition: all 0.1s ease;
+            transform: rotate(360deg) scale(1.4);
+        }
+        #Settings input {
+            cursor: grab;
+        }
+        #Settings input:active {
+            cursor: grabbing;
+        }
     </style>
 </head>
 <body>
+    <button class="closebutton" style="z-index: 101; font-size: 20px;" id="gear"
+    onmouseenter="buttonsoundhandle(hoversfx)" 
+    onclick="Settings.style.display = 'grid'; buttonsoundhandle(clicksfx)">
+        <img src="https://file.garden/aq_0Fg8cibtOL7XF/gear.png"></button>
 
     <!-- a caixa de dialogo -->
       <section id="dialoguebox">
@@ -479,6 +551,17 @@
        <section id="musicCredits" onclick="songdisplayHide()">
         <img id="vinyl" src="https://file.garden/aq_0Fg8cibtOL7XF/discoFinal.gif">
         <p id="musicname"><span>&#x266A;</span> Tears in the rain<br><br><span>&#x1F58A;</span> Med
+       </section>
+
+       <!-- menu de configurações -->
+       <section id="Settings">
+        <button class="buttonbase" id="exitsettings" style="corner-shape: initial; border-radius: 50%; padding: 10px 10px;"
+        onmouseenter="buttonsoundhandle(hoversfx)" onclick="closesettings()">x</button>
+        <h1>CONFIGURAÇÕES</h1>
+        <p style="font-size: 16px;">Volume</p>
+        <section class="smallsection">
+        <p>Musica:</p>
+        <input type="range" id="volumeslider" min="0" max="1" step="0.1"></section>
        </section>
 
 
@@ -627,6 +710,8 @@
         const dialoguewarn = document.getElementById("dialoguewarn");
 
         const musicCredits = document.getElementById("musicCredits");
+        const Settings = document.getElementById("Settings");
+        const volumeslider = document.getElementById("volumeslider")
 
         const wrappers = document.getElementsByClassName("materiaqualquerWrapper");
         const sbtexthold = document.getElementById("sbtexthold");
@@ -656,7 +741,9 @@
         let songOn = false;
 
         let doodlesong = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/Tears%20in%20the%20Rain.mp3')
-        doodlesong.volume = 0.7;
+        volumeslider.addEventListener('input', () => {
+        doodlesong.volume = parseFloat(volumeslider.value);});
+
         doodlesong.loop = true;
         /* a musica de agora e temporaria */
 
@@ -697,6 +784,10 @@
             loaded = true;
         });
 
+        function closesettings() {
+            buttonsoundhandle(clicksfx);
+            Settings.style.display = 'none';
+        }
         function dialoguesummon() {
             setTimeout(() => {
             intro.style.display = 'flex'
