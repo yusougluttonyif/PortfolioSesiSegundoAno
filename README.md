@@ -64,3 +64,10 @@ primeira atualização do dia
 hoje, eu so fiz um menu de configurações (por ora, só tem ajustes do volume). depois faço mais coisa
 
 atualizacao de algumas horas depois: eu so fiz uma função de pausar. eu gastei um bom tempo fazendo uma configuração pra mudar a tecla de pulo rapido e outras funções, mas acabei deletando o codigo todo por ser inutil.
+
+# 14/10/2026 
+infelizmente, nada sobra para o beta - fui forçado a ir pra escola e ver a sala semi vazia. o bom? eu consegui pegar um computador. mas ele e ruim. 
+hoje, eu:
+ - fiz a seção de atividades para as matérias (mas voce nao pode ver ainda, pq eu sou malvado 😼 amanha eu deixo vc ver dps de terminar ou sexta);
+ - agora o pulo rapido e as configurações fecham se voce apertar dnv no botao deles.
+nao deu pra fzr muito, mas eu fiz umas coisinhas ate
