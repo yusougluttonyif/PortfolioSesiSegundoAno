@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         * {margin: 0;
@@ -15,7 +16,7 @@
             align-items: center;
             font-family:'Press Start 2P', serif;
         }
-        .firstbackground, .espaco {
+        .firstbackground, .espaco, #Activities {
             height: 100%;
             width: 100%;
             background: linear-gradient(180deg, rgb(248, 233, 144), rgb(190, 111, 0));
@@ -24,6 +25,11 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+        }
+        #Activities {
+            background: gray;
+            z-index: -1;
+            display: none;
         }
         .espaco {
             background: url('https://file.garden/aq_0Fg8cibtOL7XF/estrelas.gif');
@@ -552,7 +558,7 @@
             font-family: 'Press Start 2P', sans-serif;
             color: black;
         }
-        ::selection {
+        ::selection:not(#paper) {
             color: yellow;
             background-color: transparent;
         }
@@ -564,9 +570,88 @@
             color: white;
             transform: translate(0,0);
         }
+        #ActivitiesHold {
+            display: none;
+            background: radial-gradient(circle, #00000080, black);
+            border: 3px solid white;
+            outline: 3px solid black;
+            width: 95%;
+            height: 95%;
+            top: 50%;
+            left: 50%;
+            place-items: center;
+            justify-content: center;
+            transform: translate(-50%, -50%);
+            position: absolute;
+            display: flex;
+            corner-shape: scoop;
+            border-radius: 20px;
+        }
+        #paper {
+            font-family: 'Patrick Hand', cursive;
+          white-space: wrap;    
+          margin: 20px;
+          place-items: center;
+          justify-content: center;
+          text-align: center;
+          background: linen;
+          display: none;
+          /* pra eu me lembrar dps, aqui e inline */
+          width: 44%;
+          text-wrap: wrap;
+          height: 90%;
+          overflow: scroll;overflow-x: hidden!important;
+          scrollbar-width: none;
+        }
+        #papercontent:hover {
+            transform: scale(1.1);
+        }
+        #papercontent img:hover {
+            transform: scale(1.7);
+        }
+        #paper::selection {
+            color: white!important;
+            text-shadow: 0px 0px 3px black, 0px 0px 2px black;
+        }
+        #papercontent {
+            overflow: visible;
+            margin: 20px;
+            display: grid;
+        }
+        #papercontent img {
+            margin: 20px;
+            display: grid;
+            place-self: center;
+            justify-self: center;
+            width: 192px;
+            height: 108px;
+        }
     </style>
 </head>
 <body>
+
+    <div id="Activities">
+        <section id="ActivitiesHold">
+            <section id="paper">
+                <section id="papercontent">
+                    <h1>PRIMEIRA UNIDADE</h1>
+                    <br>
+            <img src="https://file.garden/aq_0Fg8cibtOL7XF/LOG.png">
+            <h2>LOGARITMOS</h2>
+            <br>
+            <p>Atividade de Matemática, do professor Wellington. O professor pediu a sala para responder uma ficha de 7 questões sobre Logaritmos.</p>
+            </section></section>
+            <section id="paper">
+                <section id="papercontent">
+                    <h1>PRIMEIRA UNIDADE</h1>
+                    <br>
+            <img src="https://file.garden/aq_0Fg8cibtOL7XF/LOG.png">
+            <h2>LOGARITMOS</h2>
+            <br>
+            <p>Atividade de Matemática, do professor Wellington. O professor pediu a sala para responder uma ficha de 7 questões sobre Logaritmos.</p>
+            </section></section>
+        </section>
+    </div>
     
 
     <!-- a caixa de dialogo -->
@@ -744,6 +829,7 @@
         <img src="https://file.garden/aq_0Fg8cibtOL7XF/gear.png"></button>
 
     <script>
+
         const dialoguebox = document.getElementById("dialoguebox");
         const dialoguetext = document.getElementById("dialoguetext");
         const dialoguewarn = document.getElementById("dialoguewarn");
