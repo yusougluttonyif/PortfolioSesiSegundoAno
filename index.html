@@ -172,12 +172,14 @@
         .closebutton:hover {
             border-color: yellow;
             color: yellow;
+            z-index: 200;
             transform: translate(-50%, -50%) scale(1.3);
         }
         .closebutton:active {
             transition: all 0.1s ease;
             border-color: yellow;
             color: yellow;
+            
             transform: translate(-50%, -50%) scale(1.6);
         }
         .secondbackground {
@@ -325,6 +327,7 @@
             outline: 3px solid rgb(0,0,0,0.89);
             cursor: cell;
             position: absolute;
+            z-index: 5;
             text-align: center;
             line-height: 1.5;
             top: 50%;
@@ -455,7 +458,7 @@
             transform: translate(-50%, -50%);
             place-items: center;
             justify-content: center;
-            display: flex;
+            display: none;
             flex-direction: column;
             gap: 20px;
         }
@@ -526,6 +529,9 @@
         #gear:hover img{
             transform: rotate(180deg) scale(1.3);
         }
+        #gear:hover {
+            z-index: 200;
+        }
         #gear:active img{
             transition: all 0.1s ease;
             transform: rotate(360deg) scale(1.4);
@@ -565,8 +571,7 @@
 
     <!-- a caixa de dialogo -->
       <section id="dialoguebox">
-        <p id="dialoguetext">
-        </p>
+        <p id="dialoguetext"></p>
         <p id="dialoguewarn">Aperte a tecla Z para pular, ou terminar diálogos</p>
         <button class="closebutton" onclick="dialoguedesummon(); buttonsoundhandle(clicksfx)" 
         style="top: 80%;">Z</button>
@@ -656,7 +661,6 @@
       <button id="sobremimbutton" class="menubuttons" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(clicksfx); sobremimactive()">SOBRE MIM</button>
       <button id="materiasbutton" class="menubuttons" onmouseenter="hoversfx.play()" onclick="materiasopen()">MATÉRIAS</button>
       <p class="textmenu">Esfera dos Rabiscos</p>
-      <p class="textmenu" style="top: 90%; opacity: 0.7; font-size: 8px;">Aperte a tecla T para ir ao Pulo Rapido.<br><br>Aperte a tecla F quando terminar o Portfólio.</p>
          </div>
 
       <!-- o menu do pulo -->
@@ -676,7 +680,12 @@
         <p class="textmenu" id="duration"></p>
         <button class="buttonbase" onclick="skip()" onmouseenter="hoversfx.play()"style="
         position: absolute; top:50%; left: 50%; transform: translate(-50%, -50%);" id="pular">COMEÇAR</button>
-       </div>
+    <p class="textmenu" id="instrucoes" style="top: 90%; opacity: 0.7; font-size: 8px;">
+        Aperte a tecla <span style="border: 3px solid white; padding: 3px 3px;">T</span> para ir ao Pulo Rapido.<br><br>
+        Aperte a tecla <span style="border: 3px solid white; padding: 3px 3px;">F</span> quando terminar o Portfólio.<br><br>
+        Aperte a tecla <span style="border: 3px solid white; padding: 3px 3px;">Z</span> para pular ou terminar diálogos.</p>   
+    
+    </div>
 
        <!-- menu das escolhas de matérias -->
         <div class="espaco" id="espaco">
@@ -744,6 +753,8 @@
         const volumeslider = document.getElementById("volumeslider");
         const volumeread = document.getElementById("volumeread");
         const tocar = document.getElementById("tocar");
+
+        const instrucoes = document.getElementById("instrucoes");
 
         const wrappers = document.getElementsByClassName("materiaqualquerWrapper");
         const sbtexthold = document.getElementById("sbtexthold");
@@ -819,8 +830,7 @@
         let firstDialogue = true;
         let dialogueIsFinished = false;
         let messageNum = 0;
-        let currentmessage = '* oops kkkkk esqueci o que ia falar';
-
+        let currentmessage = '* oops kkkkk esqueci minha fala';
 
         window.addEventListener('load', () => {
             loaded = true;
@@ -834,10 +844,12 @@
             setTimeout(() => {
             intro.style.display = 'flex'
             intro.style.cursor = 'not-allowed';
-            duration.innerText = '';
+            duration.innerHTML = '';
             pular.style.display = 'none';
+            instrucoes.style.display = 'none';
+            if (PortfolioInitiated){
             setTimeout(() => {
-            intro.style.background = '#00000090';}, 200);
+            intro.style.background = '#00000090';}, 200);}
             document.body.style.pointerEvents = 'none';
             dialoguebox.style.pointerEvents = 'auto';
             dialoguebox.style.opacity = '1';
@@ -848,9 +860,10 @@
         dialogueOnScreen = true;
         }, 600);
             }
+
             function dialoguedesummon() {
                 if (dialogueIsFinished == false) {
-                    dialoguetext.innerText = currentmessage;
+                    dialoguetext.innerHTML = currentmessage;
                     messageNum = currentmessage.length;
                 } else {
                 setTimeout(() => {
@@ -867,7 +880,7 @@
                     currentchar = 0;
                     messageNum = 0;
                     currentmessage = '* oops kkkkk esqueci minha fala'
-                    dialoguetext.innerText = '';
+                    dialoguetext.innerHTML = '';
                 }, 400);
                 if (firstDialogue == true) {
                     dialoguewarn.style.color = 'black';
@@ -881,7 +894,7 @@
            if (messageNum < currentmessage.length) {
             othersoundhandle(defaultsfx);
             const currentchar = currentmessage.charAt(messageNum);
-            dialoguetext.innerText = currentmessage.substring(0, messageNum + 1);
+            dialoguetext.innerHTML = currentmessage.substring(0, messageNum + 1);
             messageNum++;
             let wait = 40;
             if (currentchar === '.' || currentchar === '!' || currentchar === '?') {
@@ -927,14 +940,13 @@
             v2.volume = 0.5;
             v2.loop = false;
             v2.play();
-
-            let needsload = false;
-        }
+         }
+         let needsload = false;
         const introtime = setInterval(() => {
             if (!loaded) {duration.innerHTML = 'carregando o portfolio'; needsload = true; return;}
             if (loaded && needsload) {duration.innerHTML = 'carregado!'; needsload = false; setTimeout(() => {duration.innerHTML = ''}, 500);}
             if(!PortfolioInitiated) return;
-            if (d > 0) {
+            if (d > 0 && loaded) {
             d--;
             duration.innerHTML = `vai ter uma intro aqui. faltam ${d} segundos`;
              if (d === 1) {duration.innerHTML = 'vai ter uma intro aqui. falta 1 segundo';} }
@@ -959,7 +971,8 @@
             if (PortfolioInitiated && d <= 0) {
             if (e.key === 'T' || e.key === 't') {
                 e.preventDefault();
-                openpulo();
+                if (pulomenu.style.display == 'flex') {closepulo();} else{
+                openpulo();}
             } else if (e.key === 'F' || e.key === 'f') {
                 e.preventDefault();
                 buttonsoundhandle(error);
@@ -1026,8 +1039,9 @@
             }, 200);
         }
         function skip() {
-            if (loaded == true && firstTimeSkipping == true) {
+            if (loaded == true && firstTimeSkipping == true && !PortfolioInitiated) {
             pular.style.top = '90%';
+            pular.style.left = '90%';
             PortfolioInitiated = true;
             firstTimeSkipping = false;
             duration.innerHTML = `vai ter uma intro aqui. faltam ${d} segundos`;
@@ -1036,7 +1050,7 @@
             d = 15;
             buttonsoundhandle(clicksfx);
             setTimeout(() => {}, 500);
-        } else {
+        } else if (loaded && PortfolioInitiated) {
             d = 0;
             buttonsoundhandle(clicksfx);
             intro.style.display = 'none';
