@@ -1,5 +1,5 @@
 # PortfolioSesiSegundoAno
-meu portfolio do segundo ano! 
+meu portfolio do segundo ano!  
 
 # 22/09/2026 
 o dia da publicação dessa repo. veja, eu ainda não terminei ainda - afinal, faltam uns 2 meses até o dia da apresentação. porem, como é de costume da minha sala, eu vou dar minha alma no portfolio por razão nenhuma.
