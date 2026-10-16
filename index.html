@@ -112,7 +112,7 @@
             display: none;
             transition: opacity 0.3s ease;
         }
-        .pulochoices, .buttonbase {
+        .pulochoices, .buttonbase, .buttonbaseclicked {
             outline: 3px solid black;
             cursor: pointer;
             user-select: none;
@@ -149,7 +149,7 @@
             padding: 15px 41px;
             border-radius: 19px;
         }
-        .buttonbase:active {
+        .buttonbase:active, .buttonbaseclicked {
             transition: all 0.1s ease;
             border-color: yellow;
             color: yellow;
@@ -653,11 +653,11 @@
         
         <section id="ActivitiesHold">
             <div id='chooseuni'>
-                <button class="buttonbase" onclick="CurrentUnity = 1; askForContent(materiaAtual.innerHTML)">PRIMEIRA</button>
-                <button class="buttonbase" onclick="CurrentUnity = 2; askForContent(materiaAtual.innerHTML)">SEGUNDA</button>
-                <button class="buttonbase" onclick="CurrentUnity = 3; askForContent(materiaAtual.innerHTML)">TERCEIRA</button>
-                <button class="buttonbase" onclick="CurrentUnity = 4; askForContent(materiaAtual.innerHTML)">QUARTA</button>
-                <button class="buttonbase" onclick="MateriaHide()">X</button>
+                <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" id="uni1" onclick="CurrentUnity = 1; askForContent(materiaAtual.innerHTML); buttonsoundhandle(clicksfx)">PRIMEIRA</button>
+                <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" id="uni2" onclick="CurrentUnity = 2; askForContent(materiaAtual.innerHTML); buttonsoundhandle(clicksfx)">SEGUNDA</button>
+                <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" id="uni3" onclick="CurrentUnity = 3; askForContent(materiaAtual.innerHTML); buttonsoundhandle(clicksfx)">TERCEIRA</button>
+                <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" id="uni4" onclick="CurrentUnity = 4; askForContent(materiaAtual.innerHTML); buttonsoundhandle(clicksfx)">QUARTA</button>
+                <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" onclick="MateriaHide()">X</button>
             </div>
             <section id="paper">
                 <section id="papercontent">
@@ -870,6 +870,11 @@
         const activitycontext2 = document.getElementById("activitycontext2");
         const materiaAtual = document.getElementById("materiaAtual");
 
+        const uni1 = document.getElementById("uni1");
+        const uni2 = document.getElementById("uni2");
+        const uni3 = document.getElementById("uni3");
+        const uni4 = document.getElementById("uni4");
+
         const ActivitiesALL = {
             "Matemática": {
                 unity1: {
@@ -959,6 +964,7 @@
 
         function askForContent(v) {
             let whereyouare = `unity${CurrentUnity}`;
+            let showUni = document.getElementById(`uni${CurrentUnity}`)
             let content = ActivitiesALL[v][whereyouare];
             materiaAtual.innerHTML = v;
             activityuni1.innerHTML = content.un;
@@ -967,6 +973,10 @@
             activityuni2.innerHTML = content.un;
             activitycontext2.innerHTML = content.context2;
             activitytitle2.innerHTML = content.title2;
+
+            uni1.classList = 'buttonbase'; uni2.classList = 'buttonbase';uni3.classList = 'buttonbase';uni4.classList = 'buttonbase'
+            showUni.classList = 'buttonbaseclicked';
+            
         }
 
         function MateriaShow() {
@@ -978,6 +988,7 @@
         }
 
         function MateriaHide() {
+            buttonsoundhandle(clicksfx);
             Activities.style.opacity = '0';
             setTimeout(() => {
                 Activities.style.display = 'none';
