@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
@@ -7,7 +7,7 @@
         * {margin: 0;
            padding: 0;
            transition: all 0.4s ease; overflow: hidden;}
-        html {scrollbar-width: none; background: white;}
+        html {scrollbar-width: none; background: white; scroll-behavior: smooth;}
 
         body {
             height: 100%;
@@ -442,6 +442,7 @@
             scrollbar-width: none;
         }
         #Settings {
+            scroll-behavior: smooth;
             white-space: wrap;
             overflow: scroll!important;
             cursor: auto;
@@ -699,13 +700,13 @@
         onmouseenter="buttonsoundhandle(hoversfx)" onclick="closesettings()">x</button>
         <h1>CONFIGURAÇÕES</h1>
         <hr>
-        <p style="font-size: 16px;">Volume</p>
+        <p style="font-size: 16px;" id="volume">Volume</p>
         <section class="smallsection">
         <p style="font-size: 14px;">Musica:</p>
         <input type="range" id="volumeslider" min="0" max="100" step="1"><p id="volumeread" style="font-size: 14px;">50%</p></section>
         
         <button id="tocar" onclick="playmute()">⯈</button><hr>
-        <p style="font-size: 16px;">Teclas</p>
+        <p style="font-size: 16px;" id="teclas">Teclas</p>
         <section class="smallsection">
         <p style="font-size: 14px;">T = Pulo rápido</p></section>
         <section class="smallsection">
@@ -862,10 +863,13 @@
     
   <button class="closebutton" style="z-index: 101; font-size: 20px;" id="gear"
     onmouseenter="buttonsoundhandle(hoversfx)" 
-    onclick="if (Settings.style.display == 'grid'){Settings.style.display = 'none';} else Settings.style.display = 'grid'; buttonsoundhandle(clicksfx)">
+    onclick="if (Settings.style.display == 'grid'){closesettings();} else Settings.style.display = 'grid'; buttonsoundhandle(clicksfx)">
         <img src="https://file.garden/aq_0Fg8cibtOL7XF/gear.png"></button>
 
+        <a href="#teclas" style="display: none;" id="sendtoteclas"></a>
+
     <script>
+        const sendtoteclas = document.getElementById("sendtoteclas");
         const ActivitiesHold = document.getElementById("ActivitiesHold");
         const Activities = document.getElementById("Activities");
         const activityuni1 = document.getElementById("activityuni1");
@@ -1105,6 +1109,7 @@
         function closesettings() {
             buttonsoundhandle(clicksfx);
             Settings.style.display = 'none';
+            history.replaceState(null, '', window.location.pathname + window.location.search);
         }
         function dialoguesummon() {
             setTimeout(() => {
@@ -1253,7 +1258,7 @@
             e.preventDefault();
             if (Settings.style.display === 'none')
             {Settings.style.display = 'grid';} else {closesettings();}
-        } else {buttonsoundhandle(error)}
+        } else if (e.key != 'F11') {Settings.style.display = 'grid'; setTimeout(() => {sendtoteclas.click();}, 500);}
         }});
         
         function unfinished() {
