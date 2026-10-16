@@ -30,6 +30,7 @@
             background: gray;
             z-index: -1;
             display: none;
+            opacity: 0;
         }
         .espaco {
             background: url('https://file.garden/aq_0Fg8cibtOL7XF/estrelas.gif');
@@ -558,7 +559,7 @@
             font-family: 'Press Start 2P', sans-serif;
             color: black;
         }
-        ::selection:not(#paper) {
+        :not(#paper, #paper *)::selection {
             color: yellow;
             background-color: transparent;
         }
@@ -570,8 +571,7 @@
             color: white;
             transform: translate(0,0);
         }
-        #ActivitiesHold {
-            display: none;
+        #ActivitiesHold, #chooseuni {
             background: radial-gradient(circle, #00000080, black);
             border: 3px solid white;
             outline: 3px solid black;
@@ -579,47 +579,64 @@
             height: 95%;
             top: 50%;
             left: 50%;
+            display: flex;
             place-items: center;
             justify-content: center;
             transform: translate(-50%, -50%);
             position: absolute;
-            display: flex;
             corner-shape: scoop;
             border-radius: 20px;
+        }
+        #chooseuni {
+            gap: 20px;
+            display: -ms-inline-grid;
+            height: 5%;
+            width: 100%;
+            top: 2%;
+            corner-shape: initial;
+            border-radius: 0;
+        }
+        #chooseuni > * {
+            padding: 10px 10px;
+            corner-shape: initial;
         }
         #paper {
             font-family: 'Patrick Hand', cursive;
           white-space: wrap;    
-          margin: 20px;
+          margin: 10px;
           place-items: center;
           justify-content: center;
           text-align: center;
           background: linen;
-          display: none;
+          display: inline;
           /* pra eu me lembrar dps, aqui e inline */
-          width: 44%;
           text-wrap: wrap;
-          height: 90%;
+          width: 35%;
+          max-width: 35%;
+          height: 80%;
           overflow: scroll;overflow-x: hidden!important;
           scrollbar-width: none;
         }
-        #papercontent:hover {
+        #paper:hover {
             transform: scale(1.1);
         }
         #papercontent img:hover {
-            transform: scale(1.7);
+            transform: scale(1.3);
         }
         #paper::selection {
-            color: white!important;
-            text-shadow: 0px 0px 3px black, 0px 0px 2px black;
+            color: red!important;
+            background-color: transparent;
+            text-shadow: 0 0 1px black;
         }
         #papercontent {
             overflow: visible;
-            margin: 20px;
             display: grid;
         }
+        #papercontent p {
+            font-size: 20px;
+        }
         #papercontent img {
-            margin: 20px;
+            margin: 10px;
             display: grid;
             place-self: center;
             justify-self: center;
@@ -630,26 +647,38 @@
 </head>
 <body>
 
+    <!-- menu de atividades -->
+     
     <div id="Activities">
+        
         <section id="ActivitiesHold">
+            <div id='chooseuni'>
+                <button class="buttonbase" onclick="CurrentUnity = 1; askForContent(materiaAtual.innerHTML)">PRIMEIRA</button>
+                <button class="buttonbase" onclick="CurrentUnity = 2; askForContent(materiaAtual.innerHTML)">SEGUNDA</button>
+                <button class="buttonbase" onclick="CurrentUnity = 3; askForContent(materiaAtual.innerHTML)">TERCEIRA</button>
+                <button class="buttonbase" onclick="CurrentUnity = 4; askForContent(materiaAtual.innerHTML)">QUARTA</button>
+                <button class="buttonbase" onclick="MateriaHide()">X</button>
+            </div>
             <section id="paper">
                 <section id="papercontent">
-                    <h1>PRIMEIRA UNIDADE</h1>
+                    <h1 id="activityuni1">vish</h1>
                     <br>
-            <img src="https://file.garden/aq_0Fg8cibtOL7XF/LOG.png">
-            <h2>LOGARITMOS</h2>
+            <img id="activityimage1" src="https://file.garden/aq_0Fg8cibtOL7XF/LOG.png">
+            <h2 id="activitytitle1">uh oh</h2>
             <br>
-            <p>Atividade de Matemática, do professor Wellington. O professor pediu a sala para responder uma ficha de 7 questões sobre Logaritmos.</p>
+            <p id="activitycontext1">q pena, deu errado kkkkkkk.. ok, checa o backup, deve ta la</p>
             </section></section>
+            
             <section id="paper">
                 <section id="papercontent">
-                    <h1>PRIMEIRA UNIDADE</h1>
+                    <h1 id="activityuni2">erro erro</h1>
                     <br>
-            <img src="https://file.garden/aq_0Fg8cibtOL7XF/LOG.png">
-            <h2>LOGARITMOS</h2>
+            <img id="activityimage2" src="https://file.garden/aq_0Fg8cibtOL7XF/LOG.png">
+            <h2 id="activitytitle2">rodou</h2>
             <br>
-            <p>Atividade de Matemática, do professor Wellington. O professor pediu a sala para responder uma ficha de 7 questões sobre Logaritmos.</p>
+            <p id="activitycontext2">proxima vez faz com vercelKKKKK</p>
             </section></section>
+            <p class="textmenu" id="materiaAtual" style="top: 95%;">aiiiiiiii</p>
         </section>
     </div>
     
@@ -779,7 +808,7 @@
 
             
           
-            <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="matWrapper" onclick="unfinished()">
+            <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="matWrapper" onclick="MateriaShow(); askForContent('Matemática');">
         <button id="matematicaBotao" class="buttonbase">
             <img src="https://file.garden/aq_0Fg8cibtOL7XF/portal.gif">
             <span style="transform: scale(1.1);">DUSTTALE</span><br>Matemática
@@ -829,6 +858,133 @@
         <img src="https://file.garden/aq_0Fg8cibtOL7XF/gear.png"></button>
 
     <script>
+        const ActivitiesHold = document.getElementById("ActivitiesHold");
+        const Activities = document.getElementById("Activities");
+        const activityuni1 = document.getElementById("activityuni1");
+        const activityuni2 = document.getElementById("activityuni2");
+        const activityimage1 = document.getElementById("activityimage1");
+        const activityimage2 = document.getElementById("activityimage2");
+        const activitytitle1 = document.getElementById("activitytitle1");
+        const activitytitle2 = document.getElementById("activitytitle2");
+        const activitycontext1 = document.getElementById("activitycontext1");
+        const activitycontext2 = document.getElementById("activitycontext2");
+        const materiaAtual = document.getElementById("materiaAtual");
+
+        const ActivitiesALL = {
+            "Matemática": {
+                unity1: {
+                un: "PRIMEIRA UNIDADE",
+                image: "url",  
+                title: "LOGARITMOS",  
+                context: "Atividade de Matemática, do professor Wellington. O professor pediu a sala para responder uma ficha de 7 questões sobre Logaritmos.",
+                
+                image2: "url",
+                title2: "MULHERES IMPORTANTES NA MATEMÁTICA",
+                context2: "Atividade de Matemática, do professor Wellington. O professor pediu a sala para fazer uma pesquisa de 3 mulheres importantes na historia da matematica."},
+
+                unity2: {
+                un: "SEGUNDA UNIDADE",
+                image: "url",  
+                title: "FICHA DE PA",  
+                context: "Atividade de Matemática, do professor Wellington. O professor pediu a sala para responder uma atividade de PA com 40 questoes.",
+                
+                image2: "url",
+                title2: "FICHA DE PG",
+                context2: "Atividade de Matemática, do professor Wellington. O professor pediu a sala para responder uma atividade de PG com 17 questões."},
+
+                unity3: {
+                un: "TERCEIRA UNIDADE",
+                image: "url",  
+                title: "ALGO",  
+                context: "placeholder",
+                
+                image2: "url",
+                title2: "ALGO",
+                context2: "placeholder"},
+
+                unity4: {
+                un: "QUARTA UNIDADE",
+                image: "url",  
+                title: "ALGO",  
+                context: "placeholder",
+                
+                image2: "url",
+                title2: "ALGO",
+                context2: "placeholder"},
+
+            }, "Natureza": {
+                unity1: {
+                un: "PRIMEIRA UNIDADE",
+                image: "url",  
+                title: "TABELA NUTRICIONAL",  
+                context: "Atividade de Quimica, do professor Rodrigo. Nessa atividade, a sala se dividiu em grupos e apresentou a tabela nutricional de diversos produtos.",
+                
+                image2: "url",
+                title2: "TERMOLOGIA",
+                context2: "Atividade de Fisica, do professor Lucas. O professor pediu a sala que fizessem um breve resumo no caderno sobre Termologia e resolvessem uma atividade de 10 questões logo após."},
+
+                unity2: {
+                un: "SEGUNDA UNIDADE",
+                image: "url",  
+                title: "FOGUETE",  
+                context: "Atividade de Física, do professor Lucas. O professor instruiu a sala a participarem de uma atividade que valeria nota e poderia servir como participação no evento OBAFOG.",
+                
+                image2: "url",
+                title2: "MERGULHO",
+                context2: "Atividade de Biologia, da professora Fernanda. A professora pediu que a sala se reunisse em 4 diferentes grupos, e apresentassem sobre coisas diferentes do corpo humano."},
+
+                unity3: {
+                un: "TERCEIRA UNIDADE",
+                image: "url",  
+                title: "ALGO",  
+                context: "placeholder",
+                
+                image2: "url",
+                title2: "ALGO",
+                context2: "placeholder"},
+
+                unity4: {
+                un: "QUARTA UNIDADE",
+                image: "url",  
+                title: "ALGO",  
+                context: "placeholder",
+                
+                image2: "url",
+                title2: "ALGO",
+                context2: "placeholder"},
+            }
+        };
+
+        let CurrentUnity = 1;
+
+        function askForContent(v) {
+            let whereyouare = `unity${CurrentUnity}`;
+            let content = ActivitiesALL[v][whereyouare];
+            materiaAtual.innerHTML = v;
+            activityuni1.innerHTML = content.un;
+            activitycontext1.innerHTML = content.context;
+            activitytitle1.innerHTML = content.title;
+            activityuni2.innerHTML = content.un;
+            activitycontext2.innerHTML = content.context2;
+            activitytitle2.innerHTML = content.title2;
+        }
+
+        function MateriaShow() {
+            Activities.style.display = 'grid';
+            Activities.style.zIndex = '4'
+            setTimeout(() => {
+                Activities.style.opacity = '1';
+            }, 30);
+        }
+
+        function MateriaHide() {
+            Activities.style.opacity = '0';
+            setTimeout(() => {
+                Activities.style.display = 'none';
+                Activities.style.zIndex = '-1';
+            }, 420);
+        }
+    
 
         const dialoguebox = document.getElementById("dialoguebox");
         const dialoguetext = document.getElementById("dialoguetext");
@@ -885,6 +1041,10 @@
             if (tocando) {tocando = false; tocar.innerHTML = '⏸'; doodlesong.pause()}
             else if (!tocando) {tocando = true; tocar.innerHTML = '⯈'; doodlesong.play()}
         });
+        
+        let loadedsfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/Load.MP3')
+        loadedsfx.loop = false;
+        loadedsfx.volume = 1;
 
         let hoversfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/undertale-move-selection-sound-effect%20(1).mp3');
         hoversfx.volume = 0.5;
@@ -905,9 +1065,9 @@
         findsfx.loop = false;
         findsfx.volume = 0.75;
 
-        let defaultsfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/1011%20(3).MP3');
-        defaultsfx.volume = 1;
-        defaultsfx.loop = false;
+        let beeptalksfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/1011%20(3).MP3');
+        beeptalksfx.volume = 1;
+        beeptalksfx.loop = false;
 
         let firstTimeSkipping = true;
         let isRunning = false;
@@ -978,7 +1138,7 @@
 
         function dialoguewrite() {
            if (messageNum < currentmessage.length) {
-            othersoundhandle(defaultsfx);
+            othersoundhandle(beeptalksfx);
             const currentchar = currentmessage.charAt(messageNum);
             dialoguetext.innerHTML = currentmessage.substring(0, messageNum + 1);
             messageNum++;
@@ -1029,10 +1189,13 @@
          }
          let needsload = false;
         const introtime = setInterval(() => {
-            if (!loaded) {duration.innerHTML = 'carregando o portfolio'; needsload = true; return;}
-            if (loaded && needsload) {duration.innerHTML = 'carregado!'; needsload = false; setTimeout(() => {duration.innerHTML = ''}, 500);}
+            if (!loaded) {duration.innerHTML = 'carregando o portfolio <br><progress></progress>'; needsload = true; return;}
+            if (loaded && needsload) {duration.innerHTML = 'carregado!'; duration.style.color = 'yellow'; buttonsoundhandle(loadedsfx);
+             needsload = false; setTimeout(() => {duration.style.color = 'white';}, 500); setTimeout(() => {duration.style.opacity = '0';}, 1000); 
+            setTimeout(() => {duration.innerHTML = '';}, 1500)};
             if(!PortfolioInitiated) return;
             if (d > 0 && loaded) {
+                if (duration.style.opacity == '0') {duration.style.opacity = '1';}
             d--;
             duration.innerHTML = `vai ter uma intro aqui. faltam ${d} segundos`;
              if (d === 1) {duration.innerHTML = 'vai ter uma intro aqui. falta 1 segundo';} }
