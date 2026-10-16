@@ -75,11 +75,12 @@ nao deu pra fzr muito, mas eu fiz umas coisinhas ate
 # 16/10/2026
 um dia antes do aniversário do meu pai! (aleatório, eu sei.)
 hoje, eu orgulhosamente:
- - consegui terminar o a logica do codigo pra as matérias (mas por ora so pode acessar a de matematica, pois ainda vou escrever ora as outras);
+ - consegui terminar o a logica do codigo pra as matérias, e agora pode acessa-las;
  - fiz uma função que checa em que unidade e materia voce esta pra mostrar conteudos diferentes;
  - sound design pra o carregamento do site;
  - clicar em uma tecla nao definida agora te manda pra a parte das configurações com as teclas definidas escritas;
- - tecla C pra configurações.
+ - tecla C pra configurações;
+ - musica nova quando entrar em matematica(o resto vai ter dps).
 
 nao soa como muito, mas eu diria que essa logica foi a mais dificil de fazer pois nunca mexi com Object.keys antes, mas eu gostei de usar!!
 
