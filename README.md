@@ -71,3 +71,14 @@ hoje, eu:
  - fiz a seção de atividades para as matérias (mas voce nao pode ver ainda, pq eu sou malvado 😼 amanha eu deixo vc ver dps de terminar ou sexta);
  - agora o pulo rapido e as configurações fecham se voce apertar dnv no botao deles.
 nao deu pra fzr muito, mas eu fiz umas coisinhas ate
+
+# 16/10/2026
+um dia antes do aniversário do meu pai! (aleatório, eu sei.)
+hoje, eu orgulhosamente:
+ - consegui terminar o a logica do codigo pra as matérias (mas por ora so pode acessar a de matematica, pois ainda vou escrever ora as outras);
+ - fiz uma função que checa em que unidade e materia voce esta pra mostrar conteudos diferentes;
+ - sound design pra o carregamento do site.
+
+nao soa como muito, mas eu diria que essa logica foi a mais dificil de fazer pois nunca mexi com Object.keys antes, mas eu gostei de usar!!
+
+o portfolio agora esta, eu diria, 60% pronto. a maior coisa que falta e escrever pra os conteudos, e fazer as animações (a parte mais dificil).
