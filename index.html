@@ -134,14 +134,6 @@
             padding: 15px 41px;
             border-radius: 19px;
         }
-        .pulochoices:active {
-            transition: all 0.1s ease;
-            border-color: red;
-            color: red;
-            border-radius: 100px;
-            padding: 18px 53px;
-            font-size: 20px;
-        }
         .buttonbase:hover {
             border-color: yellow;
             color: yellow;
@@ -149,7 +141,7 @@
             padding: 15px 41px;
             border-radius: 19px;
         }
-        .buttonbase:active, .buttonbaseclicked {
+        .buttonbase:active, .buttonbaseclicked, .pulochoices:active {
             transition: all 0.1s ease;
             border-color: yellow;
             color: yellow;
@@ -459,7 +451,7 @@
             corner-shape: scoop;
             width: max-content;
             height: max-content;
-            max-height: 70%;
+            max-height: 90%;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -565,11 +557,15 @@
         }
         #Settings #tocar {
             cursor: pointer;
-            font-size: 16px;
+            font-size: 30px;
+            padding: 10px 10px;
             background-color: black;
-            border: 2px solid white;
+            border: 3px solid white;
             color: white;
             transform: translate(0,0);
+        }
+        #Settings hr {
+            width: 90%;
         }
         #ActivitiesHold, #chooseuni {
             background: radial-gradient(circle, #00000080, black);
@@ -651,7 +647,6 @@
     <!-- menu de atividades -->
      
     <div id="Activities">
-        
         <section id="ActivitiesHold">
             <div id='chooseuni'>
                 <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" id="uni1" onclick="CurrentUnity = 1; askForContent(materiaAtual.innerHTML); buttonsoundhandle(clicksfx)">PRIMEIRA</button>
@@ -703,19 +698,20 @@
         <button class="buttonbase" id="exitsettings" style="corner-shape: initial; border-radius: 50%; padding: 10px 10px;"
         onmouseenter="buttonsoundhandle(hoversfx)" onclick="closesettings()">x</button>
         <h1>CONFIGURAÇÕES</h1>
+        <hr>
         <p style="font-size: 16px;">Volume</p>
         <section class="smallsection">
-        <p>Musica:</p>
-        <input type="range" id="volumeslider" min="0" max="100" step="1"><p id="volumeread">50%</p>
-        <button id="tocar" onclick="playmute()">⯈</button></section>
-
+        <p style="font-size: 14px;">Musica:</p>
+        <input type="range" id="volumeslider" min="0" max="100" step="1"><p id="volumeread" style="font-size: 14px;">50%</p></section>
+        
+        <button id="tocar" onclick="playmute()">⯈</button><hr>
         <p style="font-size: 16px;">Teclas</p>
         <section class="smallsection">
-        <p>T = Pulo rápido</p></section>
+        <p style="font-size: 14px;">T = Pulo rápido</p></section>
         <section class="smallsection">
-        <p>F = SÓ quando terminar</p></section>
+        <p style="font-size: 14px;">F = SÓ quando terminar</p></section>
         <section class="smallsection">
-        <p>Z = Pular ou terminar diálogo</p></section>
+        <p style="font-size: 14px;">Z = Pular ou terminar diálogo</p></section>
 
        </section>
 
@@ -790,7 +786,7 @@
       <div class="pulomenu" id="pulomenu">
         <p class="textmenu">aqui voce vai pra qualquer lugar do portfolio</p>
         <button class="closebutton" onmouseenter="hoversfx.play()" onclick="closepulo()">X</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(error);">matematica malvada</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Matemática')">matematica malvada</button>
         <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(error);">linguagens louca</button>
         <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(error);">humanas humericas</button>
         <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(error);">natureza neandertal</button>
@@ -804,9 +800,10 @@
         <button class="buttonbase" onclick="skip()" onmouseenter="hoversfx.play()"style="
         position: absolute; top:50%; left: 50%; transform: translate(-50%, -50%);" id="pular">COMEÇAR</button>
     <p class="textmenu" id="instrucoes" style="top: 90%; opacity: 0.7; font-size: 8px;">
-        Aperte a tecla <span style="border: 3px solid white; padding: 3px 3px;">T</span> para ir ao Pulo Rapido.<br><br>
-        Aperte a tecla <span style="border: 3px solid white; padding: 3px 3px;">F</span> quando terminar o Portfólio.<br><br>
-        Aperte a tecla <span style="border: 3px solid white; padding: 3px 3px;">Z</span> para pular ou terminar diálogos.</p>   
+        Tecla <span style="border: 3px solid white; padding: 3px 3px;">T</span> para ir ao Pulo Rapido.<br><br>
+        Tecla <span style="border: 3px solid white; padding: 3px 3px;">F</span> quando terminar o Portfólio.<br><br>
+        Tecla <span style="border: 3px solid white; padding: 3px 3px;">Z</span> para pular ou terminar diálogos.<br><br>
+        Tecla <span style="border: 3px solid white; padding: 3px 3px;">C</span> para abrir configurações.</p>   
     
     </div>
 
@@ -993,6 +990,7 @@
             Activities.style.zIndex = '4'
             setTimeout(() => {
                 Activities.style.opacity = '1';
+                closepulo();
             }, 30);
         }
 
@@ -1249,8 +1247,12 @@
             } else if (e.key === 'z' || e.key === 'Z') {
                 if (dialogueOnScreen) {
                 dialoguedesummon(); } else {}
-        }} else {buttonsoundhandle(error)}
-        });
+        } else if (e.key === 'c' || e.key === 'C'){
+            e.preventDefault();
+            if (Settings.style.display === 'none')
+            {Settings.style.display = 'grid';} else {closesettings();}
+        } else {buttonsoundhandle(error)}
+        }});
         
         function unfinished() {
             buttonsoundhandle(error);
