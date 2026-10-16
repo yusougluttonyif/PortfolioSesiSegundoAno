@@ -103,7 +103,7 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.807);
-            z-index: 3;
+            z-index: 10;
             display: none;
             gap: 30px;
             flex-direction: column;
@@ -400,6 +400,14 @@
             margin-left: 30px;
             line-height: 1.6;
             margin-top: 40px;
+        }
+        #vinyl {
+            place-self: center;
+            justify-self: center;
+            display: grid;
+            border: 3px solid white;
+            outline: 3px solid black;
+            background: linear-gradient(90deg, gray, #b4b4b4);
         }
         #dialoguewarn {
             align-self: last baseline;
@@ -704,8 +712,7 @@
         <section class="smallsection">
         <p style="font-size: 14px;">Musica:</p>
         <input type="range" id="volumeslider" min="0" max="100" step="1"><p id="volumeread" style="font-size: 14px;">50%</p></section>
-        
-        <button id="tocar" onclick="playmute()">⯈</button><hr>
+        <hr>
         <p style="font-size: 16px;" id="teclas">Teclas</p>
         <section class="smallsection">
         <p style="font-size: 14px;">T = Pulo rápido</p></section>
@@ -790,11 +797,11 @@
         <p class="textmenu">aqui voce vai pra qualquer lugar do portfolio</p>
         <button class="closebutton" onmouseenter="hoversfx.play()" onclick="closepulo()">X</button>
         <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Matemática')">matematica malvada</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(error);">linguagens louca</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(error);">humanas humericas</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(error);">natureza neandertal</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(error);">senai slave owner</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(error);">projeto de vida pirado</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Linguagens');">linguagens louca</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Humanas');">humanas humericas</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Natureza')">natureza neandertal</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Senai');">senai slave owner</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Projeto de Vida');">projeto de vida pirado</button>
        </div>
     
        <!-- intro -->
@@ -824,35 +831,35 @@
         </button>
         </div>
 
-        <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="linWrapper" style="top: 70%; left: 40%;" onclick="unfinished()">
+        <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="linWrapper" style="top: 70%; left: 40%;" onclick="MateriaShow(); askForContent('Linguagens');">
             <button id="linguagensBotao" class="buttonbase">
             <img src="https://file.garden/aq_0Fg8cibtOL7XF/portal%20red.gif" >
             <span style="color: red; transform: scale(1.1);">UNDERFELL</span><br>Linguagens
         </button>
         </div>
 
-        <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="natWrapper" style="top: 30%; left: 12%;" onclick="unfinished()">
+        <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="natWrapper" style="top: 30%; left: 12%;" onclick="MateriaShow(); askForContent('Natureza')">
             <button id="naturezaBotao" class="buttonbase">
             <img src="https://file.garden/aq_0Fg8cibtOL7XF/portal%20blue.gif">
             <span style="color: #3a48ff; transform: scale(1.1);">OUTERTALE</span><br>Natureza
         </button>
         </div>
 
-        <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="pdvWrapper" style="top: 80%; left: 80%;" onclick="unfinished()">
+        <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="pdvWrapper" style="top: 80%; left: 80%;" onclick="MateriaShow(); askForContent('Projeto de Vida');">
             <button id="projetodvidaBotao" class="buttonbase">
             <img src="https://file.garden/aq_0Fg8cibtOL7XF/portal%20orange.gif">
             <span style="color: #ffa33a; transform: scale(1.1);">UNDERSWAP</span><br>P. de Vida
         </button>
         </div>
 
-        <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="humWrapper" style="top: 40%; left: 45%;" onclick="unfinished()">
+        <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="humWrapper" style="top: 40%; left: 45%;" onclick="MateriaShow(); askForContent('Humanas');">
             <button id="humanasBotao" class="buttonbase">
             <img src="https://file.garden/aq_0Fg8cibtOL7XF/portal%20purple.gif">
             <span style="color: #b557ff; transform: scale(1.1);">HORRORTALE</span><br>Humanas
         </button>
         </div>
 
-        <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="senWrapper" style="top: 80%; left: 15%;" onclick="unfinished()">
+        <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="senWrapper" style="top: 80%; left: 15%;" onclick="MateriaShow(); askForContent('Senai');">
             <button id="senaiBotao" class="buttonbase">
             <img src="https://file.garden/aq_0Fg8cibtOL7XF/portal%20yellow.gif">
             <span style="color: #fffe89; transform: scale(1.1);">DISBELIEF</span><br>SENAI
@@ -891,21 +898,21 @@
             "Matemática": {
                 unity1: {
                 un: "PRIMEIRA UNIDADE",
-                image: "url",  
+                image: "https://file.garden/aq_0Fg8cibtOL7XF/LOG.png",  
                 title: "LOGARITMOS",  
                 context: "Atividade de Matemática, do professor Wellington. O professor pediu a sala para responder uma ficha de 7 questões sobre Logaritmos.",
                 
-                image2: "url",
+                image2: "https://file.garden/aq_0Fg8cibtOL7XF/Dusttale%20dialog%20(2).png",
                 title2: "MULHERES IMPORTANTES NA MATEMÁTICA",
                 context2: "Atividade de Matemática, do professor Wellington. O professor pediu a sala para fazer uma pesquisa de 3 mulheres importantes na historia da matematica."},
 
                 unity2: {
                 un: "SEGUNDA UNIDADE",
-                image: "url",  
+                image: "https://file.garden/aq_0Fg8cibtOL7XF/pa.png",  
                 title: "FICHA DE PA",  
                 context: "Atividade de Matemática, do professor Wellington. O professor pediu a sala para responder uma atividade de PA com 40 questoes.",
                 
-                image2: "url",
+                image2: "https://file.garden/aq_0Fg8cibtOL7XF/pg.png",
                 title2: "FICHA DE PG",
                 context2: "Atividade de Matemática, do professor Wellington. O professor pediu a sala para responder uma atividade de PG com 17 questões."},
 
@@ -932,23 +939,186 @@
             }, "Natureza": {
                 unity1: {
                 un: "PRIMEIRA UNIDADE",
-                image: "url",  
+                image: "https://file.garden/aq_0Fg8cibtOL7XF/quimica.png",  
                 title: "TABELA NUTRICIONAL",  
                 context: "Atividade de Quimica, do professor Rodrigo. Nessa atividade, a sala se dividiu em grupos e apresentou a tabela nutricional de diversos produtos.",
                 
-                image2: "url",
+                image2: "https://file.garden/aq_0Fg8cibtOL7XF/termologia.png",
                 title2: "TERMOLOGIA",
                 context2: "Atividade de Fisica, do professor Lucas. O professor pediu a sala que fizessem um breve resumo no caderno sobre Termologia e resolvessem uma atividade de 10 questões logo após."},
 
                 unity2: {
                 un: "SEGUNDA UNIDADE",
-                image: "url",  
+                image: "https://file.garden/aq_0Fg8cibtOL7XF/novoluar.png",  
                 title: "FOGUETE",  
                 context: "Atividade de Física, do professor Lucas. O professor instruiu a sala a participarem de uma atividade que valeria nota e poderia servir como participação no evento OBAFOG.",
                 
-                image2: "url",
+                image2: "https://file.garden/aq_0Fg8cibtOL7XF/mergulho.png",
                 title2: "MERGULHO",
                 context2: "Atividade de Biologia, da professora Fernanda. A professora pediu que a sala se reunisse em 4 diferentes grupos, e apresentassem sobre coisas diferentes do corpo humano."},
+
+                unity3: {
+                un: "TERCEIRA UNIDADE",
+                image: "url",  
+                title: "ALGO",  
+                context: "placeholder",
+                
+                image2: "url",
+                title2: "ALGO",
+                context2: "placeholder"},
+
+                unity4: {
+                un: "QUARTA UNIDADE",
+                image: "url",  
+                title: "ALGO",  
+                context: "placeholder",
+                
+                image2: "url",
+                title2: "ALGO",
+                context2: "placeholder"},
+            }, "Linguagens": {
+                unity1: {
+                un: "PRIMEIRA UNIDADE",
+                image: "https://file.garden/aq_0Fg8cibtOL7XF/modernismo.png",  
+                title: "MODERNISMO",  
+                context: "Atividade de Português, do professor Wollace. Nessa atividade, o professor pediu para a sala fazer um mapa mental sobre Modernismo.",
+                
+                image2: "https://file.garden/aq_0Fg8cibtOL7XF/Linking.png",
+                title2: "LINKING WORDS",
+                context2: "Atividade de Inglês, da professora Thais. Nessa atividade, a sala se reuniu em grupos e cada um ficou responsavel por fazer uma apresentação de Linking Words, explicando o que são."},
+
+                unity2: {
+                un: "SEGUNDA UNIDADE",
+                image: "https://file.garden/aq_0Fg8cibtOL7XF/emocoes.png",  
+                title: "CORPO E EMOÇÕES",  
+                context: "Atividade de Educação Física, do professor Alexandre. Nessa atividade, cada aluno fez um breve resumo das pagínas 43, 44 e 45 em um papel paltado.",
+                
+                image2: "https://file.garden/aq_0Fg8cibtOL7XF/sixseven.png",
+                title2: "MALABARISMO",
+                context2: "Atividade de Educação Física, do professor Alexandre. Nessa atividade, todos da sala se juntaram em grupos e fizeram uma breve apresentação. Nosso grupo apresentou sobre malabarismo com duas bolas."},
+
+                unity3: {
+                un: "TERCEIRA UNIDADE",
+                image: "url",  
+                title: "ALGO",  
+                context: "placeholder",
+                
+                image2: "url",
+                title2: "ALGO",
+                context2: "placeholder"},
+
+                unity4: {
+                un: "QUARTA UNIDADE",
+                image: "url",  
+                title: "ALGO",  
+                context: "placeholder",
+                
+                image2: "url",
+                title2: "ALGO",
+                context2: "placeholder"},
+            }, 
+            "Humanas": {
+                unity1: {
+                un: "PRIMEIRA UNIDADE",
+                image: "https://file.garden/aq_0Fg8cibtOL7XF/constituicao.png",  
+                title: "CONSTITUIÇÃO DE 1824",  
+                context: "Atividade de Historia, do professor Victor. O professor organizou a sala em 4 grandes grupos quais participaram de uma apresentação estilo Orgulho de Ser SESI, mas somente apresentando para alunos.",
+                
+                image2: "https://file.garden/aq_0Fg8cibtOL7XF/influencia.png",
+                title2: "INFLUÊNCIA PORTUGUESAS NO BRASIL",
+                context2: "Atividade de Geografia, da professora Janaina. A professora pediu a sala se dividir em grupos para apresentar, cada um, sobre uma parte da influência dos portugueses."},
+
+                unity2: {
+                un: "SEGUNDA UNIDADE",
+                image: "https://file.garden/aq_0Fg8cibtOL7XF/questoes2.gif",  
+                title: "PERGUNTAS GEOPÓLITICAS",  
+                context: "Atividade de Geografia, da professora Janaina. A professora pediu que a sala se reunissse em quatros grandes grupos e criassem perguntas de geopolitica de um pais de escolha para outros grupos.",
+                
+                image2: "https://file.garden/aq_0Fg8cibtOL7XF/pesquisa.png",
+                title2: "PESQUISA SOCIOECONÕMICA",
+                context2: "Atividade de Geografia, da professora Janaina. A professora pediu aos alunos para realizar uma pesquisa socioeconômica, destribuindo um questionario para as pessoas no SESI responderem."},
+
+                unity3: {
+                un: "TERCEIRA UNIDADE",
+                image: "url",  
+                title: "ALGO",  
+                context: "placeholder",
+                
+                image2: "url",
+                title2: "ALGO",
+                context2: "placeholder"},
+
+                unity4: {
+                un: "QUARTA UNIDADE",
+                image: "url",  
+                title: "ALGO",  
+                context: "placeholder",
+                
+                image2: "url",
+                title2: "ALGO",
+                context2: "placeholder"},
+            }, 
+            "Senai": {
+                unity1: {
+                un: "PRIMEIRA UNIDADE",
+                image: "https://file.garden/aq_0Fg8cibtOL7XF/circuito.png",  
+                title: "QUESTÕES SOBRE CORRENTES",  
+                context: "Atividade do SENAI, do professor Daniel. O professor pediu a sala para se reunirem em grupos e responderem questões sobre correntes.",
+                
+                image2: "https://file.garden/aq_0Fg8cibtOL7XF/pitch.png",
+                title2: "PITCH DE VENDAS",
+                context2: "Atividade do SENAI, do professor Luan. O professor pediu a sala para se reunirem em grupos e fazerem uma apresentação sobre Seu Jorge e uma possivel solução ao problema dele."},
+
+                unity2: {
+                un: "SEGUNDA UNIDADE",
+                image: "https://file.garden/aq_0Fg8cibtOL7XF/67.png",  
+                title: "MODELAGEM",  
+                context: "Atividade do SENAI, do professor Luan. O professor pediu a sala para irem á sala de computadores e fazerem 10 modelos 3D de desenhos isométricos.",
+                
+                image2: "https://file.garden/aq_0Fg8cibtOL7XF/gears.png",
+                title2: "MODELAGEM (ENGRENAGENS)",
+                context2: "Atividade do SENAI, do professor Luan. O professor pediu a sala para irem á sala dos computadores e fazerem modelos 3D de Engrenagens."},
+
+                unity3: {
+                un: "TERCEIRA UNIDADE",
+                image: "url",  
+                title: "ALGO",  
+                context: "placeholder",
+                
+                image2: "url",
+                title2: "ALGO",
+                context2: "placeholder"},
+
+                unity4: {
+                un: "QUARTA UNIDADE",
+                image: "url",  
+                title: "ALGO",  
+                context: "placeholder",
+                
+                image2: "url",
+                title2: "ALGO",
+                context2: "placeholder"},
+            }, 
+            "Projeto de Vida": {
+                unity1: {
+                un: "PRIMEIRA UNIDADE",
+                image: "https://file.garden/aq_0Fg8cibtOL7XF/mapadossonhos.png",  
+                title: "MAPA DOS SONHOS",  
+                context: "Atividade de Projeto de Vida, do professor Carlos. O professor pediu a sala para se organizarem em grupos e fazerem um mapa dos sonhos.",
+                
+                image2: "https://file.garden/aq_0Fg8cibtOL7XF/estacoes.png",
+                title2: "ESTAÇÕES",
+                context2: "Atividade de Projeto de Vida, do professor Carlos. O professor pediu para a sala se organizar em grupos e relacionar as estações do ano com a juventude."},
+
+                unity2: {
+                un: "SEGUNDA UNIDADE",
+                image: "https://file.garden/aq_0Fg8cibtOL7XF/ritmo.png",  
+                title: "COERÊNCIA COM UMA NOVA REALIDADE",  
+                context: "Atividade de Projeto de Vida, do professor Carlos. O professor pediu a sala para se organizarem em grupos e fazer apresentações de acordo com o seu tema.",
+                
+                image2: "https://file.garden/aq_0Fg8cibtOL7XF/coerencia.png",
+                title2: "CADA UM NO SEU RITMO",
+                context2: "Aula de Projeto de Vida, do professor Carlos. O professor conversou com a sala sobre a importância de respeitar e aceitar que cada um aprende no proprio ritmo."},
 
                 unity3: {
                 un: "TERCEIRA UNIDADE",
@@ -975,20 +1145,26 @@
         let CurrentUnity = 1;
 
         function askForContent(v) {
+            if (v === "Matemática") {dustsong.play();
+                 doodlesong.pause();}
             let whereyouare = `unity${CurrentUnity}`;
             let showUni = document.getElementById(`uni${CurrentUnity}`)
             let content = ActivitiesALL[v][whereyouare];
             materiaAtual.innerHTML = v;
             activityuni1.innerHTML = content.un;
+            activityimage1.src = content.image;
             activitycontext1.innerHTML = content.context;
             activitytitle1.innerHTML = content.title;
             activityuni2.innerHTML = content.un;
+            activityimage2.src = content.image2;
             activitycontext2.innerHTML = content.context2;
             activitytitle2.innerHTML = content.title2;
+            
+            if (content.image === 'url') {activityimage1.src = 'https://file.garden/aq_0Fg8cibtOL7XF/foundnothing.png';}
+            if (content.image2 === 'url') {activityimage2.src = 'https://file.garden/aq_0Fg8cibtOL7XF/foundnothing.png';}
 
             uni1.classList = 'buttonbase'; uni2.classList = 'buttonbase';uni3.classList = 'buttonbase';uni4.classList = 'buttonbase'
             showUni.classList = 'buttonbaseclicked';
-            
         }
 
         function MateriaShow() {
@@ -998,9 +1174,18 @@
                 Activities.style.opacity = '1';
                 closepulo();
             }, 30);
+            setTimeout(() => {
+            if (materiaAtual.innerHTML == 'Matemática') {
+                musicname.innerHTML = '<span>&#x266A;</span> Face to Face<br><br><span>&#x1F58A;</span> DUSTTALE';
+            songdisplayShow();
+            }}, 300);
         }
 
         function MateriaHide() {
+            dustsong.pause();
+            doodlesong.play();
+            musicname.innerHTML = '<span>&#x266A;</span> Tears in the rain<br><br><span>&#x1F58A;</span> Med';
+            songdisplayShow();
             buttonsoundhandle(clicksfx);
             Activities.style.opacity = '0';
             setTimeout(() => {
@@ -1049,22 +1234,19 @@
         let loaded = false;
         let PortfolioInitiated = false;
 
-        
-        let doodlesong = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/Tears%20in%20the%20Rain.mp3')
+        const musicname = document.getElementById("musicname");
+
+        let doodlesong = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/Tears%20in%20the%20Rain.mp3');
         doodlesong.volume = 0.5;
+        doodlesong.loop = true;
+        let dustsong = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/facetoface.mp3');
+        dustsong.volume = 0.5;
+
         volumeslider.addEventListener('input', () => {
         doodlesong.volume = parseFloat(volumeslider.value) / 100;
-        volumeread.innerText = parseFloat(volumeslider.value) + '%';
-    });
-        doodlesong.loop = true;
+        dustsong.volume = parseFloat(volumeslider.value) / 100;
+        volumeread.innerText = parseFloat(volumeslider.value) + '%';});
         /* a musica de agora e temporaria */
-        let tocando = true;
-
-        tocar.addEventListener('click', () => {
-            if (!PortfolioInitiated) return;
-            if (tocando) {tocando = false; tocar.innerHTML = '⏸'; doodlesong.pause()}
-            else if (!tocando) {tocando = true; tocar.innerHTML = '⯈'; doodlesong.play()}
-        });
         
         let loadedsfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/Load.MP3')
         loadedsfx.loop = false;
@@ -1123,6 +1305,7 @@
             intro.style.background = '#00000090';}, 200);}
             document.body.style.pointerEvents = 'none';
             dialoguebox.style.pointerEvents = 'auto';
+            Settings.style.pointerEvents = 'auto';
             dialoguebox.style.opacity = '1';
             dialoguebox.style.transform = 'translate(-50%, -50%)'
         },100);
@@ -1340,6 +1523,7 @@
             buttonsoundhandle(clicksfx);
             opensfx.play();
             document.body.style.pointerEvents = 'none';
+            Settings.style.pointerEvents = 'auto';
             setTimeout(() => {
             espaco.style.opacity = '1';
             
@@ -1363,6 +1547,7 @@
             buttonsoundhandle(clicksfx);
             closesfx.play();
             document.body.style.pointerEvents = 'none';
+            Settings.style.pointerEvents = 'auto';
             espaco.style.opacity = '0';
             setTimeout(() => {
             espaco.style.display = 'none';
