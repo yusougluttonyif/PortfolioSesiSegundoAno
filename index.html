@@ -1159,7 +1159,8 @@
         let CurrentUnity = 1;
 
         function askForContent(v) {
-            if (v === "Matemática") {dustsong.play();
+            if (v === "Matemática") {
+                setTimeout(() => {dustsong.play();}, 500);
                  doodlesong.pause();}
             let whereyouare = `unity${CurrentUnity}`;
             let showUni = document.getElementById(`uni${CurrentUnity}`)
@@ -1182,6 +1183,7 @@
         }
 
         function MateriaShow() {
+            buttonsoundhandle(enteringsfx);
             setTimeout(() => {
             intro.style.background = 'black';
             }, 40);
@@ -1303,6 +1305,13 @@
         let findsfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/find.MP3');
         findsfx.loop = false;
         findsfx.volume = 0.75;
+        
+        let enteringsfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/enterLOUD.MP3');
+        enteringsfx.loop = false;
+        enteringsfx.volume = 1;
+        let leavingsfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/leavingLOUD.MP3');
+        leavingsfx.loop = false;
+        leavingsfx.volume = 1;
 
         let beeptalksfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/1011%20(3).MP3');
         beeptalksfx.volume = 1;
@@ -1379,8 +1388,10 @@
                     dialogueOnScreen = false;
                 }
                 if (materiaAtual.innerHTML == 'TER-mat') {
+                    buttonsoundhandle(leavingsfx);
                     dustsong.pause();
-                    doodlesong.play();
+                    setTimeout(() => {
+                    doodlesong.play();}, 500);
                     musicname.innerHTML = '<span>&#x266A;</span> A Behemoth, forever raging<br><br><span>&#x1F58A;</span> Spade'
                     name.innerHTML = musicname.innerHTML;
                     songdisplayShow();
