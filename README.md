@@ -92,4 +92,5 @@ enfim, hoje eu:
 - mudei a função que lidava com coisas que ainda nao foram feitas para mostrar um contador da duração das futuras animações;
 - adicionei diálogo para a seção de matemática;
 - adicionei o contador de duração das futuras animações nas materias;
-- musica nova e final pra a Esfera de Rabiscos e Multiverso.
+- musica nova e final pra a Esfera de Rabiscos e Multiverso;
+- sons para entrada e saída de materias.
