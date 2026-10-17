@@ -820,7 +820,7 @@
        <!-- menu das escolhas de matérias -->
         <div class="espaco" id="espaco">
             <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" onclick="hitbox()">mostrar hitbox</button>
-            <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" onclick="dialoguesummon(); buttonsoundhandle(clicksfx)">testar dialogo</button>
+            <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" onclick="dialoguesummon(beeptalksfx); buttonsoundhandle(clicksfx)">testar dialogo</button>
 
             
           
@@ -1168,30 +1168,48 @@
         }
 
         function MateriaShow() {
+            setTimeout(() => {
+            intro.style.background = 'black';
+            }, 40);
+            intro.style.display = 'block';
+            pular.style.display = 'none';
+            instrucoes.style.display = 'none';
+            duration.style.opacity = '0';
+            setTimeout(() => {
+            animation();}, 100);
+            setTimeout(() => {
+            if (materiaAtual.innerHTML == 'Matemática') {
+                setTimeout(() => {
+                musicname.innerHTML = '<span>&#x266A;</span> Face to Face<br><br><span>&#x1F58A;</span> DUSTTALE';
+            songdisplayShow();
+            setTimeout(() => {
+        dialoguesummon(dusttalksfx); currentmessage = '* ..huh. <br> bem, eu sabia que alguém viria. mas.. você? <br> só pegue logo seus papeis.'}, 400);}, 8000);
+            }}, 300);
+            setTimeout(() => {
             Activities.style.display = 'grid';
             Activities.style.zIndex = '4'
             setTimeout(() => {
                 Activities.style.opacity = '1';
                 closepulo();
             }, 30);
-            setTimeout(() => {
-            if (materiaAtual.innerHTML == 'Matemática') {
-                musicname.innerHTML = '<span>&#x266A;</span> Face to Face<br><br><span>&#x1F58A;</span> DUSTTALE';
-            songdisplayShow();
-            }}, 300);
+        }, 301);
+            
+            
         }
 
         function MateriaHide() {
-            dustsong.pause();
-            doodlesong.play();
-            musicname.innerHTML = '<span>&#x266A;</span> Tears in the rain<br><br><span>&#x1F58A;</span> Med';
-            songdisplayShow();
-            buttonsoundhandle(clicksfx);
-            Activities.style.opacity = '0';
+            if (materiaAtual.innerHTML == 'Matemática') {
+                materiaAtual.innerHTML = 'TER-mat'
+                dialoguesummon(dusttalksfx);
+                currentmessage = '* bem, isso é tudo, certo? <br> aproveita a vida, criança. nunca se sabe, né? heh.'
+            } else if (materiaAtual.innerHTML != 'TER-mat') dialoguesummon(beeptalksfx);
             setTimeout(() => {
-                Activities.style.display = 'none';
-                Activities.style.zIndex = '-1';
-            }, 420);
+            Activities.style.opacity = '0';}, 500);
+            setTimeout(() => {
+            Activities.style.display = 'none';
+            Activities.style.zIndex = '-1';
+            }, 900);
+            
         }
     
 
@@ -1274,6 +1292,9 @@
         let beeptalksfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/1011%20(3).MP3');
         beeptalksfx.volume = 1;
         beeptalksfx.loop = false;
+        let dusttalksfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/dustsans.MP3');
+        dusttalksfx.volume = 1;
+        dusttalksfx.loop = false;
 
         let firstTimeSkipping = true;
         let isRunning = false;
@@ -1293,7 +1314,7 @@
             Settings.style.display = 'none';
             history.replaceState(null, '', window.location.pathname + window.location.search);
         }
-        function dialoguesummon() {
+        function dialoguesummon(v) {
             setTimeout(() => {
             intro.style.display = 'flex'
             intro.style.cursor = 'not-allowed';
@@ -1302,7 +1323,8 @@
             instrucoes.style.display = 'none';
             if (PortfolioInitiated){
             setTimeout(() => {
-            intro.style.background = '#00000090';}, 200);}
+                if (materiaAtual.innerHTML == 'TER-mat')
+            {intro.style.background = 'black';} else intro.style.background = '#00000090'}, 200);}
             document.body.style.pointerEvents = 'none';
             dialoguebox.style.pointerEvents = 'auto';
             Settings.style.pointerEvents = 'auto';
@@ -1310,7 +1332,7 @@
             dialoguebox.style.transform = 'translate(-50%, -50%)'
         },100);
         setTimeout(() => {
-        dialoguewrite();
+        dialoguewrite(v);
         dialogueOnScreen = true;
         }, 600);
             }
@@ -1341,12 +1363,18 @@
                     firstDialogue = false;
                     dialogueOnScreen = false;
                 }
+                if (materiaAtual.innerHTML == 'TER-mat') {
+                    dustsong.pause();
+                    doodlesong.play();
+                    musicname.innerHTML = '<span>&#x266A;</span> Tears in the rain<br><br><span>&#x1F58A;</span> Med'
+                    songdisplayShow();
+                }
             }
             }
 
-        function dialoguewrite() {
+        function dialoguewrite(v) {
            if (messageNum < currentmessage.length) {
-            othersoundhandle(beeptalksfx);
+            othersoundhandle(v);
             const currentchar = currentmessage.charAt(messageNum);
             dialoguetext.innerHTML = currentmessage.substring(0, messageNum + 1);
             messageNum++;
@@ -1354,7 +1382,7 @@
             if (currentchar === '.' || currentchar === '!' || currentchar === '?') {
                 wait = 400;
             } else if (currentchar === ',' || currentchar === ';') {wait = 200;}
-            setTimeout(dialoguewrite, wait)
+            setTimeout(() => dialoguewrite(v), wait)
            } else if (messageNum == currentmessage.length) {
             dialogueIsFinished = true;
             if (firstDialogue == true) {
@@ -1396,18 +1424,19 @@
             v2.play();
          }
          let needsload = false;
+         let donewithit = false;
         const introtime = setInterval(() => {
-            if (!loaded) {duration.innerHTML = 'carregando o portfolio <br><progress></progress>'; needsload = true; return;}
+            if (!loaded && !needsload) {duration.innerHTML = 'carregando o portfolio <br><progress></progress>'; needsload = true; return;}
             if (loaded && needsload) {duration.innerHTML = 'carregado!'; duration.style.color = 'yellow'; buttonsoundhandle(loadedsfx);
              needsload = false; setTimeout(() => {duration.style.color = 'white';}, 500); setTimeout(() => {duration.style.opacity = '0';}, 1000); 
             setTimeout(() => {duration.innerHTML = '';}, 1500)};
             if(!PortfolioInitiated) return;
-            if (d > 0 && loaded) {
+            if (d > 0 && loaded && !donewithit) {
                 if (duration.style.opacity == '0') {duration.style.opacity = '1';}
             d--;
             duration.innerHTML = `vai ter uma intro aqui. faltam ${d} segundos`;
-             if (d === 1) {duration.innerHTML = 'vai ter uma intro aqui. falta 1 segundo';} }
-             if (d <= 0) {intro.style.display = 'none'; clearInterval(introtime); songdisplayShow();}
+             if (d === 1 && !donewithit) {duration.innerHTML = 'vai ter uma intro aqui. falta 1 segundo';} }
+             if (d <= 0) {intro.style.display = 'none'; donewithit = true; clearInterval(introtime); songdisplayShow();}
         }, 1000);
 
 
@@ -1432,8 +1461,7 @@
                 openpulo();}
             } else if (e.key === 'F' || e.key === 'f') {
                 e.preventDefault();
-                buttonsoundhandle(error);
-                unfinished();
+                animation();
             } else if (e.key === 'z' || e.key === 'Z') {
                 if (dialogueOnScreen) {
                 dialoguedesummon(); } else {}
@@ -1444,24 +1472,31 @@
         } else if (e.key != 'F11') {Settings.style.display = 'grid'; setTimeout(() => {sendtoteclas.click();}, 500);}
         }});
         
-        function unfinished() {
-            buttonsoundhandle(error);
+        function animation() {
+            intro.style.opacity = '1';
+            duration.style.opacity = '1';
+            intro.style.background = 'black';
             intro.style.display = 'block';
-            pular.style.display = 'grid';
+            pular.style.display = 'none';
             duration.style.position = 'absolute';
+            duration.innerHTML = `Animação de 8 segundos aqui`;
             intro.style.cursor = 'not-allowed';
-                intro.style.background = 'rgb(175, 0, 0, 0.90)';
-                duration.innerText = 'nao esta pronto ainda';
-                setTimeout(() => {
-                duration.style.transform = 'scale(1.25)';
-                duration.style.color = 'rgb(175, 0, 0)';
-                },200);
-                duration.style.top = '50%';
-                pular.innerText = 'OK';
-                setTimeout(() => {
-                 duration.style.transform = '';
-                 duration.style.color = 'white';
-                },600);
+            d = 8;
+            const animationtime = setInterval(() => {
+                d--;
+                duration.innerHTML = `Animação de ${d} segundos aqui`;
+            }, 1000); 
+            duration.style.top = '50%';
+            instrucoes.style.display = 'none';
+            setTimeout(() => {
+                clearInterval(animationtime);
+               d = 0;
+               intro.style.background = 'rgb(0,0,0,0)'
+               duration.style.opacity = '0';
+            }, 8000);
+            setTimeout(() => {
+                intro.style.display = 'none';
+            }, 8400);
         }
 
         function hitbox() {
@@ -1513,6 +1548,7 @@
             setTimeout(() => {}, 500);
         } else if (loaded && PortfolioInitiated) {
             d = 0;
+            donewithit = true;
             buttonsoundhandle(clicksfx);
             intro.style.display = 'none';
             songdisplayShow();
@@ -1537,7 +1573,7 @@
             }, 900);
             setTimeout(() => {
                 if (firstTimeInMaterias == true) {
-                dialoguesummon();
+                dialoguesummon(beeptalksfx);
                 firstTimeInMaterias = false;
                 currentmessage = '* Encontre estrelas diferentes; elas te levarão até a matéria.'
             } else {document.body.style.pointerEvents = 'auto'}
