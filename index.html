@@ -576,6 +576,17 @@
         #Settings hr {
             width: 90%;
         }
+        #Settings span {
+            font-size: 20px;
+        }
+        #Settings img {
+            display: grid;
+            border-radius: 50%;
+            corner-shape: initial;
+            border: 3px solid white;
+            outline: black 3px solid;
+            background: linear-gradient(90deg, gray, #b4b4b4);
+        }
         #ActivitiesHold, #chooseuni {
             background: radial-gradient(circle, #00000080, black);
             border: 3px solid white;
@@ -699,7 +710,7 @@
       <!-- creditos de musica + discozinho -->
        <section id="musicCredits" onclick="songdisplayHide()">
         <img id="vinyl" src="https://file.garden/aq_0Fg8cibtOL7XF/discoFinal.gif">
-        <p id="musicname"><span>&#x266A;</span> Tears in the rain<br><br><span>&#x1F58A;</span> Med
+        <p id="musicname"><span>&#x266A;</span> A Behemoth, forever raging<br><br><span>&#x1F58A;</span> Spade
        </section>
 
        <!-- menu de configurações -->
@@ -712,7 +723,10 @@
         <section class="smallsection">
         <p style="font-size: 14px;">Musica:</p>
         <input type="range" id="volumeslider" min="0" max="100" step="1"><p id="volumeread" style="font-size: 14px;">50%</p></section>
-        <hr>
+        <section class="smallsection">
+        <img width="70px" height="70px" src="https://file.garden/aq_0Fg8cibtOL7XF/discoFinal.gif">
+        <p id="name">...</p></section><hr>
+        
         <p style="font-size: 16px;" id="teclas">Teclas</p>
         <section class="smallsection">
         <p style="font-size: 14px;">T = Pulo rápido</p></section>
@@ -1181,6 +1195,7 @@
             if (materiaAtual.innerHTML == 'Matemática') {
                 setTimeout(() => {
                 musicname.innerHTML = '<span>&#x266A;</span> Face to Face<br><br><span>&#x1F58A;</span> DUSTTALE';
+                name.innerHTML = musicname.innerHTML;
             songdisplayShow();
             setTimeout(() => {
         dialoguesummon(dusttalksfx); currentmessage = '* ..huh. <br> bem, eu sabia que alguém viria. mas.. você? <br> só pegue logo seus papeis.'}, 400);}, 8000);
@@ -1253,8 +1268,9 @@
         let PortfolioInitiated = false;
 
         const musicname = document.getElementById("musicname");
+        const name = document.getElementById("name");
 
-        let doodlesong = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/Tears%20in%20the%20Rain.mp3');
+        let doodlesong = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/ABehemothForeverRaging.mp3');
         doodlesong.volume = 0.5;
         doodlesong.loop = true;
         let dustsong = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/facetoface.mp3');
@@ -1264,7 +1280,6 @@
         doodlesong.volume = parseFloat(volumeslider.value) / 100;
         dustsong.volume = parseFloat(volumeslider.value) / 100;
         volumeread.innerText = parseFloat(volumeslider.value) + '%';});
-        /* a musica de agora e temporaria */
         
         let loadedsfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/Load.MP3')
         loadedsfx.loop = false;
@@ -1366,7 +1381,8 @@
                 if (materiaAtual.innerHTML == 'TER-mat') {
                     dustsong.pause();
                     doodlesong.play();
-                    musicname.innerHTML = '<span>&#x266A;</span> Tears in the rain<br><br><span>&#x1F58A;</span> Med'
+                    musicname.innerHTML = '<span>&#x266A;</span> A Behemoth, forever raging<br><br><span>&#x1F58A;</span> Spade'
+                    name.innerHTML = musicname.innerHTML;
                     songdisplayShow();
                 }
             }
@@ -1414,7 +1430,8 @@
 }
 
         function buttonsoundhandle(v) {
-           v.currentTime = 0;
+            if (v === doodlesong) {v.currentTime = 85;}
+           else {v.currentTime = 0;}
            v.play();
         }
         function othersoundhandle(v) {
@@ -1428,15 +1445,15 @@
         const introtime = setInterval(() => {
             if (!loaded && !needsload) {duration.innerHTML = 'carregando o portfolio <br><progress></progress>'; needsload = true; return;}
             if (loaded && needsload) {duration.innerHTML = 'carregado!'; duration.style.color = 'yellow'; buttonsoundhandle(loadedsfx);
-             needsload = false; setTimeout(() => {duration.style.color = 'white';}, 500); setTimeout(() => {duration.style.opacity = '0';}, 1000); 
-            setTimeout(() => {duration.innerHTML = '';}, 1500)};
+             needsload = false; setTimeout(() => {duration.style.color = 'white';}, 500); setTimeout(() => {duration.style.opacity = '0';}, 800); 
+            setTimeout(() => {duration.innerHTML = '';}, 1000)};
             if(!PortfolioInitiated) return;
             if (d > 0 && loaded && !donewithit) {
                 if (duration.style.opacity == '0') {duration.style.opacity = '1';}
             d--;
             duration.innerHTML = `vai ter uma intro aqui. faltam ${d} segundos`;
              if (d === 1 && !donewithit) {duration.innerHTML = 'vai ter uma intro aqui. falta 1 segundo';} }
-             if (d <= 0) {intro.style.display = 'none'; donewithit = true; clearInterval(introtime); songdisplayShow();}
+             if (d <= 0) {intro.style.display = 'none'; donewithit = true; clearInterval(introtime); name.innerHTML = musicname.innerHTML; songdisplayShow();}
         }, 1000);
 
 
@@ -1549,6 +1566,7 @@
         } else if (loaded && PortfolioInitiated) {
             d = 0;
             donewithit = true;
+            doodlesong.currentTime = 100;
             buttonsoundhandle(clicksfx);
             intro.style.display = 'none';
             songdisplayShow();
