@@ -85,3 +85,10 @@ hoje, eu orgulhosamente:
 nao soa como muito, mas eu diria que essa logica foi a mais dificil de fazer pois nunca mexi com Object.keys antes, mas eu gostei de usar!!
 
 o portfolio agora esta, eu diria, 60% pronto. a maior coisa que falta e escrever pra os conteudos, e fazer as animações (a parte mais dificil).
+
+# 17/10/2026
+hoje e o aniversário do meu pai! ele faz 50, mas nem parece kkkk ele parece que tem 30
+enfim, hoje eu:
+- mudei a função que lidava com coisas que ainda nao foram feitas para mostrar um contador da duração das futuras animações;
+- adicionei diálogo para a seção de matemática;
+- adicionei o contador de duração das futuras animações nas materias.
