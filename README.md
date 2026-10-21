@@ -2,21 +2,21 @@
 meu portfolio do segundo ano!  
 
 ### PULOS
-[22 de Setembro, 2026](#22Setembro26)\
-[28 de Setembro, 2026](#28Setembro26)\
-[02 de Outubro, 2026](#02Outubro26)\
-[04 de Outubro, 2026](#04Outubro26)\
-[09 de Outubro, 2026](#09Outubro26)\
-[10 de Outubro, 2026](#10Outubro26)\
-[11 de Outubro, 2026](#11Outubro26)\
-[12 de Outubro, 2026](#12Outubro26)\
-[13 de Outubro, 2026](#13Outubro26)\
-[14 de Outubro, 2026](#14Outubro26)\
-[16 de Outubro, 2026](#16Outubro26)\
-[17 de Outubro, 2026](#17Outubro26)\
-[21 de Outubro, 2026](#21Outubro26)
+[22 de Setembro, 2026](#22092026)\
+[28 de Setembro, 2026](#28092026)\
+[02 de Outubro, 2026](#02102026)\
+[04 de Outubro, 2026](#04102026)\
+[09 de Outubro, 2026](#09102026)\
+[10 de Outubro, 2026](#10102026)\
+[11 de Outubro, 2026](#11102026)\
+[12 de Outubro, 2026](#12102026)\
+[13 de Outubro, 2026](#13102026)\
+[14 de Outubro, 2026](#14102026)\
+[16 de Outubro, 2026](#16102026)\
+[17 de Outubro, 2026](#17102026)\
+[21 de Outubro, 2026](#21102026)
 
-# <a name="22Setembro26">22/09/2026</a> 
+# <a>22/09/2026</a> 
 o dia da publicação dessa repo. veja, eu ainda não terminei ainda - afinal, faltam uns 2 meses até o dia da apresentação. porem, como é de costume da minha sala, eu vou dar minha alma no portfolio por razão nenhuma.
 bem, eu tenho minhas razões, além dos costumes da nossa sala. fora elas, a experiência vale.
 por ora, eu não fiz muita coisa. o botão do sobre mim funciona, mas não tem conteúdo na seção. mesma coisa no pulo rapido.
