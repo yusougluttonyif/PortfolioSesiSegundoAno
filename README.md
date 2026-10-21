@@ -1,23 +1,38 @@
 # PortfolioSesiSegundoAno
 meu portfolio do segundo ano!  
 
-# 22/09/2026 
+### PULOS
+[22 de Setembro, 2026](#22Setembro26)\
+[28 de Setembro, 2026](#28Setembro26)\
+[02 de Outubro, 2026](#02Outubro26)\
+[04 de Outubro, 2026](#04Outubro26)\
+[09 de Outubro, 2026](#09Outubro26)\
+[10 de Outubro, 2026](#10Outubro26)\
+[11 de Outubro, 2026](#11Outubro26)\
+[12 de Outubro, 2026](#12Outubro26)\
+[13 de Outubro, 2026](#13Outubro26)\
+[14 de Outubro, 2026](#14Outubro26)\
+[16 de Outubro, 2026](#16Outubro26)\
+[17 de Outubro, 2026](#17Outubro26)\
+[21 de Outubro, 2026](#21Outubro26)\
+
+# <a name="22Setembro26">22/09/2026</a> 
 o dia da publicação dessa repo. veja, eu ainda não terminei ainda - afinal, faltam uns 2 meses até o dia da apresentação. porem, como é de costume da minha sala, eu vou dar minha alma no portfolio por razão nenhuma.
 bem, eu tenho minhas razões, além dos costumes da nossa sala. fora elas, a experiência vale.
 por ora, eu não fiz muita coisa. o botão do sobre mim funciona, mas não tem conteúdo na seção. mesma coisa no pulo rapido.
 
-# 28/09/2026
+# <a name="28Setembro26">28/09/2026</a> 
 eu so coloquei um placeholder da intro. to com preguiça de fazer isso sinceramente, to meio drenado ultimamente. materias ainda nao ta pronto.
 
-# 02/10/2026
+# <a name="02Outubro26">02/10/2026</a> 
 novo mes, mesmo eu - continuo com preguiça pra trabalhar nisso. escrevo isso enquanto ainda estou na escola, e a unica mudança foi a remoção do botão de pulo rapido substituido por uma tecla. hoje foi um dia inutil na escola, então so fiquei programando e fznd um bagulho pra fernando. dito isso, hasta la vista baby.
 
 pequeno update de uma hora depois: fiz uma tela pra quando algo não estiver pronto, e concertei um erro que causava o contador da intro continuar contando mesmo apos a intro ja ter passado.
 
-# 04/10/2026
+# <a name="04Outubro26">04/10/2026</a> 
 corrigi bugs relacionados ao contador. so isso.
 
-# 09/10/2026
+# <a name="09Outubro26">09/10/2026</a> 
 to me sentindo mais motivado pra trabalhar
 hoje, eu:
  - fiz um eventlistener que espera toda as paginas carregarem antes de te deixar acessar o portfolio;
@@ -27,7 +42,7 @@ hoje, eu:
  - correções de erros pequenos
 nao foi muita coisa, mas agora tenho menos com o que me preocupar.
 
-# 10/10/2026
+# <a name="10Outubro26">10/10/2026</a> 
 ainda me sinto motivado
 hoje, eu:
  - detalhei os botoes da seção materias;
@@ -36,7 +51,7 @@ hoje, eu:
  - diminui a hitbox das materias, mas esta mais facil acha-las em geral;
  - me preocupei com as 686 linhas que escrevi, mesmo que ainda nao tenha começado a escrever pra os conteudos ainda 😭
 
-# 11/10/2026
+# <a name="11Outubro26">11/10/2026</a> 
 aprendi bastante hj, to aprendendo mt coisa no javascript
 hoje, eu:
 - fiz a logica por tras dos dialogos;
@@ -44,7 +59,7 @@ hoje, eu:
 - deixei a escrita do codigo melhor (ainda tem 800 linhas);
 - tirei duas declaracoes antigas inuteis
 
-# 12/10/2026
+# <a name="12Outubro26">12/10/2026</a> 
 feliz dia das crianças!
 hoje, eu:
  - terminei a pagina de materias (os botoes no topo sao temporarios);
@@ -59,20 +74,20 @@ hoje, eu:
  - ajeitei um erro CRITICO que causava o tempo da intro iniciar mesmo sem ter carregado ou iniciado o portfolio;
  - corrigi bugs relacionados aos wrappers da pagina materias.
 
-# 13/10/2026
+# <a name="13Outubro26">13/10/2026</a> 
 primeira atualização do dia
 hoje, eu so fiz um menu de configurações (por ora, só tem ajustes do volume). depois faço mais coisa
 
 atualizacao de algumas horas depois: eu so fiz uma função de pausar. eu gastei um bom tempo fazendo uma configuração pra mudar a tecla de pulo rapido e outras funções, mas acabei deletando o codigo todo por ser inutil.
 
-# 14/10/2026 
+# <a name="14Outubro26">14/10/2026</a> 
 infelizmente, nada sobra para o beta - fui forçado a ir pra escola e ver a sala semi vazia. o bom? eu consegui pegar um computador. mas ele e ruim. 
 hoje, eu:
  - fiz a seção de atividades para as matérias (mas voce nao pode ver ainda, pq eu sou malvado 😼 amanha eu deixo vc ver dps de terminar ou sexta);
  - agora o pulo rapido e as configurações fecham se voce apertar dnv no botao deles.
 nao deu pra fzr muito, mas eu fiz umas coisinhas ate
 
-# 16/10/2026
+# <a name="16Outubro26">16/10/2026</a> 
 um dia antes do aniversário do meu pai! (aleatório, eu sei.)
 hoje, eu orgulhosamente:
  - consegui terminar o a logica do codigo pra as matérias, e agora pode acessa-las;
@@ -86,7 +101,7 @@ nao soa como muito, mas eu diria que essa logica foi a mais dificil de fazer poi
 
 o portfolio agora esta, eu diria, 60% pronto. a maior coisa que falta e escrever pra os conteudos, e fazer as animações (a parte mais dificil).
 
-# 17/10/2026
+# <a name="17Outubro26">17/10/2026</a> 
 hoje e o aniversário do meu pai! ele faz 50, mas nem parece kkkk ele parece que tem 30
 enfim, hoje eu:
 - mudei a função que lidava com coisas que ainda nao foram feitas para mostrar um contador da duração das futuras animações;
@@ -95,7 +110,7 @@ enfim, hoje eu:
 - musica nova e final pra a Esfera de Rabiscos e Multiverso;
 - sons para entrada e saída de materias.
 
-# 21/10/2026
+# <a name="21Outubro26">21/10/2026</a> 
 a esse ponto, praticamente tudo tá feito.
 hoje, eu: 
  - coloquei a música final (de verdade essa vez!).
