@@ -184,7 +184,7 @@
         transition: all 0.4s ease;
             height: 100%;
             width: 100%;
-            background: linear-gradient(180deg, rgb(255, 245, 187), rgb(248, 233, 144));
+            background: linear-gradient(180deg, rgb(255, 247, 200), rgb(248, 233, 144));
             position: absolute;
             top: 50%;
             left: 50%;
@@ -709,7 +709,7 @@
       <!-- creditos de musica + discozinho -->
        <section id="musicCredits" onclick="songdisplayHide()">
         <img id="vinyl" src="https://file.garden/aq_0Fg8cibtOL7XF/discoFinal.gif">
-        <p id="musicname"><span>&#x266A;</span> A Behemoth, forever raging<br><br><span>&#x1F58A;</span> Spade
+        <p id="musicname"><span>&#x266A;</span> Doodle Sphere Theme<br><br><span>&#x1F58A;</span> N1troTheOne
        </section>
 
        <!-- menu de configurações -->
@@ -1271,7 +1271,7 @@
         const musicname = document.getElementById("musicname");
         const name = document.getElementById("name");
 
-        let doodlesong = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/ABehemothForeverRaging.mp3');
+        let doodlesong = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/doodlesphere%20theme%20(320kbps).mp3');
         doodlesong.volume = 0.5;
         doodlesong.loop = true;
         let dustsong = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/facetoface.mp3');
@@ -1391,7 +1391,7 @@
                     dustsong.pause();
                     setTimeout(() => {
                     doodlesong.play();}, 500);
-                    musicname.innerHTML = '<span>&#x266A;</span> A Behemoth, forever raging<br><br><span>&#x1F58A;</span> Spade'
+                    musicname.innerHTML = '<span>&#x266A;</span> Doodle Sphere Theme<br><br><span>&#x1F58A;</span> N1troTheOne'
                     name.innerHTML = musicname.innerHTML;
                     songdisplayShow();
                 }
@@ -1440,7 +1440,7 @@
 }
 
         function buttonsoundhandle(v) {
-            if (v === doodlesong) {v.currentTime = 85;}
+            if (v === doodlesong) {v.currentTime = 5;}
            else {v.currentTime = 0;}
            v.play();
         }
@@ -1576,7 +1576,7 @@
         } else if (loaded && PortfolioInitiated) {
             d = 0;
             donewithit = true;
-            doodlesong.currentTime = 100;
+            doodlesong.currentTime = 20;
             buttonsoundhandle(clicksfx);
             intro.style.display = 'none';
             songdisplayShow();
