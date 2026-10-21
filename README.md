@@ -94,3 +94,8 @@ enfim, hoje eu:
 - adicionei o contador de duração das futuras animações nas materias;
 - musica nova e final pra a Esfera de Rabiscos e Multiverso;
 - sons para entrada e saída de materias.
+
+# 21/10/2026
+a esse ponto, praticamente tudo tá feito.
+hoje, eu: 
+ - coloquei a música final (de verdade essa vez!).
