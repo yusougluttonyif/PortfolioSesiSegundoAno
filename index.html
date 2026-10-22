@@ -887,10 +887,8 @@
     onclick="if (Settings.style.display == 'grid'){closesettings();} else Settings.style.display = 'grid'; buttonsoundhandle(clicksfx)">
         <img src="https://file.garden/aq_0Fg8cibtOL7XF/gear.png"></button>
 
-        <a href="#teclas" style="display: none;" id="sendtoteclas"></a>
 
     <script>
-        const sendtoteclas = document.getElementById("sendtoteclas");
         const ActivitiesHold = document.getElementById("ActivitiesHold");
         const Activities = document.getElementById("Activities");
         const activityuni1 = document.getElementById("activityuni1");
@@ -1328,6 +1326,9 @@
 
         window.addEventListener('load', () => {
             loaded = true;
+            setTimeout(() => {
+                alert('voce chegou cedo, entao tenha em mente que nenhuma das animações estão prontas, nem desenhos, e falta bastante coisa. sinta-se livre pra olhar');
+            }, 3000);
         });
 
         setInterval(() => {
@@ -1498,7 +1499,7 @@
             e.preventDefault();
             if (Settings.style.display === 'none')
             {Settings.style.display = 'grid';} else {closesettings();}
-        } else if (e.key != 'F11') {Settings.style.display = 'grid'; setTimeout(() => {sendtoteclas.click();}, 500);}
+        } else if (e.key != 'F11') {alert('T = pulo rapido | Z = pular ou terminar diálogos | C = configurações | F = somente quando terminar')}
         }});
         
         function animation() {
