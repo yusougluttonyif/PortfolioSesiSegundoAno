@@ -19,7 +19,7 @@
         .firstbackground, .espaco, #Activities {
             height: 100%;
             width: 100%;
-            background: linear-gradient(180deg, rgb(255, 232, 100), rgb(216, 116, 22));
+            background: linear-gradient(180deg, rgb(255, 235, 120), rgb(188, 143, 46));
             position: absolute;
             z-index: 1;
             top: 50%;
@@ -184,7 +184,7 @@
         transition: all 0.4s ease;
             height: 100%;
             width: 100%;
-            background: linear-gradient(180deg, rgb(255, 249, 218), rgb(255, 232, 100), rgb(255, 232, 100));
+            background: linear-gradient(180deg, rgb(255, 243, 183), rgb(255, 235, 120), rgb(255, 235, 120));
             position: absolute;
             top: 50%;
             left: 50%;
@@ -709,7 +709,7 @@
       <!-- creditos de musica + discozinho -->
        <section id="musicCredits" onclick="songdisplayHide()">
         <img id="vinyl" src="https://file.garden/aq_0Fg8cibtOL7XF/discoFinal.gif">
-        <p id="musicname"><span>&#x266A;</span> Doodle Sphere Theme<br><br><span>&#x1F58A;</span> N1troTheOne
+        <p id="musicname"><span>&#x266A;</span> the normal elevator<br><br><span>&#x1F58A;</span>RundownSD</p>
        </section>
 
        <!-- menu de configurações -->
@@ -723,7 +723,7 @@
         <p style="font-size: 14px;">Musica:</p>
         <input type="range" id="volumeslider" min="0" max="100" step="1"><p id="volumeread" style="font-size: 14px;">50%</p></section>
         <section class="smallsection">
-        <img width="70px" height="70px" src="https://file.garden/aq_0Fg8cibtOL7XF/discoFinal.gif">
+        <img width="100px" height="100px" src="https://file.garden/aq_0Fg8cibtOL7XF/discoFinal.gif">
         <p id="name">...</p></section><hr>
         
         <p style="font-size: 16px;" id="teclas">Teclas</p>
@@ -803,6 +803,7 @@
       <button id="sobremimbutton" class="menubuttons" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(clicksfx); sobremimactive()">SOBRE MIM</button>
       <button id="materiasbutton" class="menubuttons" onmouseenter="hoversfx.play()" onclick="materiasopen()">MATÉRIAS</button>
       <p class="textmenu">Esfera dos Rabiscos</p>
+      <p class="textmenu" style="top: 90%; left: 90%;" id="hour">??:??:??</p>
          </div>
 
       <!-- o menu do pulo -->
@@ -1240,6 +1241,7 @@
         const tocar = document.getElementById("tocar");
 
         const instrucoes = document.getElementById("instrucoes");
+        const hour = document.getElementById("hour");
 
         const wrappers = document.getElementsByClassName("materiaqualquerWrapper");
         const sbtexthold = document.getElementById("sbtexthold");
@@ -1252,16 +1254,12 @@
         const pulomenu = document.getElementById("pulomenu");
         const pagecounter = document.getElementById("pagecounter");
 
-        
-        
-
         const texto1 = document.getElementById("texto1");
         const texto2 = document.getElementById("texto2");
         const texto3 = document.getElementById("texto3");
         const texto4 = document.getElementById("texto4");
         const texto5 = document.getElementById("texto5");
         const seila = document.getElementById("seila");
-
 
         let page = 1;
         let d = 15;
@@ -1271,7 +1269,7 @@
         const musicname = document.getElementById("musicname");
         const name = document.getElementById("name");
 
-        let doodlesong = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/doodlesphere%20theme%20(320kbps).mp3');
+        let doodlesong = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/the_normal_elevator_KLICKAUD.mp3');
         doodlesong.volume = 0.5;
         doodlesong.loop = true;
         let dustsong = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/facetoface.mp3');
@@ -1332,6 +1330,10 @@
             loaded = true;
         });
 
+        setInterval(() => {
+            hour.textContent = Temporal.Now.plainTimeISO().toString({smallestUnit: 'second'});
+        }, 1000);
+
         function closesettings() {
             buttonsoundhandle(clicksfx);
             Settings.style.display = 'none';
@@ -1391,7 +1393,7 @@
                     dustsong.pause();
                     setTimeout(() => {
                     doodlesong.play();}, 500);
-                    musicname.innerHTML = '<span>&#x266A;</span> Doodle Sphere Theme<br><br><span>&#x1F58A;</span> N1troTheOne'
+                    musicname.innerHTML = '<span>&#x266A;</span> the normal elevator<br><br><span>&#x1F58A;</span>RundownSD'
                     name.innerHTML = musicname.innerHTML;
                     songdisplayShow();
                 }
@@ -1440,7 +1442,7 @@
 }
 
         function buttonsoundhandle(v) {
-            if (v === doodlesong) {v.currentTime = 5;}
+            if (v === doodlesong) {v.currentTime = 8;}
            else {v.currentTime = 0;}
            v.play();
         }
@@ -1576,7 +1578,7 @@
         } else if (loaded && PortfolioInitiated) {
             d = 0;
             donewithit = true;
-            doodlesong.currentTime = 20;
+            doodlesong.currentTime = 23;
             buttonsoundhandle(clicksfx);
             intro.style.display = 'none';
             songdisplayShow();
@@ -1671,6 +1673,8 @@
       }, 300);
     }
 }
+
+     
     </script>
 </body>
 </html>
