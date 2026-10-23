@@ -709,7 +709,7 @@
       <!-- creditos de musica + discozinho -->
        <section id="musicCredits" onclick="songdisplayHide()">
         <img id="vinyl" src="https://file.garden/aq_0Fg8cibtOL7XF/discoFinal.gif">
-        <p id="musicname"><span>&#x266A;</span> the normal elevator<br><br><span>&#x1F58A;</span>RundownSD</p>
+        <p id="musicname"><span>&#x266A;</span> the normal elevator<br><br><span>&#x1F58A;</span>rundown</p>
        </section>
 
        <!-- menu de configurações -->
@@ -833,11 +833,6 @@
 
        <!-- menu das escolhas de matérias -->
         <div class="espaco" id="espaco">
-            <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" onclick="hitbox()">mostrar hitbox</button>
-            <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" onclick="dialoguesummon(beeptalksfx); buttonsoundhandle(clicksfx)">testar dialogo</button>
-
-            
-          
             <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="matWrapper" onclick="MateriaShow(); askForContent('Matemática');">
         <button id="matematicaBotao" class="buttonbase">
             <img src="https://file.garden/aq_0Fg8cibtOL7XF/portal.gif">
@@ -866,7 +861,7 @@
         </button>
         </div>
 
-        <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="humWrapper" style="top: 40%; left: 45%;" onclick="MateriaShow(); askForContent('Humanas');">
+        <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="humWrapper" style="top: 15%; left: 45%;" onclick="MateriaShow(); askForContent('Humanas');">
             <button id="humanasBotao" class="buttonbase">
             <img src="https://file.garden/aq_0Fg8cibtOL7XF/portal%20purple.gif">
             <span style="color: #b557ff; transform: scale(1.1);">HORRORTALE</span><br>Humanas
@@ -930,9 +925,9 @@
 
                 unity3: {
                 un: "TERCEIRA UNIDADE",
-                image: "url",  
-                title: "ALGO",  
-                context: "placeholder",
+                image: "https://file.garden/aq_0Fg8cibtOL7XF/triangulos.jpeg",  
+                title: "TRIÂNGULOS AO NOSSO REDOR",  
+                context: "Atividade de Matemática, do professor Welligton. O professor pediu a sala para se dividir em grupos de até 3, e encontrar formas triângulares (e medi-las) ao redor do SESI, ou outros lugares.",
                 
                 image2: "url",
                 title2: "ALGO",
@@ -972,8 +967,8 @@
                 unity3: {
                 un: "TERCEIRA UNIDADE",
                 image: "url",  
-                title: "ALGO",  
-                context: "placeholder",
+                title: "O CORAÇÃO",  
+                context: "Atividade de Biologia, da professora Fernanda. A professora pediu que a sala fizesse, individualmente, uma pesquisa sobre o coração humano e como ele funciona.",
                 
                 image2: "url",
                 title2: "ALGO",
@@ -1326,14 +1321,17 @@
 
         window.addEventListener('load', () => {
             loaded = true;
-            setTimeout(() => {
-                alert('voce chegou cedo, entao tenha em mente que nenhuma das animações estão prontas, nem desenhos, e falta bastante coisa. sinta-se livre pra olhar');
-            }, 3000);
-        });
+        }); 
+
+        const theday = Temporal.PlainDate.from("2026-12-01");
+        const today = Temporal.Now.plainDateISO();
 
         setInterval(() => {
-            hour.textContent = Temporal.Now.plainTimeISO().toString({smallestUnit: 'second'});
+            hour.textContent = Temporal.Now.plainTimeISO().toString({smallestUnit: 'seconds'})
         }, 1000);
+
+        hour.addEventListener('click', () => {
+        hour.innerHTML = today.until(theday).days.toString() + 'dias'});
 
         function closesettings() {
             buttonsoundhandle(clicksfx);
@@ -1394,7 +1392,7 @@
                     dustsong.pause();
                     setTimeout(() => {
                     doodlesong.play();}, 500);
-                    musicname.innerHTML = '<span>&#x266A;</span> the normal elevator<br><br><span>&#x1F58A;</span>RundownSD'
+                    musicname.innerHTML = '<span>&#x266A;</span> the normal elevator<br><br><span>&#x1F58A;</span>rundown'
                     name.innerHTML = musicname.innerHTML;
                     songdisplayShow();
                 }
@@ -1466,7 +1464,7 @@
             d--;
             duration.innerHTML = `vai ter uma intro aqui. faltam ${d} segundos`;
              if (d === 1 && !donewithit) {duration.innerHTML = 'vai ter uma intro aqui. falta 1 segundo';} }
-             if (d <= 0) {intro.style.display = 'none'; donewithit = true; clearInterval(introtime); name.innerHTML = musicname.innerHTML; songdisplayShow();}
+             if (d <= 0) {intro.style.display = 'none'; donewithit = true; clearInterval(introtime); name.innerHTML = musicname.innerHTML; songdisplayShow(); alert('voce chegou cedo, entao tenha em mente que nenhuma das animações estão prontas, nem desenhos, e falta bastante coisa. sinta-se livre pra olhar.')}
         }, 1000);
 
 
@@ -1528,18 +1526,6 @@
                 intro.style.display = 'none';
             }, 8400);
         }
-
-        function hitbox() {
-            buttonsoundhandle(clicksfx);
-                Array.from(wrappers).forEach(wrapper => {
-                    wrapper.style.background = 'rgb(255, 0, 0, 0.3)'
-                })
-                setTimeout(() => {
-                    Array.from(wrappers).forEach(wrapper => {
-                        wrapper.style.background = 'rgb(255, 0, 0, 0)'
-                    });
-                }, 5000);
-            }
 
         function sobremimactive() {
             setTimeout(() => {
