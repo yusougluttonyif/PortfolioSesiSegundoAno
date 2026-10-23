@@ -1187,15 +1187,6 @@
             setTimeout(() => {
             animation();}, 100);
             setTimeout(() => {
-            if (materiaAtual.innerHTML == 'Matemática') {
-                setTimeout(() => {
-                musicname.innerHTML = '<span>&#x266A;</span> Face to Face<br><br><span>&#x1F58A;</span> DUSTTALE';
-                name.innerHTML = musicname.innerHTML;
-            songdisplayShow();
-            setTimeout(() => {
-        dialoguesummon(dusttalksfx); currentmessage = '* ..huh. <br> bem, eu sabia que alguém viria. mas.. você? <br> ..só pegue logo seus papeis.'}, 400);}, 8000);
-            }}, 300);
-            setTimeout(() => {
             Activities.style.display = 'grid';
             Activities.style.zIndex = '4'
             setTimeout(() => {
@@ -1501,30 +1492,35 @@
         }});
         
         function animation() {
+            donewithit = false;
             intro.style.opacity = '1';
             duration.style.opacity = '1';
             intro.style.background = 'black';
             intro.style.display = 'block';
-            pular.style.display = 'none';
+            pular.style.display = 'block';
+            pular.style.opacity = '1';
             duration.style.position = 'absolute';
             duration.innerHTML = `Animação de 8 segundos aqui`;
             intro.style.cursor = 'not-allowed';
             d = 8;
             const animationtime = setInterval(() => {
+                if (!donewithit && d!=0) {
                 d--;
-                duration.innerHTML = `Animação de ${d} segundos aqui`;
+                duration.innerHTML = `Animação de ${d} segundos aqui`;} 
+                else if (d===0) {
+                d = 0;
+                donewithit = true;
+                clearInterval(animationtime);
+               intro.style.background = 'rgb(0,0,0,0)'
+               duration.style.opacity = '0';
+               if (materiaAtual.innerHTML === 'Matemática') {musicname.innerHTML = '<span>&#x266A;</span> Face to Face<br><br><span>&#x1F58A;</span> DUSTTALE';
+                name.innerHTML = musicname.innerHTML;
+                dialoguesummon(dusttalksfx); currentmessage = '* ..huh. <br> bem, eu sabia que alguém viria. mas.. você? <br> ..só pegue logo seus papeis.';}
+            }
             }, 1000); 
             duration.style.top = '50%';
             instrucoes.style.display = 'none';
-            setTimeout(() => {
-                clearInterval(animationtime);
-               d = 0;
-               intro.style.background = 'rgb(0,0,0,0)'
-               duration.style.opacity = '0';
-            }, 8000);
-            setTimeout(() => {
-                intro.style.display = 'none';
-            }, 8400);
+                
         }
 
         function sobremimactive() {
