@@ -1513,7 +1513,9 @@
                 clearInterval(animationtime);
                intro.style.background = 'rgb(0,0,0,0)'
                duration.style.opacity = '0';
-               if (materiaAtual.innerHTML === 'Matemática') {musicname.innerHTML = '<span>&#x266A;</span> Face to Face<br><br><span>&#x1F58A;</span> DUSTTALE';
+               if (materiaAtual.innerHTML === 'Matemática') {
+                songdisplayShow();
+                musicname.innerHTML = '<span>&#x266A;</span> Face to Face<br><br><span>&#x1F58A;</span> DUSTTALE';
                 name.innerHTML = musicname.innerHTML;
                 dialoguesummon(dusttalksfx); currentmessage = '* ..huh. <br> bem, eu sabia que alguém viria. mas.. você? <br> ..só pegue logo seus papeis.';}
             }
