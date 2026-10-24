@@ -123,4 +123,5 @@ hoje, eu:
  - corrigi alguns erros;
  - ajeitei creditos da musica;
  - tirei os botoes de teste da area de materias (pois quero deixar final logo);
+ - novo slider de volume de efeitos sonoros nas configurações;
  - adicionei algumas atividades novass em algumas materias.
