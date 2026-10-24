@@ -723,6 +723,9 @@
         <p style="font-size: 14px;">Musica:</p>
         <input type="range" id="volumeslider" min="0" max="100" step="1"><p id="volumeread" style="font-size: 14px;">50%</p></section>
         <section class="smallsection">
+        <p style="font-size: 14px;">Efeitos Sonoros:</p>
+        <input type="range" id="sfxslider" min="0" value="100" max="100" step="1"><p id="sfxread" style="font-size: 14px;">100%</p></section>
+        <section class="smallsection">
         <img width="100px" height="100px" src="https://file.garden/aq_0Fg8cibtOL7XF/discoFinal.gif">
         <p id="name">...</p></section><hr>
         
@@ -1222,6 +1225,8 @@
         const Settings = document.getElementById("Settings");
         const volumeslider = document.getElementById("volumeslider");
         const volumeread = document.getElementById("volumeread");
+        const sfxslider = document.getElementById("sfxslider");
+        const sfxread = document.getElementById("sfxread");
         const tocar = document.getElementById("tocar");
 
         const instrucoes = document.getElementById("instrucoes");
@@ -1263,19 +1268,22 @@
         doodlesong.volume = parseFloat(volumeslider.value) / 100;
         dustsong.volume = parseFloat(volumeslider.value) / 100;
         volumeread.innerText = parseFloat(volumeslider.value) + '%';});
+
         
+
+
         let loadedsfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/Load.MP3')
         loadedsfx.loop = false;
         loadedsfx.volume = 1;
 
         let hoversfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/undertale-move-selection-sound-effect%20(1).mp3');
-        hoversfx.volume = 0.5;
+        hoversfx.volume = 1;
         hoversfx.loop = false;
         let clicksfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/undertale-select.mp3');
-        clicksfx.volume = 0.6;
+        clicksfx.volume = 1;
         clicksfx.loop = false;
         let error = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/error-notification%20(1).mp3');
-        error.volume = 0.6;
+        error.volume = 1;
         error.loop = false;
         let closesfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/1009(1).MP3');
         closesfx.volume = 1;
@@ -1285,7 +1293,7 @@
         opensfx.volume = 1;
         let findsfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/find.MP3');
         findsfx.loop = false;
-        findsfx.volume = 0.75;
+        findsfx.volume = 1;
         
         let enteringsfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/enterLOUD.MP3');
         enteringsfx.loop = false;
@@ -1300,6 +1308,20 @@
         let dusttalksfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/dustsans.MP3');
         dusttalksfx.volume = 1;
         dusttalksfx.loop = false;
+
+       sfxslider.addEventListener('input', () => {
+        hoversfx.volume = parseFloat(sfxslider.value) / 100;
+        clicksfx.volume = parseFloat(sfxslider.value) / 100;
+        opensfx.volume = parseFloat(sfxslider.value) / 100;
+        closesfx.volume = parseFloat(sfxslider.value) / 100;
+        error.volume = parseFloat(sfxslider.value) / 100;
+        findsfx.volume = parseFloat(sfxslider.value) / 100;
+        enteringsfx.volume = parseFloat(volumeslider.value) / 100;
+        leavingsfx.volume = parseFloat(volumeslider.value) / 100;
+        loadedsfx.volume = parseFloat(volumeslider.value) / 100;
+        beeptalksfx.volume = parseFloat(volumeslider.value) / 100;
+        dusttalksfx.volume = parseFloat(volumeslider.value) / 100;
+        sfxread.innerText = parseFloat(sfxslider.value) + '%';});
 
         let firstTimeSkipping = true;
         let isRunning = false;
@@ -1438,7 +1460,7 @@
         }
         function othersoundhandle(v) {
             const v2 = v.cloneNode();
-            v2.volume = 0.5;
+            v2.volume = sfxslider.value / 100;
             v2.loop = false;
             v2.play();
          }
