@@ -125,3 +125,9 @@ hoje, eu:
  - tirei os botoes de teste da area de materias (pois quero deixar final logo);
  - novo slider de volume de efeitos sonoros nas configurações;
  - adicionei algumas atividades novass em algumas materias.
+
+ # <a>31/10/2026</a> 
+  hoje é halloween!
+  hoje, eu:
+   - só fiz algumas pequenas mudanças nos backgrounds de gradients de algumas partes.
+  como já disse, pouco tenho pra fazer além das animações. me deseje boa sorte!
