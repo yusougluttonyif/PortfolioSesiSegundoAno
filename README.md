@@ -15,7 +15,8 @@ meu portfolio do segundo ano!
 [16 de Outubro, 2026](#16102026)\
 [17 de Outubro, 2026](#17102026)\
 [21 de Outubro, 2026](#21102026)\
-[23 de Outubro, 2026](#23102026)
+[23 de Outubro, 2026](#23102026)\
+[31 de Outubro, 2026](#31102026)
 
 # <a>22/09/2026</a> 
 o dia da publicação dessa repo. veja, eu ainda não terminei ainda - afinal, faltam uns 2 meses até o dia da apresentação. porem, como é de costume da minha sala, eu vou dar minha alma no portfolio por razão nenhuma.
