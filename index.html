@@ -1388,6 +1388,7 @@
             document.body.style.pointerEvents = 'none';
             dialoguebox.style.pointerEvents = 'auto';
             Settings.style.pointerEvents = 'auto';
+            document.getElementById('gear').style.pointerEvents = 'auto';
             dialoguebox.style.opacity = '1';
             dialoguebox.style.transform = 'translate(-50%, -50%)'
         },100);
@@ -1561,11 +1562,15 @@
                 clearInterval(animationtime);
                intro.style.background = 'rgb(0,0,0,0)'
                duration.style.opacity = '0';
+               setTimeout(() => {
+                intro.style.display = 'none';
+               }, 100);
                if (materiaAtual.innerHTML === 'Matemática') {
                 songdisplayShow();
                 musicname.innerHTML = '<span>&#x266A;</span> Face to Face<br><br><span>&#x1F58A;</span> DUSTTALE';
                 name.innerHTML = musicname.innerHTML;
-                dialoguesummon(dusttalksfx); currentmessage = '* ..huh. <br> bem, eu sabia que alguém viria. mas.. você? <br> ..só pegue logo seus papeis.';}
+                setTimeout(() => {
+                dialoguesummon(dusttalksfx); currentmessage = '* ..huh. <br> bem, eu sabia que alguém viria. mas.. você? <br> ..só pegue logo seus papeis.';},200);}
             }
             }, 1000); 
             duration.style.top = '50%';
