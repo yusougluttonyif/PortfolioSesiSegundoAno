@@ -111,7 +111,7 @@
             background-color: rgba(0, 0, 0, 0.807);
             z-index: 10;
             display: none;
-            gap: 30px;
+            gap: 10px;
             flex-direction: column;
             justify-content: center;
             opacity: 0;
@@ -131,13 +131,18 @@
             font-family: 'Press Start 2P', sans-serif;
             color: white;
             font-size: 15px;
-        }
+        } 
+        .pulochoices {max-width: 90%; min-width: 0; width: 60%;}
         .pulochoices:hover {
             border-color: yellow;
             color: yellow;
             font-size: 18px;
             padding: 15px 41px;
             border-radius: 19px;
+            transform: translateX(40px);
+        }
+        .pulochoices:hover + .pulochoices, .pulochoices:has(+ .pulochoices:hover) {
+            transform: translateX(10px);
         }
         .buttonbase:hover {
             border-color: yellow;
@@ -349,6 +354,7 @@
             color: white;
             font-size: 15px;
             padding: 10px 10px;
+            display: none;
             opacity: 0;
         }
         .textsectionbase img {
@@ -361,6 +367,9 @@
             border-radius: 10px;
             corner-shape: scoop;
             margin-top: 10px;
+        }
+        .textsectionbase hr {
+            width: 100%
         }
         .textsectionbase span {
             color: #ffde59;
@@ -597,7 +606,7 @@
             background: radial-gradient(circle, rgb(0,0,0,0.3), rgb(0, 0, 0, 0.64), black);
             border: 3px solid white;
             backdrop-filter: blur(1px);
-            transition: transform 0.4s ease;
+            transition: transform 0.4s ease!important;
             outline: 3px solid black;
             width: 95%;
             height: 95%;
@@ -610,7 +619,8 @@
             position: absolute;
             corner-shape: scoop;
             border-radius: 20px;
-        }
+        } .chooseuni {backdrop-filter: none;}
+        .Activities {transition: transform 0.4s ease!important;}
         #chooseuni {
             gap: 20px;
             display: -ms-inline-grid;
@@ -674,6 +684,7 @@
 
     <!-- menu de atividades -->
      
+    
     <div id="Activities">
         <section id="ActivitiesHold">
             <div id='chooseuni'>
@@ -822,12 +833,12 @@
       <div class="pulomenu" id="pulomenu">
         <p class="textmenu">aqui voce vai pra qualquer lugar do portfolio</p>
         <button class="closebutton" onmouseenter="hoversfx.play()" onclick="closepulo()">X</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Matemática')">matematica malvada</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Linguagens');">linguagens louca</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Humanas');">humanas humericas</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Natureza')">natureza neandertal</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Senai');">senai slave owner</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Projeto de Vida');">projeto de vida pirado</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Matemática')">MATEMÁTICA</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Linguagens');">LINGUAGENS</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Humanas');">HUMANAS</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Natureza')">NATUREZA</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Senai');">SENAI</button>
+        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Projeto de Vida');">PROJ. DE VIDA</button>
        </div>
     
        <!-- intro -->
@@ -893,7 +904,6 @@
     onmouseenter="buttonsoundhandle(hoversfx)" 
     onclick="if (Settings.style.display == 'grid'){closesettings();} else Settings.style.display = 'grid'; buttonsoundhandle(clicksfx)">
         <img src="https://file.garden/aq_0Fg8cibtOL7XF/gear.png"></button>
-
 
     <script>
         const ActivitiesHold = document.getElementById("ActivitiesHold");
@@ -1557,6 +1567,7 @@
         }
 
         function sobremimactive() {
+            sbtexthold.style.display = 'block';
             setTimeout(() => {
                 setTimeout(() => {
                     seila.style.opacity = '1';
@@ -1577,6 +1588,7 @@
             secondbackground.style.transform = "translate(-50%, -50%) translateY(-100%)";
             firstbackground.style.transition = "all 1s ease";
             secondbackground.style.transition = "all 1s ease";
+            setTimeout(()=>{sbtexthold.style.display = 'none'},600);
             }, 200);
         }
         function skip() {
