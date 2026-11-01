@@ -1,5 +1,5 @@
 # PortfolioSesiSegundoAno
-meu portfolio do segundo ano! 
+meu portfolio do segundo ano!
 
 ### PULOS
 [22 de Setembro, 2026](#22092026)\
