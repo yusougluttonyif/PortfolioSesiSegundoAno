@@ -17,7 +17,7 @@ meu portfolio do segundo ano!
 [21 de Outubro, 2026](#21102026)\
 [23 de Outubro, 2026](#23102026)\
 [31 de Outubro, 2026](#31102026)\
-[1 de Novembro, 2026](#01112026)\
+[1 de Novembro, 2026](#01112026)
 
 # <a>22/09/2026</a> 
 o dia da publicação dessa repo. veja, eu ainda não terminei ainda - afinal, faltam uns 2 meses até o dia da apresentação. porem, como é de costume da minha sala, eu vou dar minha alma no portfolio por razão nenhuma.
@@ -140,4 +140,4 @@ hoje, eu:
 - fiz algumas mudanças necessárias nos gradientes dos dois primeiros backgrounds;
 - corrigi um erro que não fazia os backgrounds anteriores desaparecerem quando a seção de atividades aparecia, o que dava muito lag com o efeito de blur;
 - refatorei e corrigi muitos erros na lógica por trás das ativações das matérias;
-- uma coisa que não citei antes, mas tá aqui faz uns 10 dias: se você clicar no hora presente no site, ela mostra quantos dias faltam até o dia da apresentação.
+- uma coisa que não citei antes, mas tá aqui faz uns 10 dias: se você clicar na hora presente no site, ela mostra quantos dias faltam até o dia da apresentação.
