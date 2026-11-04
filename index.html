@@ -1538,7 +1538,8 @@
             e.preventDefault();
             if (Settings.style.display === 'none')
             {Settings.style.display = 'grid';} else {closesettings();}
-        } else if (e.key != 'F11') {alert('T = pulo rapido | Z = pular ou terminar diálogos | C = configurações | F = somente quando terminar')}
+        } else if (e.key === 'F11' || e.key === 'Shift' || e.key === 'Control' || e.key === 'CapsLock' || e.key === 'Escape' ||e.key === 'Alt' || e.key === 'Tab') {} else
+        {alert('T = pulo rapido | Z = pular ou terminar diálogos | C = configurações | F = somente quando terminar')}
         }});
         
         function animation() {
