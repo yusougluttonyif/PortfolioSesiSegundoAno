@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
@@ -1505,11 +1506,14 @@
            v.play();
         }
         function othersoundhandle(v) {
+            const isMobile = matchMedia('(pointer: coarse)').matches;
+            if (!isMobile) {
             const v2 = v.cloneNode();
             v2.volume = sfxslider.value / 100;
             v2.loop = false;
-            v2.play();
+            v2.play();} else {buttonsoundhandle(v)};
          }
+         
          let needsload = false;
          let donewithit = false;
         const introtime = setInterval(() => {
