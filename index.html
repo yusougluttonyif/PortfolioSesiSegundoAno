@@ -503,7 +503,7 @@
             margin: 10px;
             overflow: visible;
         }
-        #Settings button:hover {
+        #Settings button:hover:not(.press) {
             transform: scale(1.5);
         }
         .smallsection {
@@ -692,6 +692,28 @@
             width: 192px;
             height: 108px;
         }
+        .press {
+            display: inline-flex!important;
+            cursor: pointer;
+            background-color: rgb(47, 50, 58);
+            border: rgb(34, 37, 46) 3px solid;
+            color: white;
+            font-size: 24px;
+            padding: 30px 30px;
+            margin: 10px;
+            border-radius: 10px;
+            transform: rotateX(30deg);
+            box-shadow: 0px 15px 0 2px rgb(34, 38, 48);
+        }
+        .press:hover {
+            transform: rotateX(30deg) translateY(5px);
+            box-shadow: 0px 10px 0 2px rgb(34, 38, 48);
+        }
+        .press:active {
+            transition: all 0.05s ease;
+            transform: rotateX(30deg) translateY(10px);
+            box-shadow: 0px 5px 0 2px rgb(34, 38, 48);
+        }
     </style>
 </head>
 <body>
@@ -715,7 +737,7 @@
             <img id="activityimage1" src="https://file.garden/aq_0Fg8cibtOL7XF/LOG.png">
             <h2 id="activitytitle1">uh oh</h2>
             <br>
-            <p id="activitycontext1">q pena, deu errado kkkkkkk.. ok, checa o backup, deve ta la</p>
+            <p id="activitycontext1">q pena, deu errado</p>
             </section></section>
             
             <section id="paper">
@@ -773,12 +795,19 @@
         <section class="smallsection">
         <p style="font-size: 14px;">C = Configurações</p></section>
 
+        <section class="smallsection" id="pressionaveis">
+            <button class="press" onclick="if (pulomenu.style.display == 'flex') {closepulo();} else{
+                openpulo();}">T</button>
+            <button class="press" onclick="alert('ainda não foi feito')" >F</button>
+            <button class="press" onclick="closesettings()">C</button>
+        </section>
+
        </section>
 
 
     <!-- segunda parte, sobre mim -->
     <div class="secondbackground" id="secondbackground">
-        <button class="buttonbase" id="seila" onclick="next()" onmouseenter="hoversfx.play()">Passar</button>
+        <button class="buttonbase" id="seila" onclick="next()" onmouseenter="hoversfx.play()">PASSAR</button>
         <button class="closebutton" style="background: rgb(0,0,0,0.89)" id="seila2" onmouseenter="hoversfx.play()" onclick="sobremimdeactive()">X</button>
         <p class="textmenu" id="pagecounter">1/5</p>
         
@@ -918,7 +947,7 @@
     onmouseenter="buttonsoundhandle(hoversfx)" 
     onclick="if (Settings.style.display == 'grid'){closesettings();} else Settings.style.display = 'grid'; buttonsoundhandle(clicksfx)">
         <img src="https://file.garden/aq_0Fg8cibtOL7XF/gear.png"></button>
-
+<a id="go" href="#teclas"></a>
     <script>
         const ActivitiesHold = document.getElementById("ActivitiesHold");
         const Activities = document.getElementById("Activities");
@@ -1307,8 +1336,6 @@
         dustsong.volume = parseFloat(volumeslider.value) / 100;
         volumeread.innerText = parseFloat(volumeslider.value) + '%';});
 
-        
-
 
         let loadedsfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/Load.MP3')
         loadedsfx.loop = false;
@@ -1369,9 +1396,11 @@
         let dialogueIsFinished = false;
         let messageNum = 0;
         let currentmessage = '* oops kkkkk esqueci minha fala';
+        const isMobile = matchMedia('(pointer: coarse)').matches;
 
         window.addEventListener('load', () => {
             loaded = true;
+            if (isMobile) alert('voce esta no celular. não é recomendado acessar esse portfolio no celular, mas vá se quiser.')
         }); 
 
         const theday = new Date('2026-12-01T00:00:00')
@@ -1460,14 +1489,14 @@
 
         function dialoguewrite(v) {
            if (messageNum < currentmessage.length) {
-            othersoundhandle(v);
+            if (!isMobile) {othersoundhandle(v);}
             const currentchar = currentmessage.charAt(messageNum);
             dialoguetext.innerHTML = currentmessage.substring(0, messageNum + 1);
             messageNum++;
             let wait = 40;
-            if (currentchar === '.' || currentchar === '!' || currentchar === '?') {
+            if ('.!?:'.includes(currentchar)) {
                 wait = 400;
-            } else if (currentchar === ',' || currentchar === ';') {wait = 200;}
+            } else if (',;'.includes(currentchar)) {wait = 200;} else if('<'.includes(currentchar)) {wait = 0;}
             setTimeout(() => dialoguewrite(v), wait)
            } else if (messageNum == currentmessage.length) {
             dialogueIsFinished = true;
@@ -1505,12 +1534,10 @@
            v.play();
         }
         function othersoundhandle(v) {
-            const isMobile = matchMedia('(pointer: coarse)').matches;
-            if (!isMobile) {
             const v2 = v.cloneNode();
             v2.volume = sfxslider.value / 100;
             v2.loop = false;
-            v2.play();}
+            v2.play();
          }
 
          let needsload = false;
@@ -1526,7 +1553,7 @@
             d--;
             duration.innerHTML = `vai ter uma intro aqui. faltam ${d} segundos`;
              if (d === 1 && !donewithit) {duration.innerHTML = 'vai ter uma intro aqui. falta 1 segundo';} }
-             if (d <= 0) {intro.style.display = 'none'; donewithit = true; clearInterval(introtime); name.innerHTML = musicname.innerHTML; songdisplayShow(); alert('voce chegou cedo, entao tenha em mente que nenhuma das animações estão prontas, nem desenhos, e falta bastante coisa. sinta-se livre pra olhar.')}
+             if (d <= 0) {intro.style.display = 'none'; donewithit = true; clearInterval(introtime); name.innerHTML = musicname.innerHTML; songdisplayShow();}
         }, 1000);
 
         function openpulo() {
@@ -1550,7 +1577,7 @@
                 openpulo();}
             } else if (e.key === 'F' || e.key === 'f') {
                 e.preventDefault();
-                animation();
+                alert('ainda não foi feito');
             } else if (e.key === 'z' || e.key === 'Z') {
                 if (dialogueOnScreen) {
                 dialoguedesummon(); } else {}
@@ -1559,7 +1586,7 @@
             if (Settings.style.display === 'none')
             {Settings.style.display = 'grid';} else {closesettings();}
         } else if (e.key === 'F11' || e.key === 'Shift' || e.key === 'Control' || e.key === 'CapsLock' || e.key === 'Escape' ||e.key === 'Alt' || e.key === 'Tab') {} else
-        {alert('T = pulo rapido | Z = pular ou terminar diálogos | C = configurações | F = somente quando terminar')}
+        {document.getElementById('gear').click(); setTimeout(() => {document.getElementById('go').click()}, 500);}
         }});
         
         function animation() {
@@ -1592,7 +1619,8 @@
                 musicname.innerHTML = '<span>&#x266A;</span> Face to Face<br><br><span>&#x1F58A;</span> DUSTTALE';
                 name.innerHTML = musicname.innerHTML;
                 setTimeout(() => {
-                dialoguesummon(dusttalksfx); currentmessage = '* ..huh. <br> bem, eu sabia que alguém viria. mas.. você? <br> ..só pegue logo seus papeis.';},200);}
+                dialoguesummon(dusttalksfx); currentmessage = '* ..huh. <br> bem, eu sabia que alguém viria. mas.. você? <br> ..só pegue logo seus papeis.';},200);} 
+                else {dialoguesummon(beeptalksfx); currentmessage = '* portfolio não está pronto: sem animações, poucas atividades adicionadas. dialogo temporario'}
             }
             }, 1000); 
             duration.style.top = '50%';
