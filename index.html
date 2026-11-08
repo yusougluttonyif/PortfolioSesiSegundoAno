@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
@@ -10,7 +11,6 @@
            font-variant-numeric: tabular-nums;
         }
         html {scrollbar-width: none; background: white; scroll-behavior: smooth;}
-
         body {
             height: 100%;
             display: block;
@@ -46,6 +46,21 @@
             opacity: 0;
             width: 100%;
             height: 100%;
+        }
+        .loading {
+            border: white 10px solid;
+            border-top: rgb(255, 253, 157) 10px solid;
+            border-radius: 50%;
+            height: 60px;
+            width: 60px;
+            position: relative;
+            background: transparent;
+            animation: spin 1s infinite linear;
+            place-self: center;
+            justify-self: center;
+        }
+        @keyframes spin {
+            from {transform: rotate(0deg);} to {transform: rotate(360deg);}
         }
         .menubuttons {
             user-select: none;
@@ -1360,15 +1375,19 @@
             loaded = true;
         }); 
 
-        const theday = Temporal.PlainDate.from("2026-12-01");
-        const today = Temporal.Now.plainDateISO();
+        const theday = new Date('2026-12-01T00:00:00')
+        const theToday = new Date();
 
         setInterval(() => {
-            hour.textContent = Temporal.Now.plainTimeISO().toString({smallestUnit: 'seconds'})
+            const today = new Date();
+            hour.textContent = today.getHours().toString() + ':' + today.getMinutes().toString() + ':' + today.getSeconds().toString();
         }, 1000);
 
         hour.addEventListener('click', () => {
-        hour.innerHTML = today.until(theday).days.toString() + 'dias'});
+             const countday = 24 * 60 * 60 * 1000;
+             const days = Math.ceil((theday - theToday) / countday);
+             hour.textContent = `${days}` + ' dias'
+        });
 
         function closesettings() {
             buttonsoundhandle(clicksfx);
@@ -1495,7 +1514,7 @@
          let needsload = false;
          let donewithit = false;
         const introtime = setInterval(() => {
-            if (!loaded && !needsload) {duration.innerHTML = 'carregando o portfolio <br><progress></progress>'; needsload = true; return;}
+            if (!loaded && !needsload) {duration.innerHTML = 'carregando o portfolio <br><div class="loading"></div>'; needsload = true; return;}
             if (loaded && needsload) {duration.innerHTML = 'carregado!'; duration.style.color = 'yellow'; buttonsoundhandle(loadedsfx);
              needsload = false; setTimeout(() => {duration.style.color = 'white';}, 500); setTimeout(() => {duration.style.opacity = '0';}, 800); 
             setTimeout(() => {duration.innerHTML = '';}, 1000)};
@@ -1507,7 +1526,6 @@
              if (d === 1 && !donewithit) {duration.innerHTML = 'vai ter uma intro aqui. falta 1 segundo';} }
              if (d <= 0) {intro.style.display = 'none'; donewithit = true; clearInterval(introtime); name.innerHTML = musicname.innerHTML; songdisplayShow(); alert('voce chegou cedo, entao tenha em mente que nenhuma das animações estão prontas, nem desenhos, e falta bastante coisa. sinta-se livre pra olhar.')}
         }, 1000);
-
 
         function openpulo() {
          pulomenu.style.display = "flex"
