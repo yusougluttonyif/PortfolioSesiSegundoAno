@@ -1399,8 +1399,9 @@
         const isMobile = matchMedia('(pointer: coarse)').matches;
 
         window.addEventListener('load', () => {
-            loaded = true;
-            if (isMobile) alert('voce esta no celular. não é recomendado acessar esse portfolio no celular, mas vá se quiser.')
+            setTimeout(() => {
+            loaded = true;}, 5000);
+            if (isMobile) alert('voce esta no celular. não é recomendado acessar esse portfolio no celular, mas vá se quiser.');
         }); 
 
         const theday = new Date('2026-12-01T00:00:00')
