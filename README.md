@@ -144,4 +144,4 @@ hoje, eu:
 - uma coisa que não citei antes, mas tá aqui faz uns 10 dias: se você clicar na hora presente no site, ela mostra quantos dias faltam até o dia da apresentação.
 
 # <a>08/11/2026</a>
-so fiz o site ser melhor no mobile. amanha eu vou fazer mais coisas, estou trabalhando nas animacoes
+so fiz o site ser melhor no mobile. amanha eu vou fazer mais coisas, estou trabalhando nas animacoes. por razoes de teste, a confirmacao do carregamento do site agora demora 5 segundos a mais
