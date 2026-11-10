@@ -171,17 +171,18 @@
             color: white;
             font-size: 15px;
         } 
-        .pulochoices {max-width: 90%; min-width: 0; width: 60%;}
+        .pulochoices {max-width: 90%; min-width: 0; width: 60%; padding: 20px 30px; font-size: 20px;}
         .pulochoices:hover {
             border-color: yellow;
             color: yellow;
-            font-size: 18px;
-            padding: 15px 41px;
+            font-size: 22px;
+            padding: 25px 41px;
             border-radius: 19px;
             transform: translateX(40px);
         }
         .pulochoices:hover + .pulochoices, .pulochoices:has(+ .pulochoices:hover) {
-            transform: translateX(10px);
+            transition: all 0.78s ease;
+            transform: translateX(20px);
         }
         .buttonbase:hover {
             border-color: yellow;
@@ -899,7 +900,7 @@
 
       <!-- o menu do pulo -->
       <div class="pulomenu" id="pulomenu">
-        <p class="textmenu">aqui voce vai pra qualquer lugar do portfolio</p>
+        <p class="textmenu">PULO RÁPIDO</p>
         <button class="closebutton" onmouseenter="hoversfx.play()" onclick="closepulo()">X</button>
         <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Matemática')">MATEMÁTICA</button>
         <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Linguagens');">LINGUAGENS</button>
