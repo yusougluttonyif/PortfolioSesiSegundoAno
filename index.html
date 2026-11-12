@@ -740,13 +740,22 @@
             transform: rotateX(30deg) translateY(10px);
             box-shadow: 0px 5px 0 2px rgb(34, 38, 48);
         }
+        #characterofdialogue {
+            width: if(media(width < 400px): 50px; else: 300px);
+            height: if(media(width < 400px): 50px; else: 300px);
+            object-fit: cover;
+            position: fixed;
+            z-index: 99;
+            opacity: 0;
+            top: 50%;
+            transform: translate(-50%, -50%) translateY(500px);
+            left: 80%;
+        }
     </style>
 </head>
 <body>
 
     <!-- menu de atividades -->
-     
-    
     <div id="Activities">
         <section id="ActivitiesHold">
             <div id='chooseuni'>
@@ -781,12 +790,14 @@
     
 
     <!-- a caixa de dialogo -->
+     <div id="dialogueholder">
+     <img id="characterofdialogue" src="https://file.garden/aq_0Fg8cibtOL7XF/placeholderOfCharacter.png">
       <section id="dialoguebox">
         <p id="dialoguetext"></p>
         <p id="dialoguewarn">Aperte a tecla Z para pular, ou terminar diálogos</p>
         <button class="closebutton" onclick="dialoguedesummon(); buttonsoundhandle(clicksfx)" 
         style="top: 80%;">Z</button>
-      </section>
+      </section></div>
 
       <!-- creditos de musica + discozinho -->
        <section id="musicCredits" onclick="songdisplayHide()">
@@ -1309,7 +1320,7 @@
             
         }
     
-
+        const characterofdialogue = document.getElementById('characterofdialogue');
         const dialoguebox = document.getElementById("dialoguebox");
         const dialoguetext = document.getElementById("dialoguetext");
         const dialoguewarn = document.getElementById("dialoguewarn");
@@ -1465,7 +1476,9 @@
             Settings.style.pointerEvents = 'auto';
             document.getElementById('gear').style.pointerEvents = 'auto';
             dialoguebox.style.opacity = '1';
-            dialoguebox.style.transform = 'translate(-50%, -50%)'
+            characterofdialogue.style.opacity = '1';
+            dialoguebox.style.transform = 'translate(-50%, -50%)';
+            characterofdialogue.style.transform = 'translate(-50%, -50%)';
         },100);
         setTimeout(() => {
         dialoguewrite(v);
@@ -1479,7 +1492,8 @@
                     messageNum = currentmessage.length;
                 } else {
                 setTimeout(() => {
-                dialoguebox.style.transform = 'translate(-50%, -50%) translateY(500px)'}, 200);
+                dialoguebox.style.transform = 'translate(-50%, -50%) translateY(500px)';
+            characterofdialogue.style.transform = 'translate(-50%, -50%) translateY(500px)';}, 200);
                 setTimeout(() => {
                     setTimeout(() => {
                         intro.style.display = 'none';
@@ -1488,6 +1502,7 @@
                     intro.style.background = 'rgb(0,0,0,0)';
                     document.body.style.pointerEvents = 'auto';
                     dialoguebox.style.opacity = '0';
+                    characterofdialogue.style.opacity = '0';
                     dialogueIsFinished = false;
                     currentchar = 0;
                     messageNum = 0;
