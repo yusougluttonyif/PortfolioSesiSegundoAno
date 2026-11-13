@@ -615,7 +615,7 @@
             font-family: 'Press Start 2P', sans-serif;
             color: black;
         }
-        :not(#paper, #paper *)::selection {
+        :not(.paper, .paper *)::selection {
            text-shadow: 0px 0px 3px yellow, 0px 0px 3px yellow;
            background: transparent;
         }
@@ -674,7 +674,7 @@
             padding: 10px 10px;
             corner-shape: initial;
         }
-        #paper {
+        .paper {
             font-family: 'Patrick Hand', cursive;
           white-space: wrap;    
           margin: 10px;
@@ -691,26 +691,26 @@
           overflow: scroll;overflow-x: hidden!important;
           scrollbar-width: none;
         }
-        #paper:hover {
+        .paper:hover {
             transform: scale(1.1);
         }
-        #papercontent img:hover {
+        .paper img:hover {
             transform: scale(1.3);
         }
-        #paper::selection {
+        .paper::selection {
             color: red!important;
             background-color: transparent;
             text-shadow: 0 0 1px black;
         }
-        #papercontent {
+        .papercontent {
             overflow: visible;
             display: grid;
         }
-        #papercontent p {
+        .paper p {
             margin-top: 5px;
             font-size: 20px;
         }
-        #papercontent img {
+        .paper img {
             margin: 10px;
             display: grid;
             place-self: center;
@@ -765,7 +765,7 @@
                 <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" id="uni4" onclick="CurrentUnity = 4; askForContent(materiaAtual.innerHTML); buttonsoundhandle(clicksfx)">QUARTA</button>
                 <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" onclick="MateriaHide()">X</button>
             </div>
-            <section id="paper">
+            <section class="paper" id="paper1">
                 <section id="papercontent">
                     <h1 id="activityuni1">vish</h1>
                     <br>
@@ -775,7 +775,7 @@
             <p id="activitycontext1">q pena, deu errado</p>
             </section></section>
             
-            <section id="paper">
+            <section class="paper" id="paper2">
                 <section id="papercontent">
                     <h1 id="activityuni2">erro erro</h1>
                     <br>
@@ -997,6 +997,8 @@
         const activitycontext1 = document.getElementById("activitycontext1");
         const activitycontext2 = document.getElementById("activitycontext2");
         const materiaAtual = document.getElementById("materiaAtual");
+        const paper1 = document.getElementById('paper1');
+        const paper2 = document.getElementById('paper2');
 
         const uni1 = document.getElementById("uni1");
         const uni2 = document.getElementById("uni2");
@@ -1251,12 +1253,18 @@
             }
         };
 
+
         let CurrentUnity = 1;
 
         function askForContent(v) {
             if (v === "Matemática") {
                 setTimeout(() => {dustsong.play();}, 500);
-                 doodlesong.pause();}
+                 doodlesong.pause();
+                torielsong.pause();}
+                if (v === "Linguagens") {
+                setTimeout(() => {torielsong.play();}, 500);
+                 doodlesong.pause();
+                dustsong.pause();}
             let whereyouare = `unity${CurrentUnity}`;
             let showUni = document.getElementById(`uni${CurrentUnity}`)
             let content = ActivitiesALL[v][whereyouare];
@@ -1305,6 +1313,8 @@
             if (materiaAtual.innerHTML == 'Matemática') {
                 dialoguesummon(dusttalksfx);
                 currentmessage = '* bem, isso é tudo, certo? <br> aproveita a vida, criança. nunca se sabe, né? heh.'
+            } else if (materiaAtual.innerHTML === 'Linguagens') {dialoguesummon(torieltalksfx);
+                currentmessage = '* Boa viagem, minha criança. <br> Tome cuidado no caminho!'
             } else if (materiaAtual.innerHTML != 'ter') dialoguesummon(beeptalksfx);
             /* isso vai ser mudado de acordo com cada personagem, por ora vai ficar assim mesmo. me refiro ao else if*/
             materiaAtual.innerHTML = 'ter'
@@ -1317,7 +1327,6 @@
             espaco.style.display = 'block';
             Activities.style.zIndex = '-1';
             }, 900);
-            
         }
     
         const characterofdialogue = document.getElementById('characterofdialogue');
@@ -1367,10 +1376,13 @@
         doodlesong.loop = true;
         let dustsong = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/facetoface.mp3');
         dustsong.volume = 0.5;
+        let torielsong = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/RavagedRuins.mp3');
+        torielsong.volume = 0.5;
 
         volumeslider.addEventListener('input', () => {
         doodlesong.volume = parseFloat(volumeslider.value) / 100;
         dustsong.volume = parseFloat(volumeslider.value) / 100;
+        torielsong.volume = parseFloat(volumeslider.value) / 100;
         volumeread.innerText = parseFloat(volumeslider.value) + '%';});
 
 
@@ -1410,6 +1422,9 @@
         let dusttalksfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/dustsans.MP3');
         dusttalksfx.volume = 1;
         dusttalksfx.loop = false;
+        let torieltalksfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/snd_txttor.wav');
+        torieltalksfx.volume = 1;
+        torieltalksfx.loop = false;
 
        sfxslider.addEventListener('input', () => {
         hoversfx.volume = parseFloat(sfxslider.value) / 100;
@@ -1423,6 +1438,7 @@
         loadedsfx.volume = parseFloat(sfxslider.value) / 100;
         beeptalksfx.volume = parseFloat(sfxslider.value) / 100;
         dusttalksfx.volume = parseFloat(sfxslider.value) / 100;
+        torieltalksfx.volume = parseFloat(sfxslider.value) / 100;
         sfxread.innerText = parseFloat(sfxslider.value) + '%';});
 
         let firstTimeSkipping = true;
@@ -1469,7 +1485,7 @@
             instrucoes.style.display = 'none';
             if (PortfolioInitiated){
             setTimeout(() => {
-                if (materiaAtual.innerHTML !== 'ok')
+                if (materiaAtual.innerHTML === 'ter')
             {intro.style.background = 'black';} else intro.style.background = '#00000090'}, 200);}
             document.body.style.pointerEvents = 'none';
             dialoguebox.style.pointerEvents = 'auto';
@@ -1520,6 +1536,7 @@
                     firstbackground.style.display = 'block';
                     espaco.style.display = 'block';
                     dustsong.pause();
+                    torielsong.pause();
                     setTimeout(() => {
                     doodlesong.play();}, 500);
                     musicname.innerHTML = '<span>&#x266A;</span> the normal elevator<br><br><span>&#x1F58A;</span>rundown'
@@ -1669,8 +1686,13 @@
                 musicname.innerHTML = '<span>&#x266A;</span> Face to Face<br><br><span>&#x1F58A;</span> DUSTTALE';
                 name.innerHTML = musicname.innerHTML;
                 setTimeout(() => {
-                dialoguesummon(dusttalksfx); currentmessage = '* ..huh. <br> bem, eu sabia que alguém viria. mas.. você? <br> ..só pegue logo seus papeis.';},200);} 
-                else {dialoguesummon(beeptalksfx); currentmessage = '* portfolio não está pronto: sem animações, poucas atividades adicionadas. dialogo temporario'}
+                dialoguesummon(dusttalksfx); currentmessage = '* ..huh. <br> bem, eu sabia que alguém viria. mas.. você? <br> ..só pegue logo seus papeis.';},100);} 
+                else if (materiaAtual.innerHTML === 'Linguagens') {songdisplayShow();
+                    musicname.innerHTML = '<span>&#x266A;</span>Ravaged Ruins<br><br><span>&#x1F58A;</span> AMA';
+                    name.innerHTML = musicname.innerHTML;
+                    setTimeout(() => {
+                dialoguesummon(torieltalksfx); currentmessage = '* Ah, minha criança.. <br> Me perdoe pela bagunça, esperava que vinhesse mais tarde. <br> Bem, aqui estão seus papeis.';},100);
+                } else {dialoguesummon(beeptalksfx); currentmessage = '* portfolio não está pronto: sem animações, poucas atividades adicionadas. dialogo temporario'}
             }
             }, 1000); 
             duration.style.top = '50%';
