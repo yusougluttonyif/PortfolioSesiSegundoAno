@@ -4,6 +4,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+           font-family: 'UT Papyrus';
+           src: url('https://raw.githubusercontent.com/ThetaApps/font-undertale/master/Papyrus/Papyrus.eot');
+           src: url('https://raw.githubusercontent.com/ThetaApps/font-undertale/master/Papyrus/Papyrus.woff') format('woff'),
+           url('https://raw.githubusercontent.com/ThetaApps/font-undertale/master/Papyrus/Papyrus.ttf') format('truetype');
+           font-weight: normal;
+           font-style: normal;
+        }
+           @font-face {
+  font-family: 'ComicSans';
+  src: url('https://raw.githubusercontent.com/ThetaApps/font-undertale/master/Comic%20Sans/Comic%20Sans.woff') format('woff'),
+       url('https://raw.githubusercontent.com/ThetaApps/font-undertale/master/Comic%20Sans/Comic%20Sans.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}   
         * {margin: 0;
            padding: 0;
            transition: all 0.4s ease; overflow: hidden;
@@ -751,6 +766,7 @@
             transform: translate(-50%, -50%) translateY(500px);
             left: 80%;
         }
+        hr {height: 1px; max-height: 1px;}
     </style>
 </head>
 <body>
@@ -869,7 +885,7 @@
          <span><small>(intercámbio para o canadá!)</small></span>
         </div>
         <div id="texto3" style="display:none;">
-         <h1>QUALIDADES</h1><hr><br><h3>BOAS</h3><br>
+         <h1>QUALIDADES BOAS</h1><hr><br>
          <ul>
             <li>&#9733; Sou calmo;</li><br>
             <li>&#9733; Gosto de ajudar;</li><br>
@@ -879,7 +895,7 @@
          </ul>
         </div>
         <div id="texto4" style="display:none;">
-         <h1>QUALIDADES</h1><hr><br><h3>MÁS</h3><br>
+         <h1>QUALIDADES MÁS</h1><hr><br>
          <ul>
             <li>&#9734; Sou introvertido;</li><br>
             <li>&#9734; Procrastino;</li><br>
@@ -1015,7 +1031,7 @@
                 
                 image2: "https://file.garden/aq_0Fg8cibtOL7XF/Dusttale%20dialog%20(2).png",
                 title2: "MULHERES IMPORTANTES NA MATEMÁTICA",
-                context2: "Atividade de Matemática, do professor Wellington. O professor pediu a sala para fazer uma pesquisa de 3 mulheres importantes na historia da matematica."},
+                context2: "Atividade de Matemática, do professor Wellington. O professor pediu a sala para fazer uma pesquisa de 3 mulheres importantes na historia da Matemática."},
 
                 unity2: {
                 un: "SEGUNDA UNIDADE",
@@ -1260,11 +1276,18 @@
             if (v === "Matemática") {
                 setTimeout(() => {dustsong.play();}, 500);
                  doodlesong.pause();
-                torielsong.pause();}
+                 torielsong.pause();
+                 disbeliefsong.pause();}
                 if (v === "Linguagens") {
                 setTimeout(() => {torielsong.play();}, 500);
                  doodlesong.pause();
-                dustsong.pause();}
+                 dustsong.pause();
+                 disbeliefsong.pause();}
+                 if (v === "Senai") {
+                setTimeout(() => {disbeliefsong.play();}, 500);
+                 doodlesong.pause();
+                 dustsong.pause();
+                 torielsong.pause();}
             let whereyouare = `unity${CurrentUnity}`;
             let showUni = document.getElementById(`uni${CurrentUnity}`)
             let content = ActivitiesALL[v][whereyouare];
@@ -1312,10 +1335,13 @@
         function MateriaHide() {
             if (materiaAtual.innerHTML == 'Matemática') {
                 dialoguesummon(dusttalksfx);
-                currentmessage = '* bem, isso é tudo, certo? <br> aproveita a vida, criança. nunca se sabe, né? heh.'
+                currentmessage = '* bem, isso foi tudo, certo? <br> aproveita a vida, crianca. nunca se sabe, ne? heh.'
             } else if (materiaAtual.innerHTML === 'Linguagens') {dialoguesummon(torieltalksfx);
                 currentmessage = '* Boa viagem, minha criança. <br> Tome cuidado no caminho!'
-            } else if (materiaAtual.innerHTML != 'ter') dialoguesummon(beeptalksfx);
+            } else if(materiaAtual.innerHTML === 'Senai') {dialoguesummon(disbelieftalksfx);
+                currentmessage = '* CERTO, HUMANO! MEU TRABALHO CHEGOU AO FIM. <br> CASO VOCÊ QUEIRA UMA PORÇÃO, VOU ESTAR NA MINHA CASA FAZENDO ESPAGUETE.'
+            }
+             else if (materiaAtual.innerHTML != 'ter') dialoguesummon(beeptalksfx);
             /* isso vai ser mudado de acordo com cada personagem, por ora vai ficar assim mesmo. me refiro ao else if*/
             materiaAtual.innerHTML = 'ter'
             setTimeout(() => {
@@ -1378,11 +1404,14 @@
         dustsong.volume = 0.5;
         let torielsong = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/RavagedRuins.mp3');
         torielsong.volume = 0.5;
+        let disbeliefsong = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/TheChoice.mp3');
+        disbeliefsong.volume = 0.5;
 
         volumeslider.addEventListener('input', () => {
         doodlesong.volume = parseFloat(volumeslider.value) / 100;
         dustsong.volume = parseFloat(volumeslider.value) / 100;
         torielsong.volume = parseFloat(volumeslider.value) / 100;
+        disbeliefsong.volume = parseFloat(volumeslider.value) / 100;
         volumeread.innerText = parseFloat(volumeslider.value) + '%';});
 
 
@@ -1425,6 +1454,9 @@
         let torieltalksfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/snd_txttor.wav');
         torieltalksfx.volume = 1;
         torieltalksfx.loop = false;
+        let disbelieftalksfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/snd_txtpap.wav');
+        disbelieftalksfx.volume = 1;
+        disbelieftalksfx.loop = false;
 
        sfxslider.addEventListener('input', () => {
         hoversfx.volume = parseFloat(sfxslider.value) / 100;
@@ -1439,6 +1471,7 @@
         beeptalksfx.volume = parseFloat(sfxslider.value) / 100;
         dusttalksfx.volume = parseFloat(sfxslider.value) / 100;
         torieltalksfx.volume = parseFloat(sfxslider.value) / 100;
+        disbelieftalksfx.volume = parseFloat(sfxslider.value) / 100;
         sfxread.innerText = parseFloat(sfxslider.value) + '%';});
 
         let firstTimeSkipping = true;
@@ -1450,11 +1483,13 @@
         let messageNum = 0;
         let currentmessage = '* oops kkkkk esqueci minha fala';
         const isMobile = matchMedia('(pointer: coarse)').matches;
+        const isFirefox = navigator.userAgent.includes('Firefox');
 
         window.addEventListener('load', () => {
             setTimeout(() => {
             loaded = true;}, 2000);
-            if (isMobile) alert('voce esta no celular. não é recomendado acessar esse portfolio no celular, mas vá se quiser.');
+            if (isMobile) alert('voce esta no celular/tablet. não é recomendado acessar esse portfolio no celular, mas vá se quiser.');
+            if (isFirefox) alert('voce está no firefox. recomendo não continuar, e mudar pra outro browser - muitas coisas aqui quebram no firefox.')
         });
 
         const theday = new Date('2026-12-01T00:00:00')
@@ -1462,7 +1497,7 @@
 
         setInterval(() => {
             const today = new Date();
-            hour.textContent = today.getHours().toString() + ':' + today.getMinutes().toString() + ':' + today.getSeconds().toString();
+            hour.textContent = today.toLocaleTimeString([], {hour12: false});
         }, 1000);
 
         hour.addEventListener('click', () => {
@@ -1477,6 +1512,13 @@
             history.replaceState(null, '', window.location.pathname + window.location.search);
         }
         function dialoguesummon(v) {
+            if (materiaAtual.innerHTML === 'Senai') {dialoguebox.style.fontFamily = "'UT Papyrus', cursive";
+             dialoguebox.style.fontSize = "21px";
+            } 
+            else if (materiaAtual.innerHTML === 'Matemática') {dialoguebox.style.fontFamily = "'ComicSans', cursive";
+                dialoguebox.style.fontSize = "23px"
+            } 
+            else {dialoguebox.style.fontFamily = "'Press Start 2P', serif"; dialoguebox.style.fontSize = "16px"}
             setTimeout(() => {
             intro.style.display = 'flex'
             intro.style.cursor = 'not-allowed';
@@ -1537,6 +1579,7 @@
                     espaco.style.display = 'block';
                     dustsong.pause();
                     torielsong.pause();
+                    disbeliefsong.pause();
                     setTimeout(() => {
                     doodlesong.play();}, 500);
                     musicname.innerHTML = '<span>&#x266A;</span> the normal elevator<br><br><span>&#x1F58A;</span>rundown'
@@ -1686,12 +1729,18 @@
                 musicname.innerHTML = '<span>&#x266A;</span> Face to Face<br><br><span>&#x1F58A;</span> DUSTTALE';
                 name.innerHTML = musicname.innerHTML;
                 setTimeout(() => {
-                dialoguesummon(dusttalksfx); currentmessage = '* ..huh. <br> bem, eu sabia que alguém viria. mas.. você? <br> ..só pegue logo seus papeis.';},100);} 
+                dialoguesummon(dusttalksfx); currentmessage = '* ..huh. <br> bem, eu sabia que alguem viria. mas.. voce? <br> ..so pegue logo seus papeis.';},100);} 
                 else if (materiaAtual.innerHTML === 'Linguagens') {songdisplayShow();
                     musicname.innerHTML = '<span>&#x266A;</span>Ravaged Ruins<br><br><span>&#x1F58A;</span> AMA';
                     name.innerHTML = musicname.innerHTML;
                     setTimeout(() => {
                 dialoguesummon(torieltalksfx); currentmessage = '* Ah, minha criança.. <br> Me perdoe pela bagunça, esperava que vinhesse mais tarde. <br> Bem, aqui estão seus papeis.';},100);
+                } 
+                else if (materiaAtual.innerHTML === 'Senai') {songdisplayShow();
+                    musicname.innerHTML = '<span>&#x266A;</span>The Choice (Slowed)<br><br><span>&#x1F58A;</span> Toby Fox';
+                    name.innerHTML = musicname.innerHTML;
+                    setTimeout(() => {
+                dialoguesummon(disbelieftalksfx); currentmessage = '* HUMANO! PERMITA-ME ME DESCULPAR. <br> EU PENSAVA QUE VOCÊ ERA QUEM FEZ AQUILO COM MEU IRMÃO, MAS EU ESTAVA ERRADO! <br> ...ESQUECE! AQUI ESTAO SEUS PAPEIS.';},100);
                 } else {dialoguesummon(beeptalksfx); currentmessage = '* portfolio não está pronto: sem animações, poucas atividades adicionadas. dialogo temporario'}
             }
             }, 1000); 
@@ -1701,7 +1750,7 @@
         }
 
         function sobremimactive() {
-            sbtexthold.style.display = 'block';
+            sbtexthold.style.display = 'grid';
             setTimeout(() => {
                 setTimeout(() => {
                     seila.style.opacity = '1';
