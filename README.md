@@ -19,7 +19,8 @@ meu portfolio do segundo ano!
 [31 de Outubro, 2026](#31102026)\
 [1 de Novembro, 2026](#01112026)\
 [8 de Novembro, 2026](#08112026)\
-[14 de Novembro, 2026](#14112026)
+[14 de Novembro, 2026](#14112026)\
+[15 de Novembro, 2026](#15112026)\
 
 # <a>22/09/2026</a> 
 o dia da publicação dessa repo. veja, eu ainda não terminei ainda - afinal, faltam uns 2 meses até o dia da apresentação. porem, como é de costume da minha sala, eu vou dar minha alma no portfolio por razão nenhuma.
@@ -155,3 +156,8 @@ por um tempo, eu estive fazendo mudanças sem postar aqui. então vou falar de a
  - corrigi alguns erros bobos e pequenos (como o sobre mim inicializando com display block e nao grid, causando a foto de eu bebê nao ficar centralizada);
  - adicionei botões nas configurações para quem estiver no celular/tablet, ou nao queira pressionar as teclas.
 acho que fiz mais coisas, mas do topo da minha mente so lembro disso. Estou trabalhando nas animaações, por isso nao venho mexendo muito no codigo. quanto as animacoes, o progresso esta lento (demora pra fazer e tenho pouco tempo), mas esta andando. estou trabalhando na animacao da intro -  a saber, a mais longa. espero te-la pronta ainda esse fim de semana.
+
+# <a>15/11/2026</a>
+hoje, eu:
+ - terminei todos os dialogos, agora so falta os desenhos;
+ - estou bem proximo de terminar a animacao da intro.
