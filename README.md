@@ -21,6 +21,7 @@ meu portfolio do segundo ano!
 [8 de Novembro, 2026](#08112026)\
 [14 de Novembro, 2026](#14112026)\
 [15 de Novembro, 2026](#15112026)\
+[16 de Novembro, 2026](#16112026)
 
 # <a>22/09/2026</a> 
 o dia da publicação dessa repo. veja, eu ainda não terminei ainda - afinal, faltam uns 2 meses até o dia da apresentação. porem, como é de costume da minha sala, eu vou dar minha alma no portfolio por razão nenhuma.
@@ -161,3 +162,7 @@ acho que fiz mais coisas, mas do topo da minha mente so lembro disso. Estou trab
 hoje, eu:
  - terminei todos os dialogos, agora so falta os desenhos;
  - estou bem proximo de terminar a animacao da intro.
+
+# <a>16/11/2026</a>
+hoje, eu:
+ - FINALMENTE TERMINEI A INTRO!!!! SO FALTA O SOBRE MIM E AS OUTRAS ANIMAÇÕES, BELO CAMINHO ANDADo!!!
