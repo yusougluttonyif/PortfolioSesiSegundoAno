@@ -35,14 +35,23 @@
         .firstbackground, .espaco, #Activities{
             height: 100%;
             width: 100%;
-            background: radial-gradient(circle at top,rgb(255, 236, 127) 50%, rgb(255, 231, 95), rgb(194, 102, 4)90%,  rgb(194, 102, 4)70%);
+            object-fit: cover;
             position: absolute;
             z-index: 1;
             top: 50%;
             left: 50%;
+            isolation: isolate;
+            overflow:hidden;
             transform: translate(-50%, -50%);
         } 
-        .firstbackground {background-size: 100% 100%; background-position: 100% 0%;}
+        .firstbackground video, #intro video {
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 0;
+            object-fit: cover;
+             }
         #Activities {
             background-image: url("https://file.garden/aq_0Fg8cibtOL7XF/clearerPLACEHOLDER.png");
             background-size: cover;
@@ -118,7 +127,7 @@
             color: white;
             transform: perspective(100px) translate(-50%, -50%) skewX(10deg) rotateY(8deg) scale(1.2);
         }
-        .menubuttons:nth-child(2) {
+        #materiasbutton {
             left: 70%;
             padding: 10px 40px;
             transform: perspective(100px) translate(-50%, -50%) skewX(-10deg) rotateY(-10deg) scale(1.2);
@@ -130,7 +139,7 @@
             border-radius: 18px;
             transform: perspective(100px) translate(-50%, -50%) skewX(20deg) rotateY(12deg) scale(1.4);
         }
-        .menubuttons:hover:nth-child(2) {
+        #materiasbutton:hover{
             border-color: yellow;
             color: yellow;
             border-radius: 18px;
@@ -141,7 +150,7 @@
             padding: 20px 30px;
             border-radius: 100px;
         }
-        .menubuttons:active:nth-child(2) {
+        #materiasbutton:active {
             transition: all 0.1s ease;
             padding: 20px 50px;
             border-radius: 100px;
@@ -249,7 +258,7 @@
         transition: all 0.4s ease;
             height: 100%;
             width: 100%;
-            background: radial-gradient(circle at top, rgb(255, 243, 183) 50%,rgb(255, 236, 127),rgb(255, 236, 127),rgb(255, 236, 127),rgb(255, 236, 127));
+            background: radial-gradient(circle at top, rgb(255, 243, 183) 50%,#f5dc44,#f5dc44,#f5dc44,#ffe961);
             position: absolute;
             top: 50%;
             left: 50%;
@@ -919,10 +928,11 @@
     <!-- primeira parte, o menu -->
      
     <div class="firstbackground" id="firstbackground">
+        <video onloadedmetadata="this.playbackRate = 0.75" autoplay muted loop playsinline src="https://file.garden/aq_0Fg8cibtOL7XF/Scene5Intro%20-%20blur.mp4"></video>
       <button id="sobremimbutton" class="menubuttons" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(clicksfx); sobremimactive()">SOBRE MIM</button>
       <button id="materiasbutton" class="menubuttons" onmouseenter="hoversfx.play()" onclick="materiasopen()">MATÉRIAS</button>
-      <p class="textmenu">Esfera dos Rabiscos</p>
-      <p class="textmenu" style="top: 90%; left: 90%;" id="hour">??:??:??</p>
+      <p class="textmenu" style="transform: translate(-50%, -50%) rotateX(20deg);">Esfera dos Rabiscos</p>
+      <p class="textmenu" style="top: 90%; left: 90%; transform: translate(-50%, -50%) skewY(10deg);" id="hour">??:??:??</p>
          </div>
 
       <!-- o menu do pulo -->
@@ -939,6 +949,7 @@
     
        <!-- intro -->
        <div id="intro">
+        <video id='theanimationitself' autoplay></video>
         <p class="textmenu" id="duration"></p>
         <button class="buttonbase" onclick="skip()" onmouseenter="hoversfx.play()"style="
         position: absolute; top:50%; left: 50%; transform: translate(-50%, -50%);" id="pular">COMEÇAR</button>
@@ -1001,7 +1012,11 @@
     onclick="if (Settings.style.display == 'grid'){closesettings();} else Settings.style.display = 'grid'; buttonsoundhandle(clicksfx)">
         <img src="https://file.garden/aq_0Fg8cibtOL7XF/gear.png"></button>
 <a id="go" href="#teclas"></a>
+<!--meu preloader super esforçado e nada preguiçoso, se voce abriu o inspect e vinher falar mal eu vou soltar raios dos olhos-->
+<video src="https://file.garden/aq_0Fg8cibtOL7XF/actualIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
+
     <script>
+        const theanimationitself = document.getElementById("theanimationitself");
         const ActivitiesHold = document.getElementById("ActivitiesHold");
         const Activities = document.getElementById("Activities");
         const activityuni1 = document.getElementById("activityuni1");
@@ -1513,6 +1528,7 @@
         torieltalksfx.volume = parseFloat(sfxslider.value) / 100;
         disbelieftalksfx.volume = parseFloat(sfxslider.value) / 100;
         asgoretalksfx.volume = parseFloat(sfxslider.value) / 100;
+        theanimationitself.volume = parseFloat(sfxslider.value) / 100;
         sfxread.innerText = parseFloat(sfxslider.value) + '%';});
 
         let firstTimeSkipping = true;
@@ -1527,8 +1543,7 @@
         const isFirefox = navigator.userAgent.includes('Firefox');
 
         window.addEventListener('load', () => {
-            setTimeout(() => {
-            loaded = true;}, 2000);
+            loaded = true;
             if (isMobile) alert('voce esta no celular/tablet. não é recomendado acessar esse portfolio no celular, mas vá se quiser.');
             if (isFirefox) alert('voce está no firefox. recomendo não continuar, e mudar pra outro browser - muitas coisas aqui quebram no firefox.')
         });
@@ -1825,20 +1840,25 @@
         function skip() {
             if (loaded == true && firstTimeSkipping == true && !PortfolioInitiated) {
             pular.style.top = '90%';
+            theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/actualIntro-mp3.mp4';
+            theanimationitself.play();
+            theanimationitself.currentTime = 0;
+            theanimationitself.volume = 0.5;
             pular.style.left = '90%';
             PortfolioInitiated = true;
             firstTimeSkipping = false;
             duration.innerHTML = `vai ter uma intro aqui. faltam ${d} segundos`;
             pular.innerHTML = 'PULAR';
             buttonsoundhandle(doodlesong);
-            d = 15;
+            d = 15.95;
             buttonsoundhandle(clicksfx);
             setTimeout(() => {}, 500);
         } else if (loaded && PortfolioInitiated) {
+            theanimationitself.src = '';
             d = 0;
             donewithit = true;
             if (materiaAtual.innerHTML == 'ok') {
-            doodlesong.currentTime = 23;}
+            doodlesong.currentTime = 21.95;}
             buttonsoundhandle(clicksfx);
             intro.style.display = 'none';
             songdisplayShow();
