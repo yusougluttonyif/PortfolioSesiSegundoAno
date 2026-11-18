@@ -769,6 +769,7 @@
             height: if(media(width < 400px): 50px; else: 300px);
             object-fit: cover;
             position: fixed;
+            display: flex;
             z-index: 99;
             opacity: 0;
             top: 50%;
@@ -1585,11 +1586,14 @@
             history.replaceState(null, '', window.location.pathname + window.location.search);
         }
         function dialoguesummon(v) {
+            dialogueOnScreen = true;
+            characterofdialogue.style.display = 'flex';
             if (materiaAtual.innerHTML === 'Senai') {dialoguebox.style.fontFamily = "'UT Papyrus', cursive";
              dialoguebox.style.fontSize = "21px";
             } 
             else if (materiaAtual.innerHTML === 'Matemática') {dialoguebox.style.fontFamily = "'ComicSans', cursive";
                 dialoguebox.style.fontSize = "23px";
+            }  else if (materiaAtual.innerHTML === 'Humanas') {characterofdialogue.style.display = 'none';
             } 
             else {dialoguebox.style.fontFamily = "'Press Start 2P', serif"; dialoguebox.style.fontSize = "16px";}
             setTimeout(() => {
@@ -1614,7 +1618,7 @@
         },100);
         setTimeout(() => {
         dialoguewrite(v);
-        dialogueOnScreen = true;
+        
         }, 600);
             }
 
