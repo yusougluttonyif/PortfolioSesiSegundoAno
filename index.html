@@ -1013,6 +1013,8 @@
 <a id="go" href="#teclas"></a>
 <!--meu preloader super esforçado e nada preguiçoso, se voce abriu o inspect e vinher falar mal eu vou soltar raios dos olhos-->
 <video src="https://file.garden/aq_0Fg8cibtOL7XF/actualIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
+<video src="https://file.garden/aq_0Fg8cibtOL7XF/UnderfellIntroFinal-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
+<video src="https://file.garden/aq_0Fg8cibtOL7XF/HorrorIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
 
     <script>
         const theanimationitself = document.getElementById("theanimationitself");
@@ -1777,6 +1779,11 @@
                 theanimationitself.currentTime = 0;
                 theanimationitself.play();
                 theanimationitself.style.display = 'block';}
+            if (materiaAtual.innerHTML === 'Humanas') {
+                theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/HorrorIntro-mp3.mp4';
+                theanimationitself.currentTime = 0;
+                theanimationitself.play();
+                theanimationitself.style.display = 'block';}
             donewithit = false;
             intro.style.opacity = '1';
             duration.style.opacity = '1';
@@ -1916,6 +1923,7 @@
             setTimeout(() => {
                 if (firstTimeInMaterias == true) {
                 dialoguesummon(beeptalksfx);
+                characterofdialogue.style.display = 'none'
                 firstTimeInMaterias = false;
                 currentmessage = '* Encontre as estrelas ocas; elas te levarão até a matéria.'
             } else {document.body.style.pointerEvents = 'auto'}
