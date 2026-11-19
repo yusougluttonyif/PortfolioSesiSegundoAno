@@ -497,13 +497,11 @@
             margin-bottom: 10px;
         }
         #duration {
-            position: relative;
-            top: auto;
-            left: auto;
-            place-self: center;
-            justify-content: center;
+            position: absolute;
+            top: 5%;
+            left: 50%;
             margin: 10px;
-            transform: translate(0,0);
+            transform: translate(-50%,-50%);
         }
         #musicCredits, #Settings{
             padding: 0;
@@ -1446,7 +1444,7 @@
         const seila = document.getElementById("seila");
 
         let page = 1;
-        let d = 15;
+        let d = 15.95;
         let loaded = false;
         let PortfolioInitiated = false;
 
@@ -1736,8 +1734,7 @@
             if (d > 0 && loaded && !donewithit) {
                 if (duration.style.opacity == '0') {duration.style.opacity = '1';}
             d--;
-            duration.innerHTML = `vai ter uma intro aqui. faltam ${d} segundos`;
-             if (d === 1 && !donewithit) {duration.innerHTML = 'vai ter uma intro aqui. falta 1 segundo';} }
+            duration.innerHTML = `${Math.floor(d)}`;}
              if (d <= 0) {intro.style.display = 'none'; donewithit = true; clearInterval(introtime); name.innerHTML = musicname.innerHTML; songdisplayShow();}
         }, 1000);
 
@@ -1775,29 +1772,36 @@
         }});
         
         function animation() {
+            if (materiaAtual.innerHTML === 'Linguagens') {
+                theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/UnderfellIntroFinal-mp3.mp4';
+                theanimationitself.currentTime = 0;
+                theanimationitself.play();
+                theanimationitself.style.display = 'block';}
             donewithit = false;
             intro.style.opacity = '1';
             duration.style.opacity = '1';
             intro.style.background = 'black';
-            intro.style.display = 'block';
-            pular.style.display = 'block';
+            intro.style.display = 'flex';
+            pular.style.display = 'grid';
             pular.style.opacity = '1';
-            duration.style.position = 'absolute';
-            duration.innerHTML = `Animação de 8 segundos aqui`;
+            duration.innerHTML = `10`;
             intro.style.cursor = 'not-allowed';
-            d = 8;
+            d = 10;
             const animationtime = setInterval(() => {
                 if (!donewithit && d!=0) {
                 d--;
-                duration.innerHTML = `Animação de ${d} segundos aqui`;} 
+                duration.innerHTML = `${d}`;} 
                 else if (d===0) {
                 d = 0;
                 donewithit = true;
                 clearInterval(animationtime);
+                theanimationitself.currentTime = 10;
                intro.style.background = 'rgb(0,0,0,0)'
                duration.style.opacity = '0';
                setTimeout(() => {
                 intro.style.display = 'none';
+                theanimationitself.src = '';
+                theanimationitself.style.display = 'none';
                }, 100);
                if (materiaAtual.innerHTML === 'Matemática') {
                 songdisplayShow();
@@ -1809,7 +1813,7 @@
                     musicname.innerHTML = '<span>&#x266A;</span>Ravaged Ruins<br><br><span>&#x1F58A;</span> AMA';
                     name.innerHTML = musicname.innerHTML;
                     setTimeout(() => {
-                dialoguesummon(torieltalksfx); currentmessage = '* Ah, minha criança.. <br> Me perdoe pela bagunça, esperava que vinhesse mais tarde. <br> Bem, aqui estão seus papeis.';},100);
+                dialoguesummon(torieltalksfx); currentmessage = '* Ah, minha criança.. <br> Me perdoe pelo incomodo, pensava que estava sendo invadida pois esperava que vinhesse mais tarde.<br> Bem, aqui estão seus papeis.';},100);
                 }
                 else if (materiaAtual.innerHTML === 'Senai') {songdisplayShow();
                     musicname.innerHTML = '<span>&#x266A;</span>Papyrus <br><br><span>&#x1F58A;</span> UNDERSWAP';
@@ -1835,7 +1839,6 @@
                 } else {dialoguesummon(beeptalksfx); currentmessage = '* algo de errado aconteceu. oops que pena'}
             }
             }, 1000); 
-            duration.style.top = '50%';
             instrucoes.style.display = 'none';
                 
         }
@@ -1875,7 +1878,7 @@
             pular.style.left = '90%';
             PortfolioInitiated = true;
             firstTimeSkipping = false;
-            duration.innerHTML = `vai ter uma intro aqui. faltam ${d} segundos`;
+            duration.innerHTML = `${d}`;
             pular.innerHTML = 'PULAR';
             buttonsoundhandle(doodlesong);
             d = 15.95;
