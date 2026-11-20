@@ -1790,16 +1790,22 @@
                 theanimationitself.currentTime = 0;
                 theanimationitself.play();
                 theanimationitself.style.display = 'block';}
+                if (materiaAtual.innerHTML === 'Matemática') {
+                theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DustIntro-mp3.mp4';
+                theanimationitself.currentTime = 0;
+                theanimationitself.play();
+                theanimationitself.style.display = 'block'}
             donewithit = false;
+            d = 11;
+            if (materiaAtual.innerHTML === 'Matemática') {d=12}
             intro.style.opacity = '1';
             duration.style.opacity = '1';
             intro.style.background = 'black';
             intro.style.display = 'flex';
             pular.style.display = 'grid';
             pular.style.opacity = '1';
-            duration.innerHTML = `10`;
+            duration.innerHTML = `${d}`;
             intro.style.cursor = 'not-allowed';
-            d = 10;
             const animationtime = setInterval(() => {
                 if (!donewithit && d!=0) {
                 d--;
@@ -1808,7 +1814,8 @@
                 d = 0;
                 donewithit = true;
                 clearInterval(animationtime);
-                theanimationitself.currentTime = 10;
+                theanimationitself.currentTime = 14
+                theanimationitself.play();
                intro.style.background = 'rgb(0,0,0,0)'
                duration.style.opacity = '0';
                setTimeout(() => {
@@ -1897,17 +1904,17 @@
             d = 15.95;
             buttonsoundhandle(clicksfx);
             setTimeout(() => {}, 500);
-        } else if (loaded && PortfolioInitiated) {
+        } else if (loaded && PortfolioInitiated && materiaAtual.innerHTML === 'ok') {
             theanimationitself.currentTime = 15.95
             theanimationitself.src = '';
             d = 0;
             donewithit = true;
-            if (materiaAtual.innerHTML == 'ok') {
-            doodlesong.currentTime = 23.95;}
+            doodlesong.currentTime = 23.95;
             buttonsoundhandle(clicksfx);
             intro.style.display = 'none';
             songdisplayShow();
         }
+        else if (materiaAtual.innerHTML !== 'ok') {d = 0; donewithit = true;}
     }
  
         function materiasopen() {
