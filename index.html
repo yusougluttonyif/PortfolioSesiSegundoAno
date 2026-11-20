@@ -785,7 +785,7 @@
 </head>
 <body>
 
-    <!-- menu de atividades -->
+    <!-- atividades -->
     <div id="Activities">
         <section id="ActivitiesHold">
             <div id='chooseuni'>
@@ -819,7 +819,7 @@
     </div>
     
 
-    <!-- a caixa de dialogo -->
+    <!-- dialogo -->
      <div id="dialogueholder">
      <img id="characterofdialogue" src="https://file.garden/aq_0Fg8cibtOL7XF/placeholderOfCharacter.png">
       <section id="dialoguebox">
@@ -829,13 +829,13 @@
         style="top: 80%;">Z</button>
       </section></div>
 
-      <!-- creditos de musica + discozinho -->
+      <!-- creditos -->
        <section id="musicCredits" onclick="songdisplayHide()">
         <img id="vinyl" src="https://file.garden/aq_0Fg8cibtOL7XF/discoFinal.gif">
         <p id="musicname"><span>&#x266A;</span> the normal elevator<br><br><span>&#x1F58A;</span>rundown</p>
        </section>
 
-       <!-- menu de configurações -->
+       <!-- configurações -->
        <section id="Settings">
         <button class="buttonbase" id="exitsettings" style="corner-shape: initial; border-radius: 50%; padding: 10px 10px;"
         onmouseenter="buttonsoundhandle(hoversfx)" onclick="closesettings()">x</button>
@@ -856,8 +856,6 @@
         <section class="smallsection">
         <p style="font-size: 14px;">T = Pulo rápido</p></section>
         <section class="smallsection">
-        <p style="font-size: 14px;">F = SÓ quando terminar</p></section>
-        <section class="smallsection">
         <p style="font-size: 14px;">Z = Pular ou terminar diálogo</p></section>
         <section class="smallsection">
         <p style="font-size: 14px;">C = Configurações</p></section>
@@ -872,7 +870,7 @@
        </section>
 
 
-    <!-- segunda parte, sobre mim -->
+    <!-- sobremim -->
     <div class="secondbackground" id="secondbackground">
         <button class="buttonbase" id="seila" onclick="next()" onmouseenter="hoversfx.play()">PASSAR</button>
         <button class="closebutton" style="background: rgb(0,0,0,0.89)" id="seila2" onmouseenter="hoversfx.play()" onclick="sobremimdeactive()">X</button>
@@ -930,7 +928,7 @@
     </div>
 
 
-    <!-- primeira parte, o menu -->
+    <!-- primeira parte -->
      
     <div class="firstbackground" id="firstbackground">
         <video onloadedmetadata="this.playbackRate = 0.75" autoplay muted loop playsinline src="https://file.garden/aq_0Fg8cibtOL7XF/Scene5Intro%20-%20blur.mp4"></video>
@@ -940,7 +938,7 @@
       <p class="textmenu" style="top: 90%; left: 90%; transform: translate(-50%, -50%) skewY(10deg);" id="hour">??:??:??</p>
          </div>
 
-      <!-- o menu do pulo -->
+      <!-- pulo -->
       <div class="pulomenu" id="pulomenu">
         <p class="textmenu">PULO RÁPIDO</p>
         <button class="closebutton" onmouseenter="hoversfx.play()" onclick="closepulo()">X</button>
@@ -960,13 +958,11 @@
         position: absolute; top:50%; left: 50%; transform: translate(-50%, -50%);" id="pular">COMEÇAR</button>
     <p class="textmenu" id="instrucoes" style="top: 90%; opacity: 0.7; font-size: 8px;">
         Tecla <span style="border: 3px solid white; padding: 3px 3px;">T</span> para ir ao Pulo Rapido.<br><br>
-        Tecla <span style="border: 3px solid white; padding: 3px 3px;">F</span> quando terminar o Portfólio.<br><br>
         Tecla <span style="border: 3px solid white; padding: 3px 3px;">Z</span> para pular ou terminar diálogos.<br><br>
-        Tecla <span style="border: 3px solid white; padding: 3px 3px;">C</span> para abrir configurações.</p>   
-    
+        Tecla <span style="border: 3px solid white; padding: 3px 3px;">C</span> para abrir configurações.</p>
     </div>
 
-       <!-- menu das escolhas de matérias -->
+       <!-- matérias -->
         <div class="espaco" id="espaco">
             <div class="materiaqualquerWrapper" onmouseenter="othersoundhandle(findsfx)" id="matWrapper" onclick="MateriaShow(); askForContent('Matemática');">
         <button id="matematicaBotao" class="buttonbase">
@@ -1021,6 +1017,7 @@
 <video src="https://file.garden/aq_0Fg8cibtOL7XF/actualIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
 <video src="https://file.garden/aq_0Fg8cibtOL7XF/UnderfellIntroFinal-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
 <video src="https://file.garden/aq_0Fg8cibtOL7XF/HorrorIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
+<video src="https://file.garden/aq_0Fg8cibtOL7XF/UnderswapIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
 
     <script>
         const theanimationitself = document.getElementById("theanimationitself");
@@ -1604,6 +1601,7 @@
             else {dialoguebox.style.fontFamily = "'Press Start 2P', serif"; dialoguebox.style.fontSize = "16px";}
             setTimeout(() => {
             intro.style.display = 'flex'
+            intro.style.opacity = '1';
             intro.style.cursor = 'not-allowed';
             duration.innerHTML = '';
             pular.style.display = 'none';
@@ -1743,7 +1741,13 @@
                 if (duration.style.opacity == '0') {duration.style.opacity = '1';}
             d--;
             duration.innerHTML = `${Math.floor(d)}`;}
-             if (d <= 0) {intro.style.display = 'none'; donewithit = true; clearInterval(introtime); name.innerHTML = musicname.innerHTML; songdisplayShow();}
+             if (d <= 0) {
+                intro.style.opacity = '0'; 
+                setTimeout(() => {intro.style.display = 'none'; theanimationitself.currentTime = 15.95;
+            theanimationitself.src = '';}, 400);
+                donewithit = true; 
+                clearInterval(introtime);
+                 name.innerHTML = musicname.innerHTML; songdisplayShow();}
         }, 1000);
 
         function openpulo() {
@@ -1795,9 +1799,15 @@
                 theanimationitself.currentTime = 0;
                 theanimationitself.play();
                 theanimationitself.style.display = 'block'}
+                 if (materiaAtual.innerHTML === 'Projeto de Vida') {
+                theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/UnderswapIntro-mp3.mp4';
+                theanimationitself.currentTime = 0;
+                theanimationitself.play();
+                theanimationitself.style.display = 'block'}
             donewithit = false;
             d = 11;
             if (materiaAtual.innerHTML === 'Matemática') {d=12}
+            if (materiaAtual.innerHTML === 'Projeto de Vida') {d=9}
             intro.style.opacity = '1';
             duration.style.opacity = '1';
             intro.style.background = 'black';
@@ -1903,15 +1913,14 @@
             buttonsoundhandle(doodlesong);
             d = 15.95;
             buttonsoundhandle(clicksfx);
-            setTimeout(() => {}, 500);
         } else if (loaded && PortfolioInitiated && materiaAtual.innerHTML === 'ok') {
-            theanimationitself.currentTime = 15.95
-            theanimationitself.src = '';
             d = 0;
             donewithit = true;
             doodlesong.currentTime = 23.95;
             buttonsoundhandle(clicksfx);
-            intro.style.display = 'none';
+            intro.style.opacity = '0';
+            setTimeout(() => {intro.style.display = 'none'; theanimationitself.currentTime = 15.95;
+            theanimationitself.src = '';}, 400);
             songdisplayShow();
         }
         else if (materiaAtual.innerHTML !== 'ok') {d = 0; donewithit = true;}
@@ -1924,7 +1933,6 @@
             Settings.style.pointerEvents = 'auto';
             setTimeout(() => {
             espaco.style.opacity = '1';
-            
         }, 850);
             espaco.style.display = 'block';
             espaco.style.zIndex = '2';
