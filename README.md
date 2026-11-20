@@ -171,6 +171,6 @@ hoje, eu:
 
 # <a>19/11/2026</a>
 hoje e ontem, eu:
- - terminei a animação de Underfell e Horrortale;
+ - terminei as animações de Underfell, Horrortale e Dusttale;
  - fiz umas mudanças pequenas em dialogos.
 \ essas animações demoram pra fazer, mas eu to gostando! espero que voces gostem, tambem.
