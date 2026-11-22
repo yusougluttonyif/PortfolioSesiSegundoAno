@@ -22,7 +22,8 @@ meu portfolio do segundo ano!
 [14 de Novembro, 2026](#14112026)\
 [15 de Novembro, 2026](#15112026)\
 [16 de Novembro, 2026](#16112026)\
-[19 de Novembro, 2026](#19112026)
+[19 de Novembro, 2026](#19112026)\
+[22 de Novembro, 2026](#22112026)
 
 # <a>22/09/2026</a> 
 o dia da publicação dessa repo. veja, eu ainda não terminei ainda - afinal, faltam uns 2 meses até o dia da apresentação. porem, como é de costume da minha sala, eu vou dar minha alma no portfolio por razão nenhuma.
@@ -172,5 +173,13 @@ hoje, eu:
 # <a>19/11/2026</a>
 hoje e ontem, eu:
  - terminei as animações de Underfell, Horrortale e Dusttale;
- - fiz umas mudanças pequenas em dialogos.
-\ essas animações demoram pra fazer, mas eu to gostando! espero que voces gostem, tambem.
+ - fiz umas mudanças pequenas em dialogos.\
+ essas animações demoram pra fazer, mas eu to gostando! espero que voces gostem, tambem.
+
+# <a>22/11/2026</a>
+depois de tanto tempo, posso dizer que o portfolio está 85% pronto!
+nos ultimos dias, eu: 
+- terminei todas as animações;
+- fiz algumas mudanças de estética, mas não foram muitas;
+- adicionei mais atividades, algumas faltam descrição e foto;
+- correção de bugs.
