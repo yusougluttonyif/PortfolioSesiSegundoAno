@@ -875,8 +875,8 @@
 
     <!-- sobremim -->
     <div class="secondbackground" id="secondbackground">
-        <button class="buttonbase" id="seila" onclick="next()" onmouseenter="hoversfx.play()">PASSAR</button>
-        <button class="closebutton" style="background: rgb(0,0,0,0.89)" id="seila2" onmouseenter="hoversfx.play()" onclick="sobremimdeactive()">X</button>
+        <button class="buttonbase" id="seila" onclick="next()" onmouseenter="buttonsoundhandle(hoversfx)">PASSAR</button>
+        <button class="closebutton" style="background: rgb(0,0,0,0.89)" id="seila2" onmouseenter="buttonsoundhandle(hoversfx)" onclick="sobremimdeactive()">X</button>
         <p class="textmenu" id="pagecounter">1/5</p>
         
         <section class="textsectionbase" id="sbtexthold">
@@ -935,8 +935,8 @@
      
     <div class="firstbackground" id="firstbackground">
         <video onloadedmetadata="this.playbackRate = 0.75" autoplay muted loop playsinline src="https://file.garden/aq_0Fg8cibtOL7XF/Scene5Intro%20-%20blur.mp4"></video>
-      <button id="sobremimbutton" class="menubuttons" onmouseenter="hoversfx.play()" onclick="buttonsoundhandle(clicksfx); sobremimactive()">SOBRE MIM</button>
-      <button id="materiasbutton" class="menubuttons" onmouseenter="hoversfx.play()" onclick="materiasopen()">MATÉRIAS</button>
+      <button id="sobremimbutton" class="menubuttons" onmouseenter="buttonsoundhandle(hoversfx)" onclick="buttonsoundhandle(clicksfx); sobremimactive()">SOBRE MIM</button>
+      <button id="materiasbutton" class="menubuttons" onmouseenter="buttonsoundhandle(hoversfx)" onclick="materiasopen()">MATÉRIAS</button>
       <p class="textmenu" style="transform: translate(-50%, -50%) rotateX(20deg);">Esfera dos Rabiscos</p>
       <p class="textmenu" style="top: 90%; left: 90%; transform: translate(-50%, -50%) skewY(10deg);" id="hour">??:??:??</p>
          </div>
@@ -944,20 +944,20 @@
       <!-- pulo -->
       <div class="pulomenu" id="pulomenu">
         <p class="textmenu">PULO RÁPIDO</p>
-        <button class="closebutton" onmouseenter="hoversfx.play()" onclick="closepulo()">X</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Matemática')">MATEMÁTICA</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Linguagens');">LINGUAGENS</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Humanas');">HUMANAS</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Natureza')">NATUREZA</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Senai');">SENAI</button>
-        <button class="pulochoices" onmouseenter="hoversfx.play()" onclick="MateriaShow(); askForContent('Projeto de Vida');">PROJ. DE VIDA</button>
+        <button class="closebutton" onmouseenter="buttonsoundhandle(hoversfx)" onclick="closepulo()">X</button>
+        <button class="pulochoices" onmouseenter="buttonsoundhandle(hoversfx)" onclick="MateriaShow(); askForContent('Matemática')">MATEMÁTICA</button>
+        <button class="pulochoices" onmouseenter="buttonsoundhandle(hoversfx)" onclick="MateriaShow(); askForContent('Linguagens');">LINGUAGENS</button>
+        <button class="pulochoices" onmouseenter="buttonsoundhandle(hoversfx)" onclick="MateriaShow(); askForContent('Humanas');">HUMANAS</button>
+        <button class="pulochoices" onmouseenter="buttonsoundhandle(hoversfx)" onclick="MateriaShow(); askForContent('Natureza')">NATUREZA</button>
+        <button class="pulochoices" onmouseenter="buttonsoundhandle(hoversfx)" onclick="MateriaShow(); askForContent('Senai');">SENAI</button>
+        <button class="pulochoices" onmouseenter="buttonsoundhandle(hoversfx)" onclick="MateriaShow(); askForContent('Projeto de Vida');">PROJ. DE VIDA</button>
        </div>
     
        <!-- intro -->
        <div id="intro">
         <video id='theanimationitself' autoplay></video>
         <p class="textmenu" id="duration"></p>
-        <button class="buttonbase" onclick="skip()" onmouseenter="hoversfx.play()"style="
+        <button class="buttonbase" onclick="skip()" onmouseenter="buttonsoundhandle(hoversfx)"style="
         position: absolute; top:50%; left: 50%; transform: translate(-50%, -50%);" id="pular">COMEÇAR</button>
     <p class="textmenu" id="instrucoes" style="top: 90%; opacity: 0.7; font-size: 8px;">
         Tecla <span style="border: 3px solid white; padding: 3px 3px;">T</span> para ir ao Pulo Rapido.<br><br>
@@ -1008,7 +1008,7 @@
             <span style="color: #fffe89; transform: scale(1.1);">DISBELIEF</span><br>SENAI
         </button>
         </div>
-<button class="closebutton" onmouseenter="hoversfx.play()" onclick="materiasclose()">X</button>
+<button class="closebutton" onmouseenter="buttonsoundhandle(hoversfx)" onclick="materiasclose()">X</button>
         </div>
     
   <button title="Musica 30%, Efeitos Sonoros 50%" style="font-size: 20px;" id="gear"
