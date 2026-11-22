@@ -44,7 +44,7 @@
             overflow:hidden;
             transform: translate(-50%, -50%);
         } 
-        .firstbackground video, #intro video {
+        .firstbackground video, #intro video, .firstbackground img {
             inset: 0;
             width: 100%;
             height: 100%;
@@ -593,9 +593,12 @@
             margin: 20px;
         }
         #gear {
+            border: white solid 3px;
+            outline: 3px solid black;
+            cursor: pointer;
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 10px;
+            right: 10px;
             left: auto;
             transform: none;
             width: 42px;
@@ -1008,7 +1011,7 @@
 <button class="closebutton" onmouseenter="hoversfx.play()" onclick="materiasclose()">X</button>
         </div>
     
-  <button class="closebutton" style="z-index: 101; font-size: 20px;" id="gear"
+  <button title="Musica 30%, Efeitos Sonoros 50%" style="font-size: 20px;" id="gear"
     onmouseenter="buttonsoundhandle(hoversfx)" 
     onclick="if (Settings.style.display == 'grid'){closesettings();} else Settings.style.display = 'grid'; buttonsoundhandle(clicksfx)">
         <img src="https://file.garden/aq_0Fg8cibtOL7XF/gear.png"></button>
@@ -1019,6 +1022,7 @@
 <video src="https://file.garden/aq_0Fg8cibtOL7XF/HorrorIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
 <video src="https://file.garden/aq_0Fg8cibtOL7XF/UnderswapIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
 <video src="https://file.garden/aq_0Fg8cibtOL7XF/OuterIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
+<video src="https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
     <script>
         const theanimationitself = document.getElementById("theanimationitself");
         const ActivitiesHold = document.getElementById("ActivitiesHold");
@@ -1485,6 +1489,7 @@
         disbeliefsong.volume = parseFloat(volumeslider.value) / 100;
         horrorsong.volume = parseFloat(volumeslider.value) / 100;
         charasong.volume = parseFloat(volumeslider.value) / 100;
+        document.getElementById('gear').title = `Musica ${volumeslider.value}%, Efeitos Sonoros ${sfxslider.value}%`;
         volumeread.innerText = parseFloat(volumeslider.value) + '%';});
 
 
@@ -1550,6 +1555,7 @@
         disbelieftalksfx.volume = parseFloat(sfxslider.value) / 100;
         asgoretalksfx.volume = parseFloat(sfxslider.value) / 100;
         theanimationitself.volume = parseFloat(sfxslider.value) / 100;
+        document.getElementById('gear').title = `Musica ${volumeslider.value}%, Efeitos Sonoros ${sfxslider.value}%`;
         sfxread.innerText = parseFloat(sfxslider.value) + '%';});
 
         let firstTimeSkipping = true;
@@ -1569,19 +1575,10 @@
             if (isFirefox) alert('voce está no firefox. recomendo não continuar, e mudar pra outro browser - muitas coisas aqui quebram no firefox.')
         });
 
-        const theday = new Date('2026-12-01T00:00:00');
-        const theToday = new Date();
-
         setInterval(() => {
             const today = new Date();
             hour.textContent = today.toLocaleTimeString([], {hour12: false});
         }, 1000);
-
-        hour.addEventListener('click', () => {
-             const countday = 24 * 60 * 60 * 1000;
-             const days = Math.ceil((theday - theToday) / countday);
-             hour.textContent = `${days}` + ' dias';
-        });
 
         function closesettings() {
             buttonsoundhandle(clicksfx);
@@ -1788,31 +1785,37 @@
                 theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/UnderfellIntroFinal-mp3.mp4';
                 theanimationitself.currentTime = 0;
                 theanimationitself.play();
-                theanimationitself.style.display = 'block';}
+                theanimationitself.style.display = 'block';};
             if (materiaAtual.innerHTML === 'Humanas') {
                 theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/HorrorIntro-mp3.mp4';
                 theanimationitself.currentTime = 0;
                 theanimationitself.play();
-                theanimationitself.style.display = 'block';}
+                theanimationitself.style.display = 'block';};
                 if (materiaAtual.innerHTML === 'Matemática') {
                 theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DustIntro-mp3.mp4';
                 theanimationitself.currentTime = 0;
                 theanimationitself.play();
-                theanimationitself.style.display = 'block'}
+                theanimationitself.style.display = 'block'};
                  if (materiaAtual.innerHTML === 'Projeto de Vida') {
                 theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/UnderswapIntro-mp3.mp4';
                 theanimationitself.currentTime = 0;
                 theanimationitself.play();
-                theanimationitself.style.display = 'block'}
+                theanimationitself.style.display = 'block'};
                 if (materiaAtual.innerHTML === 'Natureza') {
                 theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/OuterIntro-mp3.mp4';
                 theanimationitself.currentTime = 0;
                 theanimationitself.play();
-                theanimationitself.style.display = 'block'}
+                theanimationitself.style.display = 'block'};
+                if (materiaAtual.innerHTML === 'Senai') {
+                    theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefIntro-mp3.mp4';
+                    theanimationitself.currentTime = 0;
+                    theanimationitself.play();
+                    theanimationitself.style.display = 'block';};
             donewithit = false;
             d = 11;
-            if (materiaAtual.innerHTML === 'Matemática') {d=12}
-            if (materiaAtual.innerHTML === 'Projeto de Vida' || materiaAtual.innerHTML === 'Natureza') {d=9}
+            if (materiaAtual.innerHTML === 'Matemática') {d=12};
+            if (materiaAtual.innerHTML === 'Projeto de Vida' || materiaAtual.innerHTML === 'Natureza') {d=9};
+            if (materiaAtual.innerHTML === 'Senai') {d=13};
             intro.style.opacity = '1';
             duration.style.opacity = '1';
             intro.style.background = 'black';
