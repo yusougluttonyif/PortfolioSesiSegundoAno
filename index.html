@@ -1038,6 +1038,10 @@
             document.getElementById('linguagensBotao').style.animation = 'none';
             document.getElementById('matematicaBotao').style.animation = 'none';
             document.getElementById('naturezaBotao').style.animation = 'none';
+            wrappers.forEach(wrapper => {
+                wrapper.style.background = 'rgb(255,0,0,0.3)';
+                wrapper.style.opacity = '1';
+            });
         }}, 100);
         const theanimationitself = document.getElementById("theanimationitself");
         const ActivitiesHold = document.getElementById("ActivitiesHold");
