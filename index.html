@@ -1030,6 +1030,14 @@
 <video src="https://file.garden/aq_0Fg8cibtOL7XF/OuterIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
 <video src="https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
     <script>
+        if (isFirefox) {
+            document.getElementById('senaiBotao').style.animation = 'none';
+            document.getElementById('humanasBotao').style.animation = 'none';
+            document.getElementById('projetodvidaBotao').style.animation = 'none';
+            document.getElementById('linguagensBotao').style.animation = 'none';
+            document.getElementById('matematicaBotao').style.animation = 'none';
+            document.getElementById('naturezaBotao').style.animation = 'none';
+        }
         const theanimationitself = document.getElementById("theanimationitself");
         const ActivitiesHold = document.getElementById("ActivitiesHold");
         const Activities = document.getElementById("Activities");
