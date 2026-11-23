@@ -84,8 +84,7 @@
             position: relative;
             background: transparent;
             animation: load 2s infinite linear;
-            display: flex;
-            flex-direction: column;
+            display: grid;
             place-self: center;
             justify-self: center;
         }
@@ -1979,6 +1978,7 @@
                 characterofdialogue.style.display = 'none'
                 firstTimeInMaterias = false;
                 currentmessage = '* Encontre as estrelas ocas; elas te levarão até a matéria.'
+                if (isFirefox) currentmessage+=' <br>Por estar no Firefox, as animações das estrelas quebram. Desculpa! Você tem o direito de ver as hitboxes.'
             } else {document.body.style.pointerEvents = 'auto'}
         }, 1200);
     }
