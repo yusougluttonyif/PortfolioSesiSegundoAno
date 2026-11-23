@@ -430,7 +430,6 @@
         .textsectionbase img {
             place-self: center;
             align-self: center;
-            display: grid;
             user-select: none;
             border: 3px solid white;
             outline: 3px solid black;
@@ -1579,8 +1578,6 @@
 
         window.addEventListener('load', () => {
             loaded = true;
-            if (isMobile) alert('voce esta no celular/tablet. não é recomendado acessar esse portfolio no celular, mas vá se quiser.');
-            if (isFirefox) alert('voce está no firefox. recomendo não continuar, e mudar pra outro browser - muitas coisas aqui quebram no firefox.')
         });
 
         setInterval(() => {
@@ -1752,7 +1749,11 @@
             theanimationitself.src = '';}, 400);
                 donewithit = true; 
                 clearInterval(introtime);
-                 name.innerHTML = musicname.innerHTML; songdisplayShow();}
+                 name.innerHTML = musicname.innerHTML; songdisplayShow();
+                if (isMobile && isFirefox)
+        {characterofdialogue.style.display = 'none'; dialoguesummon(beeptalksfx); currentmessage = "*Não somente você está no celular, mas também está no Firefox. <br> Estando no celular, o Portfolio pode não caber nele. No Firefox, você perde o formato das estrelas - que se tornam circulos."}
+        else if (!isMobile && isFirefox) {characterofdialogue.style.display = 'none'; dialoguesummon(beeptalksfx); currentmessage = "* Você está no Firefox. No Firefox, você perde a forma das estrelas - que se tornam circulos. Podem ter outros erros estéticos."}
+        else if (isMobile && !isFirefox){characterofdialogue.style.display = 'none'; dialoguesummon(beeptalksfx); currentmessage = "* Você está no celular. Estando no celular, o Portfolio pode não caber nele. Recomendo aplicar um zoom menor no navegador."}}
         }, 1000);
 
         function openpulo() {
