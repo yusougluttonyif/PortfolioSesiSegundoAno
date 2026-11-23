@@ -3,7 +3,7 @@
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <style> 
+    <style>
         @font-face {
            font-family: 'UT Papyrus';
            src: url('https://raw.githubusercontent.com/ThetaApps/font-undertale/master/Papyrus/Papyrus.eot');
@@ -175,6 +175,9 @@
             position: absolute;
             width: 100%;
             height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             background-color: rgba(0, 0, 0, 0.807);
             z-index: 10;
             display: none;
@@ -1029,6 +1032,7 @@
 <video src="https://file.garden/aq_0Fg8cibtOL7XF/UnderswapIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
 <video src="https://file.garden/aq_0Fg8cibtOL7XF/OuterIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
 <video src="https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
+
     <script>
         setTimeout(() => {
         if (isFirefox) {
@@ -1038,9 +1042,8 @@
             document.getElementById('linguagensBotao').style.animation = 'none';
             document.getElementById('matematicaBotao').style.animation = 'none';
             document.getElementById('naturezaBotao').style.animation = 'none';
-            wrappers.forEach(wrapper => {
-                wrapper.style.background = 'rgb(255,0,0,0.3)';
-                wrapper.style.opacity = '1';
+            Array.from(wrappers).forEach(wrapper => {
+                wrapper.style.background = 'rgba(255, 0, 0, 0.3)';
             });
         }}, 100);
         const theanimationitself = document.getElementById("theanimationitself");
