@@ -928,10 +928,10 @@
          <h1>OBJETIVOS</h1><hr><br>
          <p>Passar no ENEM</p>
          <small>(esqueci de pagar o ssa 1)</small><br>
-          <p>Aprender Programação</p>
-         <small>(já comecei a aprender de forma autônoma)</small><br>
-          <span>Ir para outro País</span>
-          <span><small>(parcialmente completo, quero ir para morar)</small></span><br>
+          <p style="color: #fffeb4;">Aprender Programação</p>
+         <small style="color: #fffeb4;">(já comecei a aprender de forma autônoma)</small><br>
+          <span style="color: #fffeb4;">Ir para outro País</span>
+          <span style="color: #fffeb4;"><small>(parcialmente completo, quero ir para morar)</small></span><br>
           <p>Saber que minha vida valeu a pena</p>
         </section>
     </div>
@@ -1030,6 +1030,7 @@
 <video src="https://file.garden/aq_0Fg8cibtOL7XF/OuterIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
 <video src="https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
     <script>
+        setTimeout(() => {
         if (isFirefox) {
             document.getElementById('senaiBotao').style.animation = 'none';
             document.getElementById('humanasBotao').style.animation = 'none';
@@ -1037,7 +1038,7 @@
             document.getElementById('linguagensBotao').style.animation = 'none';
             document.getElementById('matematicaBotao').style.animation = 'none';
             document.getElementById('naturezaBotao').style.animation = 'none';
-        }
+        }}, 100);
         const theanimationitself = document.getElementById("theanimationitself");
         const ActivitiesHold = document.getElementById("ActivitiesHold");
         const Activities = document.getElementById("Activities");
