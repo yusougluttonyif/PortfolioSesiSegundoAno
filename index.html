@@ -1400,7 +1400,7 @@
             setTimeout(() => {
             intro.style.background = 'black';
             }, 40);
-            intro.style.display = 'block';
+            intro.style.display = 'grid';
             pular.style.display = 'none';
             instrucoes.style.display = 'none';
             duration.style.opacity = '0';
@@ -1625,7 +1625,7 @@
             } 
             else {dialoguebox.style.fontFamily = "'Press Start 2P', serif"; dialoguebox.style.fontSize = "16px";}
             setTimeout(() => {
-            intro.style.display = 'flex'
+            intro.style.display = 'grid'
             intro.style.opacity = '1';
             intro.style.cursor = 'not-allowed';
             duration.innerHTML = '';
@@ -1646,6 +1646,7 @@
             characterofdialogue.style.transform = 'translate(-50%, -50%)';
         },100);
         setTimeout(() => {
+            intro.style.display = 'grid';
         dialoguewrite(v);
         
         }, 600);
@@ -1853,7 +1854,7 @@
             intro.style.opacity = '1';
             duration.style.opacity = '1';
             intro.style.background = 'black';
-            intro.style.display = 'flex';
+            intro.style.display = 'grid';
             pular.style.display = 'grid';
             pular.style.opacity = '1';
             duration.innerHTML = `${d}`;
