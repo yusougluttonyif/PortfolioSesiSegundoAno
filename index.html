@@ -685,10 +685,9 @@
         #ActivitiesHold, #chooseuni {
             background: radial-gradient(circle, rgb(0,0,0,0.3), rgb(0, 0, 0, 0.64), black);
             border: 3px solid white;
-            backdrop-filter: blur(1px);
             transition: transform 0.4s ease!important;
             outline: 3px solid black;
-            width: 95%;
+            width: 90%;
             height: 95%;
             top: 50%;
             left: 50%;
@@ -725,8 +724,8 @@
           display: inline;
           box-shadow: 0 0 130px 10px rgb(248, 220, 189) inset;
           text-wrap: wrap;
-          width: 30%;
-          max-width: 30%;
+          width: 35%;
+          max-width: 35%;
           height: 80%;
           overflow: scroll!important;overflow-x: hidden!important;
           scrollbar-width: none;
@@ -1416,9 +1415,13 @@
                 closepulo();
             }, 30);
         }, 301);  
-        Activities.style.backgroundImage = 'url("https://file.garden/aq_0Fg8cibtOL7XF/clearerPLACEHOLDER.png")';
         setTimeout(() => {
-        if (materiaAtual.innerHTML === 'Projeto de Vida') {Activities.style.backgroundImage = 'url("https://file.garden/aq_0Fg8cibtOL7XF/temporario.png")';}}, 501); 
+        if (materiaAtual.innerHTML === 'Humanas') {Activities.style.backgroundImage = 'url("https://file.garden/aq_0Fg8cibtOL7XF/HorrorBG.png")';};
+        if (materiaAtual.innerHTML === 'Natureza') {Activities.style.backgroundImage = 'url("https://file.garden/aq_0Fg8cibtOL7XF/OuterBG.png")';};
+        if (materiaAtual.innerHTML === 'Linguagens') {Activities.style.backgroundImage = 'url("https://file.garden/aq_0Fg8cibtOL7XF/FellBG.png")';};
+        if (materiaAtual.innerHTML === 'Matemática') {Activities.style.backgroundImage = 'url("https://file.garden/aq_0Fg8cibtOL7XF/DustBG.png")';};
+        if (materiaAtual.innerHTML === 'Senai') {Activities.style.backgroundImage = 'url("https://file.garden/aq_0Fg8cibtOL7XF/UnderswapBG.png")';};
+        if (materiaAtual.innerHTML === 'Projeto de Vida') {Activities.style.backgroundImage = 'url("https://file.garden/aq_0Fg8cibtOL7XF/UnderswapBG.png")';};}, 501); 
         }
         const gear = document.getElementById('gear');
 
@@ -1821,6 +1824,7 @@
         } else if (!PortfolioInitiated) {instrucoes.innerHTML = 'ainda não! começa primeiro.'; setTimeout(() => {instrucoes.innerHTML = o;}, 3000);}});
         
         function animation() {
+            theanimationitself.style.opacity = '1';
             if (materiaAtual.innerHTML === 'Linguagens') {
                 theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/UnderfellIntroFinal-mp3.mp4';
                 theanimationitself.currentTime = 0;
