@@ -683,7 +683,7 @@
             background: linear-gradient(90deg, gray, #b4b4b4);
         }
         #ActivitiesHold, #chooseuni {
-            background: radial-gradient(circle, rgb(0,0,0,0.3), rgb(0, 0, 0, 0.64), black);
+            background: radial-gradient(circle, rgb(0,0,0,0.3), rgb(0, 0, 0, 0.44), rgb(0,0,0,0.50));
             border: 3px solid white;
             transition: transform 0.4s ease!important;
             outline: 3px solid black;
@@ -714,7 +714,8 @@
             corner-shape: initial;
         }
         .paper {
-            font-family: 'Patrick Hand', cursive;
+            transition: all 0.25s ease!important;
+          font-family: 'Patrick Hand', cursive;
           white-space: wrap;    
           margin: 20px;
           place-items: center;
@@ -1324,7 +1325,10 @@
 
         let CurrentUnity = 1;
 
+        const papers = document.getElementsByClassName('paper');
+
         function askForContent(v) {
+            materiaAtual.innerHTML = v;
             if (v === "Matemática") {
                 setTimeout(() => {dustsong.play();}, 500);
                  doodlesong.pause();
@@ -1373,10 +1377,17 @@
                  disbeliefsong.pause();
                  horrorsong.pause();
                  asgoresong.pause();}
+                 Array.from(papers).forEach((paper) => {paper.style.transform = 'translateY(30px)';
+                    paper.style.opacity = '0';
+                    setTimeout(() => {paper.style.transform = ''; paper.style.opacity = '1'}, 450);
+                 });
             let whereyouare = `unity${CurrentUnity}`;
             let showUni = document.getElementById(`uni${CurrentUnity}`)
             let content = ActivitiesALL[v][whereyouare];
-            materiaAtual.innerHTML = v;
+            uni1.classList = 'buttonbase'; uni2.classList = 'buttonbase';uni3.classList = 'buttonbase';uni4.classList = 'buttonbase'
+            showUni.classList = 'buttonbaseclicked';
+            setTimeout(() => {
+            
             activityuni1.innerHTML = content.un;
             activityimage1.src = content.image;
             activitycontext1.innerHTML = content.context;
@@ -1389,8 +1400,7 @@
             if (content.image === 'url') {activityimage1.src = 'https://file.garden/aq_0Fg8cibtOL7XF/foundnothing.png';}
             if (content.image2 === 'url') {activityimage2.src = 'https://file.garden/aq_0Fg8cibtOL7XF/foundnothing.png';}
 
-            uni1.classList = 'buttonbase'; uni2.classList = 'buttonbase';uni3.classList = 'buttonbase';uni4.classList = 'buttonbase'
-            showUni.classList = 'buttonbaseclicked';
+            }, 400);
         }
 
         function MateriaShow() {
@@ -1525,7 +1535,6 @@
         disbeliefsong.volume = parseFloat(volumeslider.value) / 100;
         horrorsong.volume = parseFloat(volumeslider.value) / 100;
         charasong.volume = parseFloat(volumeslider.value) / 100;
-        asgoresong.volume = parseFloat(volumeslider.value) / 100;
         document.getElementById('gear').title = `Musica ${volumeslider.value}%, Efeitos Sonoros ${sfxslider.value}%`;
         volumeread.innerText = parseFloat(volumeslider.value) + '%';});
 
@@ -1803,6 +1812,7 @@
         }
         const o = instrucoes.innerHTML;
         addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && pular.getClientRects().length > 0 && getComputedStyle(pular) !== 'none') {pular.click();}
             if (PortfolioInitiated && d <= 0) {
             if (e.key === 'T' || e.key === 't') {
                 e.preventDefault();
@@ -1820,7 +1830,9 @@
             {Settings.style.display = 'grid';} else {closesettings();}
         } else if (e.key === 'ArrowLeft' && secondbackground.style.transform === "translate(-50%, -50%) translateY(0%)") {e.preventDefault(); backwards();} 
         else if (e.key === 'ArrowRight' && secondbackground.style.transform === "translate(-50%, -50%) translateY(0%)") {e.preventDefault(); next();} 
-        else if (e.key === 'F11' || e.key === 'Shift' || e.key === 'Control' || e.key === 'CapsLock' || e.key === 'Escape' ||e.key === 'Alt' || e.key === 'Tab') {} else
+        else if (e.key === 'ArrowLeft' && materiaAtual.innerHTML !== 'ok') {buttonsoundhandle(clicksfx); if (CurrentUnity === 1) {CurrentUnity = 4; askForContent(materiaAtual.innerHTML);} else {CurrentUnity--; askForContent(materiaAtual.innerHTML)}}
+    else if (e.key === 'ArrowRight' && materiaAtual.innerHTML !== 'ok') {buttonsoundhandle(clicksfx); if (CurrentUnity === 4) {CurrentUnity = 1; askForContent(materiaAtual.innerHTML);} else {CurrentUnity++; askForContent(materiaAtual.innerHTML)}}
+        else if (e.key === 'F11' || e.key === 'Shift' || e.key === 'Control' || e.key === 'CapsLock' || e.key === 'Escape' ||e.key === 'Alt' || e.key === 'Tab' || e.key === 'Enter') {} else
         {document.getElementById('gear').click(); setTimeout(() => {document.getElementById('go').click()}, 500);}
         } else if (!PortfolioInitiated) {instrucoes.innerHTML = 'ainda não! começa primeiro.'; setTimeout(() => {instrucoes.innerHTML = o;}, 3000);}});
         
