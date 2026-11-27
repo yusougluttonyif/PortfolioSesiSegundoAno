@@ -512,7 +512,6 @@
             position: absolute;
             top: 5%;
             left: 50%;
-            margin: 10px;
             transform: translate(-50%,-50%);
         }
         #musicCredits, #Settings{
@@ -949,7 +948,7 @@
     <!-- primeira parte -->
      
     <div class="firstbackground" id="firstbackground">
-        <video onloadedmetadata="this.playbackRate = 0.75" autoplay muted loop playsinline src="https://file.garden/aq_0Fg8cibtOL7XF/Scene5Intro%20-%20blur.mp4"></video>
+        <video onloadedmetadata="this.playbackRate = 0.75" preload='auto' autoplay muted loop playsinline src="https://file.garden/aq_0Fg8cibtOL7XF/IntroBG.mp4"></video>
       <button id="sobremimbutton" class="menubuttons" onmouseenter="buttonsoundhandle(hoversfx)" onclick="buttonsoundhandle(clicksfx); sobremimactive()">SOBRE MIM</button>
       <button id="materiasbutton" class="menubuttons" onmouseenter="buttonsoundhandle(hoversfx)" onclick="materiasopen()">MATÉRIAS</button>
       <p class="textmenu" style="transform: translate(-50%, -50%) rotateX(20deg);">Esfera dos Rabiscos</p>
@@ -1440,6 +1439,7 @@
                 dialoguesummon(dusttalksfx);
                 currentmessage = '* bem, isso foi tudo, certo? <br> aproveita a vida, crianca. nunca se sabe, ne? heh.'
             } else if (materiaAtual.innerHTML === 'Linguagens') {dialoguesummon(torieltalksfx);
+                characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/TorielDialogueHappy.png';
                 currentmessage = '* Boa viagem, minha criança. <br> Muito obrigada pela sua visita. Tome cuidado no caminho!'
             } else if(materiaAtual.innerHTML === 'Senai') {dialoguesummon(disbelieftalksfx);
                 currentmessage = '* CERTO, HUMANO! MEU TRABALHO CHEGOU AO FIM. <br> CASO VOCÊ QUEIRA UMA PORÇÃO, VOU ESTAR NA MINHA CASA FAZENDO ESPAGUETE.'
@@ -1632,6 +1632,7 @@
         function dialoguesummon(v) {
             dialogueOnScreen = true;
             characterofdialogue.style.display = 'flex';
+            if (materiaAtual.innerHTML === 'Linguagens') {setTimeout(() => { if (materiaAtual.innerHTML === 'Linguagens') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/TorielDialogueWorried.png'}, 4000); setTimeout(() => { if (materiaAtual.innerHTML === 'Linguagens') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/TorielDialogue.png'}, 8000);}
             if (materiaAtual.innerHTML === 'Senai') {dialoguebox.style.fontFamily = "'UT Papyrus', cursive";
              dialoguebox.style.fontSize = "21px";
             } 
@@ -1640,7 +1641,7 @@
             }  else if (materiaAtual.innerHTML === 'Humanas') {characterofdialogue.style.display = 'none'; dialoguebox.style.fontFamily = "'Press Start 2P', serif"; dialoguebox.style.fontSize = "16px";
             } else if (materiaAtual.innerHTML === 'ok') {characterofdialogue.style.display = 'none'; dialoguebox.style.fontFamily = "'Press Start 2P', serif"; dialoguebox.style.fontSize = "16px";
             }
-            else {dialoguebox.style.fontFamily = "'Press Start 2P', serif"; dialoguebox.style.fontSize = "16px";}
+            if (materiaAtual.innerHTML !== 'Matemática' && materiaAtual.innerHTML !== 'Senai') {dialoguebox.style.fontFamily = "'Press Start 2P', serif"; dialoguebox.style.fontSize = "16px";}
             setTimeout(() => {
             intro.style.display = 'grid'
             intro.style.opacity = '1';
@@ -1839,6 +1840,7 @@
         function animation() {
             theanimationitself.style.opacity = '1';
             if (materiaAtual.innerHTML === 'Linguagens') {
+                characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/TorielDialogue.png'
                 theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/UnderfellIntroFinal-mp3.mp4';
                 theanimationitself.currentTime = 0;
                 theanimationitself.play();
@@ -1969,6 +1971,7 @@
         function skip() {
             if (loaded == true && firstTimeSkipping == true && !PortfolioInitiated) {
             pular.style.top = '90%';
+            duration.style.left = '90%';
             theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/actualIntro-mp3.mp4';
             theanimationitself.play();
             theanimationitself.currentTime = 0;
