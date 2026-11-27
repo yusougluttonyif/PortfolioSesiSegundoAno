@@ -811,8 +811,8 @@
                 <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" id="uni4" onclick="CurrentUnity = 4; askForContent(materiaAtual.innerHTML); buttonsoundhandle(clicksfx)">QUARTA</button>
                 <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" onclick="MateriaHide()">X</button>
             </div>
-            <section class="paper" id="paper1">
-                <section id="papercontent">
+                <section class="paper" id="paper1">
+                    <section class="papercontent">
                     <h1 id="activityuni1">vish</h1>
                     <br>
             <img id="activityimage1" src="https://file.garden/aq_0Fg8cibtOL7XF/LOG.png">
@@ -822,7 +822,7 @@
             </section></section>
             
             <section class="paper" id="paper2">
-                <section id="papercontent">
+                <section class="papercontent">
                     <h1 id="activityuni2">erro erro</h1>
                     <br>
             <img id="activityimage2" src="https://file.garden/aq_0Fg8cibtOL7XF/LOG.png">
@@ -970,7 +970,7 @@
        <!-- intro -->
        <div id="intro">
         <video id='theanimationitself' autoplay></video>
-        <p class="textmenu" id="duration"></p>
+        <p class="textmenu" style="transform: translate(-50%, -50%);" id="duration"></p>
         <button class="buttonbase" onclick="skip()" onmouseenter="buttonsoundhandle(hoversfx)"style="
         position: absolute; top:50%; left: 50%; transform: translate(-50%, -50%);" id="pular">COMEÇAR</button>
     <p class="textmenu" id="instrucoes" style="top: 90%; opacity: 0.7; font-size: 12px;">
@@ -1429,8 +1429,8 @@
         if (materiaAtual.innerHTML === 'Natureza') {Activities.style.backgroundImage = 'url("https://file.garden/aq_0Fg8cibtOL7XF/OuterBG.png")';};
         if (materiaAtual.innerHTML === 'Linguagens') {Activities.style.backgroundImage = 'url("https://file.garden/aq_0Fg8cibtOL7XF/FellBG.png")';};
         if (materiaAtual.innerHTML === 'Matemática') {Activities.style.backgroundImage = 'url("https://file.garden/aq_0Fg8cibtOL7XF/DustBG.png")';};
-        if (materiaAtual.innerHTML === 'Senai') {Activities.style.backgroundImage = 'url("https://file.garden/aq_0Fg8cibtOL7XF/SwapBG.png")';};
-        if (materiaAtual.innerHTML === 'Projeto de Vida') {Activities.style.backgroundImage = 'url("https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefBG.png")';};}, 501); 
+        if (materiaAtual.innerHTML === 'Senai') {Activities.style.backgroundImage = 'url("https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefBG.png")';};
+        if (materiaAtual.innerHTML === 'Projeto de Vida') {Activities.style.backgroundImage = 'url("https://file.garden/aq_0Fg8cibtOL7XF/SwapBG.png")';};}, 501); 
         }
         const gear = document.getElementById('gear');
 
@@ -1442,6 +1442,7 @@
                 characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/TorielDialogueHappy.png';
                 currentmessage = '* Boa viagem, minha criança. <br> Muito obrigada pela sua visita. Tome cuidado no caminho!'
             } else if(materiaAtual.innerHTML === 'Senai') {dialoguesummon(disbelieftalksfx);
+                characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefDialogue.png';
                 currentmessage = '* CERTO, HUMANO! MEU TRABALHO CHEGOU AO FIM. <br> CASO VOCÊ QUEIRA UMA PORÇÃO, VOU ESTAR NA MINHA CASA FAZENDO ESPAGUETE.'
             } else if(materiaAtual.innerHTML === 'Humanas') {dialoguesummon(beeptalksfx);
                 currentmessage = '* Enquanto anda em direção ao portal, você escuta algo se aproximando.. <br><br> Mas você foge a tempo.'
@@ -1632,10 +1633,10 @@
         function dialoguesummon(v) {
             dialogueOnScreen = true;
             characterofdialogue.style.display = 'flex';
-            if (materiaAtual.innerHTML === 'Linguagens') {setTimeout(() => { if (materiaAtual.innerHTML === 'Linguagens') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/TorielDialogueWorried.png'}, 4000); setTimeout(() => { if (materiaAtual.innerHTML === 'Linguagens') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/TorielDialogue.png'}, 8000);}
+            if (materiaAtual.innerHTML === 'Linguagens') {setTimeout(() => { if (materiaAtual.innerHTML === 'Linguagens') {characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/TorielDialogueWorried.png'}}, 4000); setTimeout(() => { if (materiaAtual.innerHTML === 'Linguagens') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/TorielDialogue.png'}, 8000);}
             if (materiaAtual.innerHTML === 'Senai') {dialoguebox.style.fontFamily = "'UT Papyrus', cursive";
              dialoguebox.style.fontSize = "21px";
-            } 
+             setTimeout(() =>  {if (materiaAtual.innerHTML === 'Senai'){ characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefDialogueWorried.png'}}, 6000); setTimeout(() => { if (materiaAtual.innerHTML === 'Senai') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefDialogue.png'}, 9000);}
             else if (materiaAtual.innerHTML === 'Matemática') {dialoguebox.style.fontFamily = "'ComicSans', cursive";
                 dialoguebox.style.fontSize = "23px";
             }  else if (materiaAtual.innerHTML === 'Humanas') {characterofdialogue.style.display = 'none'; dialoguebox.style.fontFamily = "'Press Start 2P', serif"; dialoguebox.style.fontSize = "16px";
@@ -1829,12 +1830,19 @@
             e.preventDefault();
             if (Settings.style.display === 'none')
             {Settings.style.display = 'grid';} else {closesettings();}
-        } else if (e.key === 'ArrowLeft' && secondbackground.style.transform === "translate(-50%, -50%) translateY(0%)") {e.preventDefault(); backwards();} 
+        } else if (e.key === 'X' || e.key === 'x' || e.key === 'Backspace') {
+            if (sbtexthold.style.display === 'grid') {sobremimdeactive()};
+            if (Activities.style.display === 'grid') {MateriaHide()};
+            if (Settings.style.display === 'grid') {Settings.style.display = 'none'};
+            if (espaco.style.display === 'grid') {materiasclose()};
+        }
+        else if (e.key === 'ArrowLeft' && secondbackground.style.transform === "translate(-50%, -50%) translateY(0%)") {e.preventDefault(); backwards();} 
         else if (e.key === 'ArrowRight' && secondbackground.style.transform === "translate(-50%, -50%) translateY(0%)") {e.preventDefault(); next();} 
         else if (e.key === 'ArrowLeft' && materiaAtual.innerHTML !== 'ok') {buttonsoundhandle(clicksfx); if (CurrentUnity === 1) {CurrentUnity = 4; askForContent(materiaAtual.innerHTML);} else {CurrentUnity--; askForContent(materiaAtual.innerHTML)}}
     else if (e.key === 'ArrowRight' && materiaAtual.innerHTML !== 'ok') {buttonsoundhandle(clicksfx); if (CurrentUnity === 4) {CurrentUnity = 1; askForContent(materiaAtual.innerHTML);} else {CurrentUnity++; askForContent(materiaAtual.innerHTML)}}
         else if (e.key === 'F11' || e.key === 'Shift' || e.key === 'Control' || e.key === 'CapsLock' || e.key === 'Escape' ||e.key === 'Alt' || e.key === 'Tab' || e.key === 'Enter') {} else
         {document.getElementById('gear').click(); setTimeout(() => {document.getElementById('go').click()}, 500);}
+    
         } else if (!PortfolioInitiated) {instrucoes.innerHTML = 'ainda não! começa primeiro.'; setTimeout(() => {instrucoes.innerHTML = o;}, 3000);}});
         
         function animation() {
@@ -1866,6 +1874,7 @@
                 theanimationitself.play();
                 theanimationitself.style.display = 'block'};
                 if (materiaAtual.innerHTML === 'Senai') {
+                    characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefDialogue.png';
                     theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefIntro-mp3.mp4';
                     theanimationitself.currentTime = 0;
                     theanimationitself.play();
@@ -1971,7 +1980,8 @@
         function skip() {
             if (loaded == true && firstTimeSkipping == true && !PortfolioInitiated) {
             pular.style.top = '90%';
-            duration.style.left = '90%';
+            duration.style.left = '80%';
+            duration.style.top = '90%';
             theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/actualIntro-mp3.mp4';
             theanimationitself.play();
             theanimationitself.currentTime = 0;
@@ -1981,7 +1991,7 @@
             PortfolioInitiated = true;
             firstTimeSkipping = false;
             duration.innerHTML = `${d}`;
-            pular.innerHTML = 'PULAR';
+            pular.innerHTML = 'PULAR <br> <span style="opacity:0.7; font-size:12px">Enter</span>';
             buttonsoundhandle(doodlesong);
             d = 15.95;
             buttonsoundhandle(clicksfx);
@@ -2006,7 +2016,7 @@
             setTimeout(() => {
             espaco.style.opacity = '1';
         }, 850);
-            espaco.style.display = 'block';
+            espaco.style.display = 'grid';
             espaco.style.zIndex = '2';
             firstbackground.style.transition = 'all 0.8s ease';
             firstbackground.style.opacity = '0';
