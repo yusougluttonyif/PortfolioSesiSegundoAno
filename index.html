@@ -1457,9 +1457,9 @@
             Activities.style.opacity = '0';}, 500);
             setTimeout(() => {
             Activities.style.display = 'none';
-            secondbackground.style.display = 'block';
-            firstbackground.style.display = 'block';
-            espaco.style.display = 'block';
+            secondbackground.style.display = 'grid';
+            firstbackground.style.display = 'grid';
+            espaco.style.display = 'grid';
             Activities.style.zIndex = '-1';
             }, 900);
         }
@@ -1701,9 +1701,9 @@
                 }
                 if (materiaAtual.innerHTML == 'ter') {
                     buttonsoundhandle(leavingsfx);
-                    secondbackground.style.display = 'block';
-                    firstbackground.style.display = 'block';
-                    espaco.style.display = 'block';
+                    secondbackground.style.display = 'grid';
+                    firstbackground.style.display = 'grid';
+                    espaco.style.display = 'grid';
                     dustsong.pause();
                     torielsong.pause();
                     disbeliefsong.pause();
@@ -2045,7 +2045,7 @@
             espaco.style.zIndex = '-1';
             }, 300);
             firstbackground.style.transition = 'all 0.3s ease';
-            firstbackground.style.display = 'block';
+            firstbackground.style.display = 'grid';
             setTimeout(() => {
                 firstbackground.style.opacity = '1';
                 document.body.style.pointerEvents = 'auto';
