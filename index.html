@@ -1835,6 +1835,7 @@
             if (Activities.style.display === 'grid') {MateriaHide()};
             if (Settings.style.display === 'grid') {Settings.style.display = 'none'};
             if (espaco.style.display === 'grid') {materiasclose()};
+            if (pulomenu.style.display === 'flex') (closepulo());
         }
         else if (e.key === 'ArrowLeft' && secondbackground.style.transform === "translate(-50%, -50%) translateY(0%)") {e.preventDefault(); backwards();} 
         else if (e.key === 'ArrowRight' && secondbackground.style.transform === "translate(-50%, -50%) translateY(0%)") {e.preventDefault(); next();} 
