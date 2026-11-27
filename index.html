@@ -462,25 +462,33 @@
             color: #ffde59;
             border-color: #ffde59;
         }
+        #dialogueholder {
+            width: 90%;
+            overflow: visible;
+            height: 30%;
+            left: 50%;
+            bottom: 5%;
+            transform: translate(-50%, 500px);
+            position: fixed;
+            z-index: 100;
+        }
         #dialoguebox {
             transition: all 0.4s ease;
             background: black;
             border: 3px solid white;
             outline: 3px solid black;
             font-family: 'Press Start 2P', sans-serif;
-            width: 90%;
-            height: 30%;
-            top: 80%;
-            left: 50%;
+            width: 100%;
+            height: 100%;
             opacity: 0;
             font-size: 16px;
             display: grid;
             text-align: left;
-            position: fixed;
+            position: absolute;
+            inset: 0;
             justify-content: center;
             align-items:first baseline;
-            transform: translate(-50%, -50%) translateY(500px);
-            z-index: 100;
+            z-index: 101;
             color: white;
             corner-shape: scoop;
             border-radius: 20px;
@@ -491,6 +499,19 @@
             margin-left: 30px;
             line-height: 1.6;
             margin-top: 40px;
+        }
+        #characterofdialogue {
+            width: 300px;
+            height: 300px;
+            flex: 0 0 300px;
+            object-fit: cover;
+            transform: translateX(-50%);
+            bottom:100%;
+            position: absolute;
+            display: flex;
+            z-index: 102;
+            opacity: 0;
+            left: 80%;
         }
         #vinyl {
             place-self: center;
@@ -591,7 +612,6 @@
             position: relative;
             display: inline-flex;
             flex-direction: column;
-        
         }
         #musicCredits span {
             font-size: 20px;
@@ -783,19 +803,7 @@
             transform: rotateX(30deg) translateY(10px);
             box-shadow: 0px 5px 0 2px rgb(34, 38, 48);
         }
-        #characterofdialogue {
-            width: 300px;
-            height: 300px;
-            flex: 0 0 300px;
-            object-fit: cover;
-            position: fixed;
-            display: flex;
-            z-index: 99;
-            opacity: 0;
-            top: 50%;
-            transform: translate(-50%, -50%) translateY(500px);
-            left: 80%;
-        }
+        
         hr {height: 1px; max-height: 1px;}
     </style>
 </head>
@@ -1436,6 +1444,7 @@
 
         function MateriaHide() {
             if (materiaAtual.innerHTML == 'Matemática') {
+                characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DustDialogueSmiling.png';
                 dialoguesummon(dusttalksfx);
                 currentmessage = '* bem, isso foi tudo, certo? <br> aproveita a vida, crianca. nunca se sabe, ne? heh.'
             } else if (materiaAtual.innerHTML === 'Linguagens') {dialoguesummon(torieltalksfx);
@@ -1466,6 +1475,7 @@
     
         const characterofdialogue = document.getElementById('characterofdialogue');
         const dialoguebox = document.getElementById("dialoguebox");
+        const dialogueholder = document.getElementById("dialogueholder");
         const dialoguetext = document.getElementById("dialoguetext");
         const dialoguewarn = document.getElementById("dialoguewarn");
 
@@ -1639,6 +1649,7 @@
              setTimeout(() =>  {if (materiaAtual.innerHTML === 'Senai'){ characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefDialogueWorried.png'}}, 6000); setTimeout(() => { if (materiaAtual.innerHTML === 'Senai') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefDialogue.png'}, 9000);}
             else if (materiaAtual.innerHTML === 'Matemática') {dialoguebox.style.fontFamily = "'ComicSans', cursive";
                 dialoguebox.style.fontSize = "23px";
+                setTimeout(() =>  {if (materiaAtual.innerHTML === 'Matemática'){ characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DustDialogueSurprised.png'}}, 500); setTimeout(() => { if (materiaAtual.innerHTML === 'Matemática') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DustDialogue.png'}, 1400);
             }  else if (materiaAtual.innerHTML === 'Humanas') {characterofdialogue.style.display = 'none'; dialoguebox.style.fontFamily = "'Press Start 2P', serif"; dialoguebox.style.fontSize = "16px";
             } else if (materiaAtual.innerHTML === 'ok') {characterofdialogue.style.display = 'none'; dialoguebox.style.fontFamily = "'Press Start 2P', serif"; dialoguebox.style.fontSize = "16px";
             }
@@ -1659,10 +1670,10 @@
             dialoguebox.style.pointerEvents = 'auto';
             Settings.style.pointerEvents = 'auto';
             document.getElementById('gear').style.pointerEvents = 'auto';
+            dialogueholder.style.opacity = '1';
             dialoguebox.style.opacity = '1';
             characterofdialogue.style.opacity = '1';
-            dialoguebox.style.transform = 'translate(-50%, -50%)';
-            characterofdialogue.style.transform = 'translate(-50%, -50%)';
+            dialogueholder.style.transform = 'translate(-50%, 0)';
         },100);
         setTimeout(() => {
             intro.style.display = 'grid';
@@ -1677,8 +1688,7 @@
                     messageNum = currentmessage.length;
                 } else {
                 setTimeout(() => {
-                dialoguebox.style.transform = 'translate(-50%, -50%) translateY(500px)';
-            characterofdialogue.style.transform = 'translate(-50%, -50%) translateY(500px)';}, 200);
+                dialogueholder.style.transform = 'translate(-50%, 500px)';}, 200);
                 setTimeout(() => {
                     setTimeout(() => {
                         intro.style.display = 'none';
@@ -1686,6 +1696,7 @@
                     }, 500);
                     intro.style.background = 'rgb(0,0,0,0)';
                     document.body.style.pointerEvents = 'auto';
+                    dialogueholder.style.opacity = '0';
                     dialoguebox.style.opacity = '0';
                     characterofdialogue.style.opacity = '0';
                     dialogueIsFinished = false;
@@ -1860,6 +1871,7 @@
                 theanimationitself.play();
                 theanimationitself.style.display = 'block';};
                 if (materiaAtual.innerHTML === 'Matemática') {
+                characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DustDialogue.png';
                 theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DustIntro-mp3.mp4';
                 theanimationitself.currentTime = 0;
                 theanimationitself.play();
