@@ -23,7 +23,8 @@ meu portfolio do segundo ano!
 [15 de Novembro, 2026](#15112026)\
 [16 de Novembro, 2026](#16112026)\
 [19 de Novembro, 2026](#19112026)\
-[22 de Novembro, 2026](#22112026)
+[22 de Novembro, 2026](#22112026)\
+[27 de Novembro, 2026](#27112026)
 
 # <a>22/09/2026</a> 
 o dia da publicação dessa repo. veja, eu ainda não terminei ainda - afinal, faltam uns 2 meses até o dia da apresentação. porem, como é de costume da minha sala, eu vou dar minha alma no portfolio por razão nenhuma.
@@ -183,3 +184,13 @@ nos ultimos dias, eu:
 - fiz algumas mudanças de estética, mas não foram muitas;
 - adicionei mais atividades, algumas faltam descrição e foto;
 - correção de bugs.
+
+# <a>27/11/2026</a>
+e, agora, 98%. so falta mais um desenho, são 9:23. acho que vou atualizar ainda hoje pra dizer que terminei.
+- adicionei todas as atividades;
+- refatorei muitos codigos antigos, como o dialogo, que não era nada relativo e era baseado em posições absolutas (oq quebrava mt facil);
+- agora você pode usar seu teclado pra grande maioria das partes;
+- terminei todos os desenhos (menos um - a saber, a underswap chara);
+- backgrounds de todas as materias;
+- refatorei a aparencia da seção de atividades, e adicionei uma animção pra a mudança de atividades;
+- correção de muitos bugs.
