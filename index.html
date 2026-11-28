@@ -456,6 +456,10 @@
             font-size: 30px;
             transform: translate(-50%, -50%);
         }
+        .textsectionbase li::first-letter {
+             font-size: 25px;
+             animation: spin 2s linear infinite;
+        }
         #seila {left: 70%;}
         #seila3 {left: 30%;}
         #seila:hover, #seila2:hover, #seila3:hover {
@@ -813,11 +817,13 @@
     <div id="Activities">
         <section id="ActivitiesHold">
             <div id='chooseuni'>
+                <p style="color: white; font-size: 20px;">&#10094;</p>
                 <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" id="uni1" onclick="CurrentUnity = 1; askForContent(materiaAtual.innerHTML); buttonsoundhandle(clicksfx)">PRIMEIRA</button>
                 <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" id="uni2" onclick="CurrentUnity = 2; askForContent(materiaAtual.innerHTML); buttonsoundhandle(clicksfx)">SEGUNDA</button>
                 <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" id="uni3" onclick="CurrentUnity = 3; askForContent(materiaAtual.innerHTML); buttonsoundhandle(clicksfx)">TERCEIRA</button>
                 <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" id="uni4" onclick="CurrentUnity = 4; askForContent(materiaAtual.innerHTML); buttonsoundhandle(clicksfx)">QUARTA</button>
                 <button class="buttonbase" onmouseenter="buttonsoundhandle(hoversfx)" onclick="MateriaHide()">X</button>
+                <p style="color: white; font-size: 20px;">&#10095;</p>
             </div>
                 <section class="paper" id="paper1">
                     <section class="papercontent">
@@ -882,6 +888,8 @@
         <section class="smallsection">
         <p style="font-size: 14px;">Z = Pular ou terminar diálogo</p></section>
         <section class="smallsection">
+        <p style="font-size: 14px;">Enter = Pular intros</p></section>
+        <section class="smallsection">
         <p style="font-size: 14px;">C = Configurações</p></section>
 
         <section class="smallsection" id="pressionaveis">
@@ -896,8 +904,8 @@
 
     <!-- sobremim -->
     <div class="secondbackground" id="secondbackground">
-        <button class="buttonbase" id="seila" onclick="next()" onmouseenter="buttonsoundhandle(hoversfx)">&RightArrow;</button>
-        <button class="buttonbase" id="seila3" onclick="backwards()" onmouseenter="buttonsoundhandle(hoversfx)">&LeftArrow;</button>
+        <button class="buttonbase" id="seila" onclick="next()" onmouseenter="buttonsoundhandle(hoversfx)">&#10095;</button>
+        <button class="buttonbase" id="seila3" onclick="backwards()" onmouseenter="buttonsoundhandle(hoversfx)">&#10094;</button>
         <button class="closebutton" style="background: rgb(0,0,0,0.89)" id="seila2" onmouseenter="buttonsoundhandle(hoversfx)" onclick="sobremimdeactive()">X</button>
         <p class="textmenu" id="pagecounter">1/5</p>
         
@@ -924,20 +932,20 @@
         <div id="texto3" style="display:none;">
          <h1>QUALIDADES BOAS</h1><hr><br>
          <ul>
-            <li>&#9733; Sou calmo;</li><br>
-            <li>&#9733; Gosto de ajudar;</li><br>
-            <li>&#9733; Me adapto bem;</li><br>
-            <li>&#9733; Busco sempre melhorar;</li><br>
-            <li>&#9733; Sirvo a <span>Deus</span>.</li>
+            <li>&#10022; Sou calmo;</li><br>
+            <li>&#10022; Gosto de ajudar;</li><br>
+            <li>&#10022; Me adapto bem;</li><br>
+            <li>&#10022; Busco sempre melhorar;</li><br>
+            <li>&#10022; Sirvo a <span>Deus</span>.</li>
          </ul>
         </div>
         <div id="texto4" style="display:none;">
          <h1>QUALIDADES MÁS</h1><hr><br>
          <ul>
-            <li>&#9734; Sou introvertido;</li><br>
-            <li>&#9734; Procrastino;</li><br>
-            <li>&#9734; Posso ser duro com as palavras;</li><br>
-            <li>&#9734; Sou ruim de conversa.</li>
+            <li>&#10023; Sou introvertido;</li><br>
+            <li>&#10023; Procrastino;</li><br>
+            <li>&#10023; Posso ser duro com as palavras;</li><br>
+            <li>&#10023; Sou ruim de conversa.</li>
          </ul>
         </div>
         <div id="texto5" style="display:none;">
@@ -984,6 +992,7 @@
     <p class="textmenu" id="instrucoes" style="top: 90%; opacity: 0.7; font-size: 12px;">
         Tecla <span style="border: 3px solid white; padding: 3px 3px;">T</span> = Pulo Rapido.<br><br>
         Tecla <span style="border: 3px solid white; padding: 3px 3px;">Z</span> = Pular / terminar diálogos.<br><br>
+        Tecla <span style="border: 3px solid white; padding: 3px 3px;">Enter</span> = Pular intros.<br><br>
         Tecla <span style="border: 3px solid white; padding: 3px 3px;">C</span> = Configurações.</p>
     </div>
 
@@ -1232,9 +1241,9 @@
                 title: "AFRICA ESTÁ ENTRE NOS",  
                 context: "Atividade de Geografia, da professora Janaina. A professora mandou a sala para se organizar em grupos diferentes, apresentando diferentes características do continente.",
                 
-                image2: "url",
-                title2: "ALGO",
-                context2: "Talvez eu coloque o filme nazista lá, vo larpar forte que eu nem assisti"},
+                image2: "https://file.garden/aq_0Fg8cibtOL7XF/lulaebolso.webp",
+                title2: "PRESIDENTES",
+                context2: "Atividade de Geografia, da professora Janaina. A professor mandou a sala criar um mapa mental sobre todos os presidentes do Brasil, suas propostas e seus principais feitos."},
 
                 unity4: {
                 un: "QUARTA UNIDADE",
@@ -1454,10 +1463,12 @@
                 characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefDialogue.png';
                 currentmessage = '* CERTO, HUMANO! MEU TRABALHO CHEGOU AO FIM. <br> CASO VOCÊ QUEIRA UMA PORÇÃO, VOU ESTAR NA MINHA CASA FAZENDO ESPAGUETE.'
             } else if(materiaAtual.innerHTML === 'Humanas') {dialoguesummon(beeptalksfx);
+                setTimeout(() => {buttonsoundhandle(runningsfx)}, 2300);
                 currentmessage = '* Enquanto anda em direção ao portal, você escuta algo se aproximando.. <br><br> Mas você foge a tempo.'
             } else if(materiaAtual.innerHTML === 'Projeto de Vida') {dialoguesummon(beeptalksfx);
                 currentmessage = '* É como olhar para um espelho.'
             } else if(materiaAtual.innerHTML === 'Natureza') {dialoguesummon(asgoretalksfx);
+                characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/OuterDialogue.png';
                 currentmessage = '* Talvez não nos vejamos novamente, mas da proxima vez eu prepararei um pouco de chá para você.'
             }
              else if (materiaAtual.innerHTML != 'ter') dialoguesummon(beeptalksfx);
@@ -1595,6 +1606,9 @@
         let asgoretalksfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/snd_txtasg.wav');
         asgoretalksfx.volume = 0.5;
         asgoretalksfx.loop = false;
+        let runningsfx = new Audio('https://file.garden/aq_0Fg8cibtOL7XF/Tom-and-Jerry-SnapYT.App.mp3');
+        runningsfx.loop = false;
+        runningsfx.volume = 0.5;
 
        sfxslider.addEventListener('input', () => {
         hoversfx.volume = parseFloat(sfxslider.value) / 100;
@@ -1611,6 +1625,7 @@
         torieltalksfx.volume = parseFloat(sfxslider.value) / 100;
         disbelieftalksfx.volume = parseFloat(sfxslider.value) / 100;
         asgoretalksfx.volume = parseFloat(sfxslider.value) / 100;
+        runningsfx.volume = parseFloat(sfxslider.value) / 100;
         theanimationitself.volume = parseFloat(sfxslider.value) / 100;
         document.getElementById('gear').title = `Musica ${volumeslider.value}%, Efeitos Sonoros ${sfxslider.value}%`;
         sfxread.innerText = parseFloat(sfxslider.value) + '%';});
@@ -1643,16 +1658,16 @@
         function dialoguesummon(v) {
             dialogueOnScreen = true;
             characterofdialogue.style.display = 'flex';
-            if (materiaAtual.innerHTML === 'Linguagens') {setTimeout(() => { if (materiaAtual.innerHTML === 'Linguagens') {characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/TorielDialogueWorried.png'}}, 4000); setTimeout(() => { if (materiaAtual.innerHTML === 'Linguagens') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/TorielDialogue.png'}, 8000);}
+            if (materiaAtual.innerHTML === 'Linguagens') {setTimeout(() => { if (materiaAtual.innerHTML === 'Linguagens') {characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/TorielDialogueWorried.png'}}, 3000); setTimeout(() => { if (materiaAtual.innerHTML === 'Linguagens') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/TorielDialogue.png'}, 6000);}
             if (materiaAtual.innerHTML === 'Senai') {dialoguebox.style.fontFamily = "'UT Papyrus', cursive";
              dialoguebox.style.fontSize = "21px";
-             setTimeout(() =>  {if (materiaAtual.innerHTML === 'Senai'){ characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefDialogueWorried.png'}}, 6000); setTimeout(() => { if (materiaAtual.innerHTML === 'Senai') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefDialogue.png'}, 9000);}
+             setTimeout(() =>  {if (materiaAtual.innerHTML === 'Senai'){ characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefDialogueWorried.png'}}, 5000); setTimeout(() => { if (materiaAtual.innerHTML === 'Senai') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefDialogue.png'}, 8000);}
             else if (materiaAtual.innerHTML === 'Matemática') {dialoguebox.style.fontFamily = "'ComicSans', cursive";
                 dialoguebox.style.fontSize = "23px";
                 setTimeout(() =>  {if (materiaAtual.innerHTML === 'Matemática'){ characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DustDialogueSurprised.png'}}, 500); setTimeout(() => { if (materiaAtual.innerHTML === 'Matemática') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DustDialogue.png'}, 1400);
             }  else if (materiaAtual.innerHTML === 'Humanas') {characterofdialogue.style.display = 'none'; dialoguebox.style.fontFamily = "'Press Start 2P', serif"; dialoguebox.style.fontSize = "16px";
             } else if (materiaAtual.innerHTML === 'ok') {characterofdialogue.style.display = 'none'; dialoguebox.style.fontFamily = "'Press Start 2P', serif"; dialoguebox.style.fontSize = "16px";
-            }
+            } else if (materiaAtual.innerHTML === 'Natureza') {setTimeout(() => {if (materiaAtual.innerHTML === 'Natureza') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/OuterDialogueHappy.png';}, 3000); setTimeout(() => {if (materiaAtual.innerHTML === 'Natureza') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/OuterDialogue.png';}, 5000);}
             if (materiaAtual.innerHTML !== 'Matemática' && materiaAtual.innerHTML !== 'Senai') {dialoguebox.style.fontFamily = "'Press Start 2P', serif"; dialoguebox.style.fontSize = "16px";}
             setTimeout(() => {
             intro.style.display = 'grid'
@@ -1736,7 +1751,7 @@
             const currentchar = currentmessage.charAt(messageNum);
             dialoguetext.innerHTML = currentmessage.substring(0, messageNum + 1);
             messageNum++;
-            let wait = 40;
+            let wait = 33;
             if ('.!?:'.includes(currentchar)) {
                 wait = 400;
             } else if (',;'.includes(currentchar)) {wait = 200;} else if('<'.includes(currentchar)) {wait = 0;}
@@ -1882,6 +1897,7 @@
                 theanimationitself.play();
                 theanimationitself.style.display = 'block'};
                 if (materiaAtual.innerHTML === 'Natureza') {
+                characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/OuterDialogue.png';
                 theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/OuterIntro-mp3.mp4';
                 theanimationitself.currentTime = 0;
                 theanimationitself.play();
