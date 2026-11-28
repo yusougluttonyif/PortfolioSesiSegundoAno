@@ -988,7 +988,7 @@
         <video id='theanimationitself' autoplay></video>
         <p class="textmenu" style="transform: translate(-50%, -50%);" id="duration"></p>
         <button class="buttonbase" onclick="skip()" onmouseenter="buttonsoundhandle(hoversfx)"style="
-        position: absolute; top:50%; left: 50%; transform: translate(-50%, -50%);" id="pular">COMEÇAR</button>
+        position: absolute; top:50%; left: 50%; transform: translate(-50%, -50%);" id="pular">COMEÇAR <br> <span style="opacity:0.7; font-size:11px">Enter</span></button>
     <p class="textmenu" id="instrucoes" style="top: 90%; opacity: 0.7; font-size: 12px;">
         Tecla <span style="border: 3px solid white; padding: 3px 3px;">T</span> = Pulo Rapido.<br><br>
         Tecla <span style="border: 3px solid white; padding: 3px 3px;">Z</span> = Pular / terminar diálogos.<br><br>
@@ -1050,10 +1050,11 @@
 <!--meu preloader super esforçado e nada preguiçoso, se voce abriu o inspect e vinher falar mal eu vou soltar raios dos olhos-->
 <video src="https://file.garden/aq_0Fg8cibtOL7XF/actualIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
 <video src="https://file.garden/aq_0Fg8cibtOL7XF/UnderfellIntroFinal-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
-<video src="https://file.garden/aq_0Fg8cibtOL7XF/HorrorIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
+<video src="https://file.garden/aq_0Fg8cibtOL7XF/HorrorIntroFinal-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
 <video src="https://file.garden/aq_0Fg8cibtOL7XF/UnderswapIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
 <video src="https://file.garden/aq_0Fg8cibtOL7XF/OuterIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
-<video src="https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefIntro-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
+<video src="https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefIntroFinal-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
+<video src="https://file.garden/aq_0Fg8cibtOL7XF/DustIntroFinal-mp3.mp4" width="0" height="0" preload="auto" muted style="display: none;"></video>
 
     <script>
         setTimeout(() => {
@@ -1662,7 +1663,7 @@
             if (materiaAtual.innerHTML === 'Linguagens') {setTimeout(() => { if (materiaAtual.innerHTML === 'Linguagens') {characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/TorielDialogueWorried.png'}}, 3000); setTimeout(() => { if (materiaAtual.innerHTML === 'Linguagens') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/TorielDialogue.png'}, 6000);}
             if (materiaAtual.innerHTML === 'Senai') {dialoguebox.style.fontFamily = "'UT Papyrus', cursive";
              dialoguebox.style.fontSize = "21px";
-             setTimeout(() =>  {if (materiaAtual.innerHTML === 'Senai'){ characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefDialogueWorried.png'}}, 5000); setTimeout(() => { if (materiaAtual.innerHTML === 'Senai') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefDialogue.png'}, 8000);}
+             setTimeout(() =>  {if (materiaAtual.innerHTML === 'Senai'){ characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefDialogueWorried.png'}}, 4000); setTimeout(() => { if (materiaAtual.innerHTML === 'Senai') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefDialogue.png'}, 6500);}
             else if (materiaAtual.innerHTML === 'Matemática') {dialoguebox.style.fontFamily = "'ComicSans', cursive";
                 dialoguebox.style.fontSize = "23px";
                 setTimeout(() =>  {if (materiaAtual.innerHTML === 'Matemática'){ characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DustDialogueSurprised.png'}}, 500); setTimeout(() => { if (materiaAtual.innerHTML === 'Matemática') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DustDialogue.png'}, 1400);
@@ -1891,7 +1892,7 @@
                 theanimationitself.style.display = 'block';};
                 if (materiaAtual.innerHTML === 'Matemática') {
                 characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DustDialogue.png';
-                theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DustIntro-mp3.mp4';
+                theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DustIntroFinal-mp3.mp4';
                 theanimationitself.currentTime = 0;
                 theanimationitself.play();
                 theanimationitself.style.display = 'block'};
@@ -1909,15 +1910,14 @@
                 theanimationitself.style.display = 'block'};
                 if (materiaAtual.innerHTML === 'Senai') {
                     characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefDialogue.png';
-                    theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefIntro-mp3.mp4';
+                    theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefIntroFinal-mp3.mp4';
                     theanimationitself.currentTime = 0;
                     theanimationitself.play();
                     theanimationitself.style.display = 'block';};
             donewithit = false;
-            d = 11;
-            if (materiaAtual.innerHTML === 'Matemática') {d=12};
-            if (materiaAtual.innerHTML === 'Projeto de Vida' || materiaAtual.innerHTML === 'Natureza') {d=9};
-            if (materiaAtual.innerHTML === 'Senai') {d=13};
+            d = 10;
+            if (materiaAtual.innerHTML === 'Matemática') {d=9};
+            if (materiaAtual.innerHTML === 'Projeto de Vida' || materiaAtual.innerHTML === 'Natureza') {d=8};
             if (materiaAtual.innerHTML === 'Humanas') {d=8};
             intro.style.opacity = '1';
             duration.style.opacity = '1';
@@ -2026,7 +2026,7 @@
             PortfolioInitiated = true;
             firstTimeSkipping = false;
             duration.innerHTML = `${d}`;
-            pular.innerHTML = 'PULAR <br> <span style="opacity:0.7; font-size:12px">Enter</span>';
+            pular.innerHTML = 'PULAR <br> <span style="opacity:0.7; font-size:11px">Enter</span>';
             buttonsoundhandle(doodlesong);
             d = 15.95;
             buttonsoundhandle(clicksfx);
