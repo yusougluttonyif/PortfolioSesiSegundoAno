@@ -50,7 +50,7 @@
             overflow:hidden;
             transform: translate(-50%, -50%);
         } 
-        .firstbackground video, #intro video, .firstbackground img {
+        .firstbackground video, #intro video, .firstbackground img, .secondbackground video {
             inset: 0;
             width: 100%;
             height: 100%;
@@ -267,7 +267,6 @@
             height: 100%;
             width: 100%;
             display: grid;
-            background: radial-gradient(circle at top, rgb(255, 243, 183) 50%,#f5dc44,#f5dc44,#f5dc44,#ffe961);
             position: absolute;
             top: 50%;
             left: 50%;
@@ -509,6 +508,7 @@
             height: if(media(width > 600px):350px; else: 200px);
             flex: if(media(width > 600px): 0 0 350px; else: 0 0 200px);
             object-fit: cover;
+            pointer-events: none;
             transform: translateX(-50%);
             bottom:100%;
             position: absolute;
@@ -895,7 +895,6 @@
         <section class="smallsection" id="pressionaveis">
             <button class="press" onclick="if (pulomenu.style.display == 'flex') {closepulo();} else{
                 openpulo();}">T</button>
-            <button class="press" onclick="alert('ainda não foi feito')" >F</button>
             <button class="press" onclick="closesettings()">C</button>
         </section>
 
@@ -904,6 +903,7 @@
 
     <!-- sobremim -->
     <div class="secondbackground" id="secondbackground">
+        <video onloadedmetadata='this.playbackRate = 0.34'src="https://file.garden/aq_0Fg8cibtOL7XF/PapersBG%20-%20blur.mp4" autoplay loop muted playsinline preload="auto"></video>
         <button class="buttonbase" id="seila" onclick="next()" onmouseenter="buttonsoundhandle(hoversfx)">&#10095;</button>
         <button class="buttonbase" id="seila3" onclick="backwards()" onmouseenter="buttonsoundhandle(hoversfx)">&#10094;</button>
         <button class="closebutton" style="background: rgb(0,0,0,0.89)" id="seila2" onmouseenter="buttonsoundhandle(hoversfx)" onclick="sobremimdeactive()">X</button>
