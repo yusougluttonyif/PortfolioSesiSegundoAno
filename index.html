@@ -505,17 +505,17 @@
             margin-top: 40px;
         }
         #characterofdialogue {
-            width: 300px;
-            height: 300px;
-            flex: 0 0 300px;
+            width: if(media(width > 600px):350px; else: 200px);
+            height: if(media(width > 600px):350px; else: 200px);
+            flex: if(media(width > 600px): 0 0 350px; else: 0 0 200px);
             object-fit: cover;
             transform: translateX(-50%);
             bottom:100%;
             position: absolute;
             display: flex;
-            z-index: 102;
+            z-index: 100;
             opacity: 0;
-            left: 80%;
+            left: if(media(width > 600px): 72%; else: 50%;);
         }
         #vinyl {
             place-self: center;
@@ -1461,15 +1461,16 @@
                 currentmessage = '* Boa viagem, minha criança. <br> Muito obrigada pela sua visita. Tome cuidado no caminho!'
             } else if(materiaAtual.innerHTML === 'Senai') {dialoguesummon(disbelieftalksfx);
                 characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DisbeliefDialogue.png';
-                currentmessage = '* CERTO, HUMANO! MEU TRABALHO CHEGOU AO FIM. <br> CASO VOCÊ QUEIRA UMA PORÇÃO, VOU ESTAR NA MINHA CASA FAZENDO ESPAGUETE.'
+                currentmessage = '* CERTO, HUMANO! MEU TRABALHO CHEGOU AO FIM. <br> VOU PARA CASA FAZER ESPAGUETE. SINTA-SE LIVRE PARA IR!'
             } else if(materiaAtual.innerHTML === 'Humanas') {dialoguesummon(beeptalksfx);
                 setTimeout(() => {buttonsoundhandle(runningsfx)}, 2300);
-                currentmessage = '* Enquanto anda em direção ao portal, você escuta algo se aproximando.. <br><br> Mas você foge a tempo.'
+                currentmessage = '* Enquanto anda em direção ao portal, você escuta algo se aproximando. <br> Mas você foge a tempo.'
             } else if(materiaAtual.innerHTML === 'Projeto de Vida') {dialoguesummon(beeptalksfx);
+                characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/SwapDialogueHappy.gif';
                 currentmessage = '* É como olhar para um espelho.'
             } else if(materiaAtual.innerHTML === 'Natureza') {dialoguesummon(asgoretalksfx);
-                characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/OuterDialogue.png';
-                currentmessage = '* Talvez não nos vejamos novamente, mas da proxima vez eu prepararei um pouco de chá para você.'
+                characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/OuterDialogueHappyNEW.png';
+                currentmessage = '* Talvez não nos vejamos novamente, mas prepararei chá para nos da proxima vez.'
             }
              else if (materiaAtual.innerHTML != 'ter') dialoguesummon(beeptalksfx);
             materiaAtual.innerHTML = 'ter'
@@ -1667,7 +1668,7 @@
                 setTimeout(() =>  {if (materiaAtual.innerHTML === 'Matemática'){ characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DustDialogueSurprised.png'}}, 500); setTimeout(() => { if (materiaAtual.innerHTML === 'Matemática') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/DustDialogue.png'}, 1400);
             }  else if (materiaAtual.innerHTML === 'Humanas') {characterofdialogue.style.display = 'none'; dialoguebox.style.fontFamily = "'Press Start 2P', serif"; dialoguebox.style.fontSize = "16px";
             } else if (materiaAtual.innerHTML === 'ok') {characterofdialogue.style.display = 'none'; dialoguebox.style.fontFamily = "'Press Start 2P', serif"; dialoguebox.style.fontSize = "16px";
-            } else if (materiaAtual.innerHTML === 'Natureza') {setTimeout(() => {if (materiaAtual.innerHTML === 'Natureza') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/OuterDialogueHappy.png';}, 3000); setTimeout(() => {if (materiaAtual.innerHTML === 'Natureza') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/OuterDialogue.png';}, 5000);}
+            } else if (materiaAtual.innerHTML === 'Natureza') {setTimeout(() => {if (materiaAtual.innerHTML === 'Natureza') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/OuterDialogueHappyNEW.png';}, 3000); setTimeout(() => {if (materiaAtual.innerHTML === 'Natureza') characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/OuterDialogueNEW.png';}, 5000);}
             if (materiaAtual.innerHTML !== 'Matemática' && materiaAtual.innerHTML !== 'Senai') {dialoguebox.style.fontFamily = "'Press Start 2P', serif"; dialoguebox.style.fontSize = "16px";}
             setTimeout(() => {
             intro.style.display = 'grid'
@@ -1721,7 +1722,7 @@
                     dialoguetext.innerHTML = '';
                 }, 400);
                 if (firstDialogue == true) {
-                    dialoguewarn.style.color = 'black';
+                    dialoguewarn.style.color = 'rgb(0,0,0,0)';
                     firstDialogue = false;
                     dialogueOnScreen = false;
                 }
@@ -1892,12 +1893,13 @@
                 theanimationitself.play();
                 theanimationitself.style.display = 'block'};
                  if (materiaAtual.innerHTML === 'Projeto de Vida') {
+                characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/SwapDialogue.gif';
                 theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/UnderswapIntro-mp3.mp4';
                 theanimationitself.currentTime = 0;
                 theanimationitself.play();
                 theanimationitself.style.display = 'block'};
                 if (materiaAtual.innerHTML === 'Natureza') {
-                characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/OuterDialogue.png';
+                characterofdialogue.src = 'https://file.garden/aq_0Fg8cibtOL7XF/OuterDialogueNEW.png';
                 theanimationitself.src = 'https://file.garden/aq_0Fg8cibtOL7XF/OuterIntro-mp3.mp4';
                 theanimationitself.currentTime = 0;
                 theanimationitself.play();
@@ -1949,19 +1951,19 @@
                     musicname.innerHTML = '<span>&#x266A;</span>Ravaged Ruins<br><br><span>&#x1F58A;</span> AMA';
                     name.innerHTML = musicname.innerHTML;
                     setTimeout(() => {
-                dialoguesummon(torieltalksfx); currentmessage = '* Ah, minha criança.. <br> Me perdoe pelo incomodo, pensava que estava sendo invadida pois esperava que vinhesse mais tarde.<br> Bem, aqui estão seus papeis.';},100);
+                dialoguesummon(torieltalksfx); currentmessage = '* Ah, minha criança. <br> Me perdoe pelo incômodo, suspeitava estar sendo invadida por conta do horario. <br> Bem, aqui estão seus papeis.';},100);
                 }
                 else if (materiaAtual.innerHTML === 'Senai') {songdisplayShow();
                     musicname.innerHTML = '<span>&#x266A;</span>Papyrus <br><br><span>&#x1F58A;</span> UNDERSWAP';
                     name.innerHTML = musicname.innerHTML;
                     setTimeout(() => {
-                dialoguesummon(disbelieftalksfx); currentmessage = '* HUMANO! PERMITA-ME ME DESCULPAR. <br> EU PENSAVA QUE VOCÊ ERA QUEM FEZ AQUILO COM MEU IRMÃO, MAS EU ESTAVA ERRADO! <br> ...ESQUECE! AQUI ESTAO SEUS PAPEIS.';},100);
+                dialoguesummon(disbelieftalksfx); currentmessage = '* HUMANO! PERMITA-ME ME DESCULPAR. <br> PENSAVA QUE VOCÊ ERA QUEM FEZ AQUILO COM MEU IRMÃO. <br> ...ESQUECE! AQUI ESTAO SEUS PAPEIS.';},100);
                 }
                 else if (materiaAtual.innerHTML === 'Humanas') {songdisplayShow();
                     musicname.innerHTML = '<span>&#x266A;</span>Fear<br><br><span>&#x1F58A;</span> Sour Apple Studios';
                     name.innerHTML = musicname.innerHTML;
                     setTimeout(() => {
-                dialoguesummon(beeptalksfx); currentmessage = '* A escuridão desse lugar te cega. Tudo que você pode ver é seus papeis, mas com muita dificuldade. <br><br> Você se enche de... medo.';},100);
+                dialoguesummon(beeptalksfx); currentmessage = '* A escuridão desse lugar te cega. Tudo que você pode ver é seus papeis, mas com muita dificuldade. <br> Você se enche de.. medo.';},100);
                 } else if (materiaAtual.innerHTML === 'Natureza') {songdisplayShow();
                     musicname.innerHTML = '<span>&#x266A;</span>Shop<br><br><span>&#x1F58A;</span> Outertale';
                     name.innerHTML = musicname.innerHTML;
