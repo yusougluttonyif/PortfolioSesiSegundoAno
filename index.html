@@ -1857,12 +1857,15 @@
             e.preventDefault();
             if (Settings.style.display === 'none')
             {Settings.style.display = 'grid';} else {closesettings();}
+            
         } else if (e.key === 'X' || e.key === 'x' || e.key === 'Backspace') {
-            if (sbtexthold.style.display === 'grid') {sobremimdeactive()};
-            if (Activities.style.display === 'grid') {MateriaHide()};
-            if (Settings.style.display === 'grid') {Settings.style.display = 'none'};
-            if (espaco.style.display === 'grid') {materiasclose()};
-            if (pulomenu.style.display === 'flex') (closepulo());
+            if (Settings.style.display === 'grid') {Settings.style.display = 'none'}
+            else if (pulomenu.style.display === 'flex') {closepulo()}
+            else if (Activities.style.display === 'grid') {MateriaHide()}
+            else if (sbtexthold.style.display === 'grid') {sobremimdeactive()}
+           
+            else if (espaco.style.display === 'grid') {materiasclose()};
+            
         }
         else if (e.key === 'ArrowLeft' && secondbackground.style.transform === "translate(-50%, -50%) translateY(0%)") {e.preventDefault(); backwards();} 
         else if (e.key === 'ArrowRight' && secondbackground.style.transform === "translate(-50%, -50%) translateY(0%)") {e.preventDefault(); next();} 
